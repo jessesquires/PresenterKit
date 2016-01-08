@@ -4,22 +4,22 @@ osx_image: xcode7.2
 env:
    global:
    - LANG=en_US.UTF-8
-   - PROJECT="PresenterKit.xcodeproj"
+   - WORKSPACE="PresenterKit.xcworkspace"
    - IOS_SCHEME="PresenterKit"
    - IOS_SDK=iphonesimulator9.2
 
    matrix:
-   - DESTINATION="OS=8.1,name=iPhone 4s"     SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   POD_LINT="YES"
-   - DESTINATION="OS=8.2,name=iPhone 5"      SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   POD_LINT="NO"
-   - DESTINATION="OS=8.3,name=iPhone 5s"     SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   POD_LINT="NO"
-   - DESTINATION="OS=8.4,name=iPhone 6"      SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   POD_LINT="NO"
-   - DESTINATION="OS=9.0,name=iPhone 6s"     SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   POD_LINT="NO"
-   - DESTINATION="OS=9.1,name=iPhone 6 Plus" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   POD_LINT="NO"
-   - DESTINATION="OS=9.2,name=iPhone 6 Plus" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   POD_LINT="NO"
+   - DESTINATION="OS=8.1,name=iPhone 4s"     SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   BUILD_EXAMPLE="YES"  POD_LINT="YES"
+   - DESTINATION="OS=8.2,name=iPhone 5"      SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   BUILD_EXAMPLE="NO"   POD_LINT="NO"
+   - DESTINATION="OS=8.3,name=iPhone 5s"     SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   BUILD_EXAMPLE="NO"   POD_LINT="NO"
+   - DESTINATION="OS=8.4,name=iPhone 6"      SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   BUILD_EXAMPLE="NO"   POD_LINT="NO"
+   - DESTINATION="OS=9.0,name=iPhone 6s"     SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   BUILD_EXAMPLE="YES"  POD_LINT="NO"
+   - DESTINATION="OS=9.1,name=iPhone 6 Plus" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   BUILD_EXAMPLE="NO"   POD_LINT="NO"
+   - DESTINATION="OS=9.2,name=iPhone 6 Plus" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   BUILD_EXAMPLE="NO"   POD_LINT="NO"
 
-   - DESTINATION="OS=8.1,name=iPad 2"        SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   POD_LINT="NO"
-   - DESTINATION="OS=8.4,name=iPad Retina"   SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   POD_LINT="NO"
-   - DESTINATION="OS=9.0,name=iPad Air"      SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   POD_LINT="NO"
+   - DESTINATION="OS=8.1,name=iPad 2"        SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   BUILD_EXAMPLE="YES"  POD_LINT="NO"
+   - DESTINATION="OS=8.4,name=iPad Retina"   SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   BUILD_EXAMPLE="NO"   POD_LINT="NO"
+   - DESTINATION="OS=9.0,name=iPad Air"      SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"   BUILD_EXAMPLE="YES"  POD_LINT="NO"
 
 script:
 
@@ -29,16 +29,21 @@ script:
   fi
 
 
+- if [ $BUILD_EXAMPLE == "YES" ]; then
+      xcodebuild clean build -project ExampleApp/ExampleApp.xcodeproj -scheme ExampleApp -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c;
+  fi
+
+
 - if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild test -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO | xcpretty -c;
+      xcodebuild test -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO | xcpretty -c;
   else
-      xcodebuild clean build -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO | xcpretty -c;
+      xcodebuild clean build -workspace "$WORKSPACE" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO | xcpretty -c;
   fi
 
 
 # Build for reporting test coverage
 - if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild test -project "$PROJECT" -scheme "$IOS_SCHEME" -sdk iphonesimulator -destination 'name=iPhone 6s';
+      xcodebuild test -workspace "$WORKSPACE" -scheme "$IOS_SCHEME" -sdk iphonesimulator -destination 'name=iPhone 6s';
   fi
 
 
