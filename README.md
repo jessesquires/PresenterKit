@@ -1,2 +1,2 @@
 # PresenterKit
-Swifty view controller presenters for iOS
+*Swifty view controller presenters for iOS*
