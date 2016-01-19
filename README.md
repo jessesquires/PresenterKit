@@ -33,11 +33,15 @@ github "jessesquires/PresenterKit"
 
 ## Documentation
 
-Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
-
-More information on the [`gh-pages`](https://github.com/jessesquires/PresenterKit/tree/gh-pages) branch.
+Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com). More information on the [`gh-pages`](https://github.com/jessesquires/PresenterKit/tree/gh-pages) branch.
 
 ## Getting Started
+
+```swift
+import PresenterKit
+```
+
+> Checkout the included [example project](https://github.com/jessesquires/PresenterKit/tree/develop/ExampleApp).
 
 > TODO:
 
