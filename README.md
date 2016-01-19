@@ -33,9 +33,9 @@ github "jessesquires/PresenterKit"
 
 ## Documentation
 
-Read the fucking [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
+Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
 
-More information on the [gh-pages](https://github.com/jessesquires/PresenterKit/tree/gh-pages) branch.
+More information on the [`gh-pages`](https://github.com/jessesquires/PresenterKit/tree/gh-pages) branch.
 
 ## Getting Started
 
@@ -45,11 +45,9 @@ More information on the [gh-pages](https://github.com/jessesquires/PresenterKit/
 
 There's a suite of unit tests for `PresenterKit`. To run them, open `PresenterKit.xcodeproj`, select the `PresenterKit` scheme, then &#x2318;-u.
 
-These tests are well commented and serve as further documentation for how to use this library.
-
 ## Contribute
 
-Please follow these sweet [contribution guidelines](https://github.com/jessesquires/HowToContribute).
+Please follow these [contribution guidelines](https://github.com/jessesquires/HowToContribute).
 
 ## Credits
 
