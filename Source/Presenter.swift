@@ -20,22 +20,22 @@ import Foundation
 import UIKit
 
 
-protocol ViewControllerDismissingType: class {
+public protocol ViewControllerDismissingType: class {
     func didDismiss(viewController viewController: UIViewController) -> Void
 }
 
 
-protocol DismissableViewControllerType: class {
+public protocol DismissableViewControllerType: class {
     weak var dismissingDelegate: ViewControllerDismissingType? { get set }
 }
 
 
-final class ViewControllerPresenter : ViewControllerDismissingType {
+public final class ViewControllerPresenter : ViewControllerDismissingType {
 
     private weak var fromViewController: UIViewController?
     private let style: PresentationStyle
 
-    init(fromViewController: UIViewController, style: PresentationStyle = .Default) {
+    public init(fromViewController: UIViewController, style: PresentationStyle = .Default) {
         self.fromViewController = fromViewController
         self.style = style
 
@@ -45,7 +45,7 @@ final class ViewControllerPresenter : ViewControllerDismissingType {
         }
     }
 
-    func presentViewController<T: UIViewController where T: DismissableViewControllerType>(toViewController: T) {
+    public func presentViewController<T: UIViewController where T: DismissableViewControllerType>(toViewController: T) {
         toViewController.dismissingDelegate = self
 
         if case .Push = style {
@@ -62,7 +62,7 @@ final class ViewControllerPresenter : ViewControllerDismissingType {
 
     // MARK: ViewControllerDismissingType
 
-    func didDismiss(viewController viewController: UIViewController) {
+    public func didDismiss(viewController viewController: UIViewController) {
         if style == .Push {
             fromViewController?.navigationController?.popViewControllerAnimated(true)
             return

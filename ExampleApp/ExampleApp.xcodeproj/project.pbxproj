@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		887E572B1C4DBC9B00684C85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E572A1C4DBC9B00684C85 /* AppDelegate.swift */; };
-		887E572D1C4DBC9B00684C85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E572C1C4DBC9B00684C85 /* ViewController.swift */; };
+		887E572D1C4DBC9B00684C85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E572C1C4DBC9B00684C85 /* MainViewController.swift */; };
 		887E57301C4DBC9B00684C85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887E572E1C4DBC9B00684C85 /* Main.storyboard */; };
 		887E57321C4DBC9B00684C85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 887E57311C4DBC9B00684C85 /* Assets.xcassets */; };
 		887E57351C4DBC9B00684C85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887E57331C4DBC9B00684C85 /* LaunchScreen.storyboard */; };
 		887E57401C4DBC9B00684C85 /* ExampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E573F1C4DBC9B00684C85 /* ExampleAppTests.swift */; };
 		887E574B1C4DBC9B00684C85 /* ExampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E574A1C4DBC9B00684C85 /* ExampleAppUITests.swift */; };
+		887E57701C4DC07400684C85 /* PresenterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887E57671C4DC03B00684C85 /* PresenterKit.framework */; };
+		887E57711C4DC07400684C85 /* PresenterKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 887E57671C4DC03B00684C85 /* PresenterKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,12 +33,47 @@
 			remoteGlobalIDString = 887E57261C4DBC9B00684C85;
 			remoteInfo = ExampleApp;
 		};
+		887E57661C4DC03B00684C85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 887E57611C4DC03B00684C85 /* PresenterKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88B1CF571C3F762700D1348C;
+			remoteInfo = PresenterKit;
+		};
+		887E57681C4DC03B00684C85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 887E57611C4DC03B00684C85 /* PresenterKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 88B1CF611C3F762800D1348C;
+			remoteInfo = PresenterKitTests;
+		};
+		887E57721C4DC07500684C85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 887E57611C4DC03B00684C85 /* PresenterKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 88B1CF561C3F762700D1348C;
+			remoteInfo = PresenterKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		887E57741C4DC07500684C85 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				887E57711C4DC07400684C85 /* PresenterKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		887E57271C4DBC9B00684C85 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		887E572A1C4DBC9B00684C85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		887E572C1C4DBC9B00684C85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		887E572C1C4DBC9B00684C85 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		887E572F1C4DBC9B00684C85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		887E57311C4DBC9B00684C85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		887E57341C4DBC9B00684C85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +84,7 @@
 		887E57461C4DBC9B00684C85 /* ExampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		887E574A1C4DBC9B00684C85 /* ExampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAppUITests.swift; sourceTree = "<group>"; };
 		887E574C1C4DBC9B00684C85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		887E57611C4DC03B00684C85 /* PresenterKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PresenterKit.xcodeproj; path = ../PresenterKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				887E57701C4DC07400684C85 /* PresenterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +116,7 @@
 		887E571E1C4DBC9B00684C85 = {
 			isa = PBXGroup;
 			children = (
+				887E57611C4DC03B00684C85 /* PresenterKit.xcodeproj */,
 				887E57291C4DBC9B00684C85 /* ExampleApp */,
 				887E573E1C4DBC9B00684C85 /* ExampleAppTests */,
 				887E57491C4DBC9B00684C85 /* ExampleAppUITests */,
@@ -98,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				887E572A1C4DBC9B00684C85 /* AppDelegate.swift */,
-				887E572C1C4DBC9B00684C85 /* ViewController.swift */,
+				887E572C1C4DBC9B00684C85 /* MainViewController.swift */,
 				887E572E1C4DBC9B00684C85 /* Main.storyboard */,
 				887E57311C4DBC9B00684C85 /* Assets.xcassets */,
 				887E57331C4DBC9B00684C85 /* LaunchScreen.storyboard */,
@@ -125,6 +165,15 @@
 			path = ExampleAppUITests;
 			sourceTree = "<group>";
 		};
+		887E57621C4DC03B00684C85 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				887E57671C4DC03B00684C85 /* PresenterKit.framework */,
+				887E57691C4DC03B00684C85 /* PresenterKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,10 +184,12 @@
 				887E57231C4DBC9B00684C85 /* Sources */,
 				887E57241C4DBC9B00684C85 /* Frameworks */,
 				887E57251C4DBC9B00684C85 /* Resources */,
+				887E57741C4DC07500684C85 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				887E57731C4DC07500684C85 /* PBXTargetDependency */,
 			);
 			name = ExampleApp;
 			productName = ExampleApp;
@@ -215,6 +266,12 @@
 			mainGroup = 887E571E1C4DBC9B00684C85;
 			productRefGroup = 887E57281C4DBC9B00684C85 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 887E57621C4DC03B00684C85 /* Products */;
+					ProjectRef = 887E57611C4DC03B00684C85 /* PresenterKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				887E57261C4DBC9B00684C85 /* ExampleApp */,
@@ -223,6 +280,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		887E57671C4DC03B00684C85 /* PresenterKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PresenterKit.framework;
+			remoteRef = 887E57661C4DC03B00684C85 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		887E57691C4DC03B00684C85 /* PresenterKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PresenterKitTests.xctest;
+			remoteRef = 887E57681C4DC03B00684C85 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		887E57251C4DBC9B00684C85 /* Resources */ = {
@@ -256,7 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				887E572D1C4DBC9B00684C85 /* ViewController.swift in Sources */,
+				887E572D1C4DBC9B00684C85 /* MainViewController.swift in Sources */,
 				887E572B1C4DBC9B00684C85 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +363,11 @@
 			isa = PBXTargetDependency;
 			target = 887E57261C4DBC9B00684C85 /* ExampleApp */;
 			targetProxy = 887E57471C4DBC9B00684C85 /* PBXContainerItemProxy */;
+		};
+		887E57731C4DC07500684C85 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PresenterKit;
+			targetProxy = 887E57721C4DC07500684C85 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -399,7 +478,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ExampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -410,7 +491,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = ExampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.ExampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -484,6 +567,7 @@
 				887E57511C4DBC9B00684C85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		887E57521C4DBC9B00684C85 /* Build configuration list for PBXNativeTarget "ExampleAppTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +576,7 @@
 				887E57541C4DBC9B00684C85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		887E57551C4DBC9B00684C85 /* Build configuration list for PBXNativeTarget "ExampleAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +585,7 @@
 				887E57571C4DBC9B00684C85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,26 +1,39 @@
 //
-//  Created by Jesse Squires on 10/31/15.
-//  Copyright © 2015 Hexed Bits. All rights reserved.
+//  Created by Jesse Squires
+//  http://www.jessesquires.com
+//
+//
+//  Documentation
+//  http://www.jessesquires.com/PresenterKit
+//
+//
+//  GitHub
+//  https://github.com/jessesquires/PresenterKit
+//
+//
+//  License
+//  Copyright © 2016-present Jesse Squires
+//  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
 import Foundation
 import UIKit
 
 
-enum ModalType {
+public enum ModalType {
     case Default
     case EmbedInNavigation
 }
 
 
-enum PresentationStyle: Equatable {
+public enum PresentationStyle: Equatable {
     case Push
     case Modal(ModalType, UIModalPresentationStyle, UIModalTransitionStyle)
     case Custom
 }
 
 
-func ==(lhs: PresentationStyle, rhs: PresentationStyle) -> Bool {
+public func ==(lhs: PresentationStyle, rhs: PresentationStyle) -> Bool {
     switch (lhs, rhs) {
     case (.Push, .Push): return true
 
@@ -34,7 +47,7 @@ func ==(lhs: PresentationStyle, rhs: PresentationStyle) -> Bool {
 }
 
 
-extension PresentationStyle {
+public extension PresentationStyle {
     static var Default: PresentationStyle {
         return Modal(.Default, .FullScreen, .CoverVertical)
     }

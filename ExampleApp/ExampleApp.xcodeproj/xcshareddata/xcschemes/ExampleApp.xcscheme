@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "88B1CF561C3F762700D1348C"
+               BuildableName = "PresenterKit.framework"
+               BlueprintName = "PresenterKit"
+               ReferencedContainer = "container:../PresenterKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "887E57261C4DBC9B00684C85"
                BuildableName = "ExampleApp.app"
                BlueprintName = "ExampleApp"
