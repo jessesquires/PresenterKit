@@ -30,16 +30,16 @@ public protocol DismissableViewControllerType: class {
 }
 
 
-public final class ViewControllerPresenter : ViewControllerDismissingType {
+public final class Presenter: ViewControllerDismissingType {
 
     private weak var fromViewController: UIViewController?
     private let style: PresentationStyle
 
-    public init(fromViewController: UIViewController, style: PresentationStyle = .Default) {
-        self.fromViewController = fromViewController
+    public init(from viewController: UIViewController, style: PresentationStyle = .Default) {
+        self.fromViewController = viewController
         self.style = style
 
-        if style == .Push && fromViewController.navigationController == nil {
+        if style == .Push && viewController.navigationController == nil {
             fatalError("\(self.dynamicType) Error: Inconsistent presenter. " +
                 "Cannot present view controller with \(style) style and nil navigationController")
         }

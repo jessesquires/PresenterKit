@@ -21,15 +21,11 @@ import UIKit
 import PresenterKit
 
 
-final class MainViewController: UITableViewController, ViewControllerDismissingType {
+final class MainViewController: UITableViewController {
     
-    private lazy var presenter: ViewControllerPresenter = {
-        return ViewControllerPresenter(fromViewController: self, style: .Push)
+    private lazy var presenter: Presenter = {
+        return Presenter(from: self, style: .Push)
     }()
-
-    func didDismiss(viewController viewController: UIViewController) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
