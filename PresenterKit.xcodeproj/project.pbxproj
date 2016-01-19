@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		889CC4161C4345B800CD2DBD /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CC4151C4345B800CD2DBD /* Presenter.swift */; };
+		889CC4181C4345BD00CD2DBD /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CC4171C4345BD00CD2DBD /* PresentationStyle.swift */; };
 		88B1CF621C3F762800D1348C /* PresenterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B1CF571C3F762700D1348C /* PresenterKit.framework */; };
 		88B1CF781C3F766C00D1348C /* PresenterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 88B1CF731C3F766C00D1348C /* PresenterKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88B1CF7B1C3F767000D1348C /* PresenterKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B1CF761C3F766C00D1348C /* PresenterKitTests.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		889CC4151C4345B800CD2DBD /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		889CC4171C4345BD00CD2DBD /* PresentationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
 		88B1CF571C3F762700D1348C /* PresenterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PresenterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88B1CF611C3F762800D1348C /* PresenterKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresenterKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88B1CF721C3F766C00D1348C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				88B1CF721C3F766C00D1348C /* Info.plist */,
+				889CC4171C4345BD00CD2DBD /* PresentationStyle.swift */,
+				889CC4151C4345B800CD2DBD /* Presenter.swift */,
 				88B1CF731C3F766C00D1348C /* PresenterKit.h */,
 			);
 			path = Source;
@@ -194,6 +200,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889CC4161C4345B800CD2DBD /* Presenter.swift in Sources */,
+				889CC4181C4345BD00CD2DBD /* PresentationStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +316,7 @@
 		88B1CF6C1C3F762800D1348C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -319,12 +328,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.PresenterKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		88B1CF6D1C3F762800D1348C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
