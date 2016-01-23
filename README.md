@@ -41,7 +41,7 @@ Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy
 import PresenterKit
 ```
 
-> Checkout the included [example project](https://github.com/jessesquires/PresenterKit/tree/develop/ExampleApp).
+> Checkout the included [example project](https://github.com/jessesquires/PresenterKit/tree/develop/Example).
 
 > TODO:
 
