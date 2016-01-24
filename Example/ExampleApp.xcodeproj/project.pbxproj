@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		882550121C5472B700CE6D8D /* RedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882550111C5472B700CE6D8D /* RedViewController.swift */; };
 		887E572B1C4DBC9B00684C85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E572A1C4DBC9B00684C85 /* AppDelegate.swift */; };
 		887E572D1C4DBC9B00684C85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E572C1C4DBC9B00684C85 /* MainViewController.swift */; };
 		887E57301C4DBC9B00684C85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887E572E1C4DBC9B00684C85 /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		882550111C5472B700CE6D8D /* RedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedViewController.swift; sourceTree = "<group>"; };
 		887E57271C4DBC9B00684C85 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		887E572A1C4DBC9B00684C85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		887E572C1C4DBC9B00684C85 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -138,11 +140,12 @@
 			isa = PBXGroup;
 			children = (
 				887E572A1C4DBC9B00684C85 /* AppDelegate.swift */,
-				887E572C1C4DBC9B00684C85 /* MainViewController.swift */,
-				887E572E1C4DBC9B00684C85 /* Main.storyboard */,
 				887E57311C4DBC9B00684C85 /* Assets.xcassets */,
-				887E57331C4DBC9B00684C85 /* LaunchScreen.storyboard */,
 				887E57361C4DBC9B00684C85 /* Info.plist */,
+				887E57331C4DBC9B00684C85 /* LaunchScreen.storyboard */,
+				887E572E1C4DBC9B00684C85 /* Main.storyboard */,
+				887E572C1C4DBC9B00684C85 /* MainViewController.swift */,
+				882550111C5472B700CE6D8D /* RedViewController.swift */,
 			);
 			path = ExampleApp;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				887E572D1C4DBC9B00684C85 /* MainViewController.swift in Sources */,
+				882550121C5472B700CE6D8D /* RedViewController.swift in Sources */,
 				887E572B1C4DBC9B00684C85 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

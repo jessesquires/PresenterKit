@@ -30,12 +30,35 @@ public protocol DismissableViewController: class {
 }
 
 
+public extension DismissableViewController where Self: UIViewController {
+
+    public func dismiss(animated: Bool = true) {
+        dismissingDelegate?.didDismissViewController(self, animated: animated)
+    }
+
+    // can't do this :(
+
+//    public func addDismissButton(title title: String) {
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(
+//            title: title,
+//            style: .Plain,
+//            target: self,
+//            action: Selector("didTapDismissButton:"))
+//    }
+//
+//    public func didTapDismissButton(sender: UIBarButtonItem) {
+//        dismiss()
+//    }
+}
+
+
+
 public final class Presenter: ViewControllerDismissing {
 
     private weak var fromViewController: UIViewController?
     private let style: PresentationStyle
 
-    public init(from viewController: UIViewController, style: PresentationStyle = .Default) {
+    public init(from viewController: UIViewController, style: PresentationStyle) {
         self.fromViewController = viewController
         self.style = style
 
@@ -60,7 +83,7 @@ public final class Presenter: ViewControllerDismissing {
     }
 
 
-    // MARK: ViewControllerDismissingType
+    // MARK: ViewControllerDismissing
 
     public func didDismissViewController(viewController: UIViewController, animated: Bool = true) {
         if style == .Push {

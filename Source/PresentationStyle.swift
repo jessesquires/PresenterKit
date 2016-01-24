@@ -50,16 +50,16 @@ public func ==(lhs: PresentationStyle, rhs: PresentationStyle) -> Bool {
 }
 
 
-public extension PresentationStyle {
-    static var Default: PresentationStyle {
-        return Modal(.Default, .FullScreen, .CoverVertical)
-    }
-
-    static var ModalFlip: PresentationStyle {
-        return Modal(.WithNavigation, .FullScreen, .FlipHorizontal)
-    }
-
-    static var ModalForm: PresentationStyle {
-        return Modal(.WithNavigation, .FormSheet, .CoverVertical)
-    }
-}
+//public extension PresentationStyle {
+//    static var Default: PresentationStyle {
+//        return Modal(.Default, .FullScreen, .CoverVertical)
+//    }
+//
+//    static var ModalFlip: PresentationStyle {
+//        return Modal(.WithNavigation, .FullScreen, .FlipHorizontal)
+//    }
+//
+//    static var ModalForm: PresentationStyle {
+//        return Modal(.WithNavigation, .FormSheet, .CoverVertical)
+//    }
+//}
