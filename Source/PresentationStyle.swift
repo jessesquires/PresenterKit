@@ -22,7 +22,7 @@ import UIKit
 
 public enum ModalType {
     case Default
-    case EmbedInNavigation
+    case WithNavigation
 }
 
 
@@ -35,14 +35,17 @@ public enum PresentationStyle: Equatable {
 
 public func ==(lhs: PresentationStyle, rhs: PresentationStyle) -> Bool {
     switch (lhs, rhs) {
-    case (.Push, .Push): return true
+    case (.Push, .Push):
+        return true
 
     case (let .Modal(m1, p1, t1), let .Modal(m2, p2, t2)):
         return m1 == m2 && p1 == p2 && t1 == t2
 
-    case (.Custom, .Custom): return true
+    case (.Custom, .Custom):
+        return true
 
-    default: return false
+    default:
+        return false
     }
 }
 
@@ -53,10 +56,10 @@ public extension PresentationStyle {
     }
 
     static var ModalFlip: PresentationStyle {
-        return Modal(.EmbedInNavigation, .FullScreen, .FlipHorizontal)
+        return Modal(.WithNavigation, .FullScreen, .FlipHorizontal)
     }
 
     static var ModalForm: PresentationStyle {
-        return Modal(.EmbedInNavigation, .FormSheet, .CoverVertical)
+        return Modal(.WithNavigation, .FormSheet, .CoverVertical)
     }
 }

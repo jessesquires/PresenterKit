@@ -20,17 +20,17 @@ import Foundation
 import UIKit
 
 
-public protocol ViewControllerDismissingType: class {
-    func didDismiss(viewController viewController: UIViewController) -> Void
+public protocol ViewControllerDismissing: class {
+    func didDismissViewController(viewController: UIViewController, animated: Bool) -> Void
 }
 
 
-public protocol DismissableViewControllerType: class {
-    weak var dismissingDelegate: ViewControllerDismissingType? { get set }
+public protocol DismissableViewController: class {
+    weak var dismissingDelegate: ViewControllerDismissing? { get set }
 }
 
 
-public final class Presenter: ViewControllerDismissingType {
+public final class Presenter: ViewControllerDismissing {
 
     private weak var fromViewController: UIViewController?
     private let style: PresentationStyle
@@ -45,30 +45,30 @@ public final class Presenter: ViewControllerDismissingType {
         }
     }
 
-    public func presentViewController<T: UIViewController where T: DismissableViewControllerType>(toViewController: T) {
+    public func present<T: UIViewController where T: DismissableViewController>(toViewController: T, animated: Bool = true) {
         toViewController.dismissingDelegate = self
 
         if case .Push = style {
-            fromViewController?.navigationController?.pushViewController(toViewController, animated: true)
+            fromViewController?.navigationController?.pushViewController(toViewController, animated: animated)
             return
         }
 
         fromViewController?.presentViewController(
             toViewController.controllerByApplyingStyle(style),
-            animated: true,
+            animated: animated,
             completion: nil)
     }
 
 
     // MARK: ViewControllerDismissingType
 
-    public func didDismiss(viewController viewController: UIViewController) {
+    public func didDismissViewController(viewController: UIViewController, animated: Bool = true) {
         if style == .Push {
-            fromViewController?.navigationController?.popViewControllerAnimated(true)
+            fromViewController?.navigationController?.popViewControllerAnimated(animated)
             return
         }
-
-        fromViewController?.dismissViewControllerAnimated(true, completion: nil)
+        
+        fromViewController?.dismissViewControllerAnimated(animated, completion: nil)
     }
 }
 
@@ -76,7 +76,7 @@ public final class Presenter: ViewControllerDismissingType {
 private extension UIViewController {
     func controllerByApplyingStyle(style: PresentationStyle) -> UIViewController {
         if case let .Modal(embed, presentationStyle, transitionStyle) = style {
-            let vc = (embed == .EmbedInNavigation) ? UINavigationController(rootViewController: self) : self
+            let vc = (embed == .WithNavigation) ? UINavigationController(rootViewController: self) : self
             vc.modalPresentationStyle = presentationStyle
             vc.modalTransitionStyle = transitionStyle
             return vc
