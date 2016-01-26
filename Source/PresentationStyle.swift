@@ -26,9 +26,27 @@ public enum NavigationStyle {
 }
 
 
+public struct PopoverConfig {
+    public enum Source {
+        case BarButtonItem(UIBarButtonItem)
+        case View(UIView)
+    }
+
+    let source: Source
+    let arrowDirection: UIPopoverArrowDirection
+    let delegate: UIPopoverPresentationControllerDelegate?
+
+    public init(source: Source, arrowDirection: UIPopoverArrowDirection = .Any, delegate: UIPopoverPresentationControllerDelegate? = nil) {
+        self.source = source
+        self.arrowDirection = arrowDirection
+        self.delegate = delegate
+    }
+}
+
+
 public enum PresentationType {
     case Modal(NavigationStyle, UIModalPresentationStyle, UIModalTransitionStyle)
-    case Popover
+    case Popover(PopoverConfig)
     case Push
     case Show
     case ShowDetail(NavigationStyle)
@@ -74,17 +92,34 @@ public extension UIViewController {
 
     public func presentViewController(viewController: UIViewController, type: PresentationType, animated: Bool = true) {
         switch type {
-        case .Modal(let navigation, let presentation, let transition):
-            let vc = viewController.withStyles(navigation: navigation, presentation: presentation, transition: transition)
+        case .Modal(let n, let p, let t):
+            let vc = viewController.withStyles(navigation: n, presentation: p, transition: t)
             presentViewController(vc, animated: animated, completion: nil)
-        case .Popover:
-            break
+
+        case .Popover(let c):
+            viewController.withStyles(navigation: .None, presentation: .Popover, transition: .CrossDissolve)
+
+            let popoverController = viewController.popoverPresentationController
+            popoverController?.delegate = c.delegate
+            popoverController?.permittedArrowDirections = c.arrowDirection
+            switch c.source {
+            case .BarButtonItem(let item):
+                popoverController?.barButtonItem = item
+            case .View(let v):
+                popoverController?.sourceView = v
+                popoverController?.sourceRect = v.frame
+            }
+            presentViewController(viewController, animated: animated, completion: nil)
+
         case .Push:
             navigationController!.pushViewController(viewController, animated: animated)
+
         case .Show:
             showViewController(viewController, sender: self)
+
         case .ShowDetail(let navigation):
             showDetailViewController(viewController.withNavigationStyle(navigation), sender: self)
+
         case .Custom:
             break
         }

@@ -23,21 +23,10 @@ import PresenterKit
 
 final class MainViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     @IBAction func didTapPopoverButton(sender: UIBarButtonItem) {
         let vc = RedViewController()
-        vc.modalPresentationStyle = .Popover
-        vc.popoverPresentationController?.barButtonItem = sender
-        vc.popoverPresentationController?.permittedArrowDirections = .Any
-        vc.popoverPresentationController?.delegate = self
-        presentViewController(vc, animated: true, completion: nil)
-    }
-
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
+        let config = PopoverConfig(source: .BarButtonItem(sender), delegate: self)
+        presentViewController(vc, type: .Popover(config))
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -53,14 +42,9 @@ final class MainViewController: UITableViewController, UIPopoverPresentationCont
         case 3:
             type = .ShowDetail(.WithNavigation)
         case 4:
-            let vc = RedViewController()
-            vc.modalPresentationStyle = .Popover
-            vc.popoverPresentationController?.sourceView = tableView.cellForRowAtIndexPath(indexPath)?.contentView
-            vc.popoverPresentationController?.sourceRect = (tableView.cellForRowAtIndexPath(indexPath)?.contentView.frame)!
-            vc.popoverPresentationController?.permittedArrowDirections = .Any
-            vc.popoverPresentationController?.delegate = self
-            presentViewController(vc, animated: true, completion: nil)
-            return
+            let cell = tableView.cellForRowAtIndexPath(indexPath)!.contentView
+            let config = PopoverConfig(source: .View(cell), delegate: self)
+            type = .Popover(config)
         case 5:
             // custom "half modal"
             return
@@ -71,6 +55,13 @@ final class MainViewController: UITableViewController, UIPopoverPresentationCont
 
         let vc = RedViewController()
         presentViewController(vc, type: type!)
+    }
+
+
+    // MARK: UIPopoverPresentationControllerDelegate
+
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
     }
 
 }
