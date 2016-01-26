@@ -21,32 +21,56 @@ import UIKit
 import PresenterKit
 
 
-final class MainViewController: UITableViewController {
+final class MainViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
-    private lazy var pushPresenter: Presenter = {
-        return Presenter(from: self, style: .Push)
-    }()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
-    private lazy var modalPresenter: Presenter = {
-        return Presenter(from: self, style: .Modal(.WithNavigation, .FullScreen, .CoverVertical))
-    }()
+    @IBAction func didTapPopoverButton(sender: UIBarButtonItem) {
+        let vc = RedViewController()
+        vc.modalPresentationStyle = .Popover
+        vc.popoverPresentationController?.barButtonItem = sender
+        vc.popoverPresentationController?.permittedArrowDirections = .Any
+        vc.popoverPresentationController?.delegate = self
+        presentViewController(vc, animated: true, completion: nil)
+    }
 
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
+    }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var type: PresentationType?
+
         switch indexPath.section {
         case 0:
-            let vc = RedViewController()
-            pushPresenter.present(vc)
-
+            type = .Push
         case 1:
+            type = .Modal(.WithNavigation, .FormSheet, .CoverVertical)
+        case 2:
+            type = .Show
+        case 3:
+            type = .ShowDetail(.WithNavigation)
+        case 4:
             let vc = RedViewController()
-            modalPresenter.present(vc)
-
-        case 2: break
+            vc.modalPresentationStyle = .Popover
+            vc.popoverPresentationController?.sourceView = tableView.cellForRowAtIndexPath(indexPath)?.contentView
+            vc.popoverPresentationController?.sourceRect = (tableView.cellForRowAtIndexPath(indexPath)?.contentView.frame)!
+            vc.popoverPresentationController?.permittedArrowDirections = .Any
+            vc.popoverPresentationController?.delegate = self
+            presentViewController(vc, animated: true, completion: nil)
+            return
+        case 5:
+            // custom "half modal"
+            return
 
         default:
-            break
+            return
         }
+
+        let vc = RedViewController()
+        presentViewController(vc, type: type!)
     }
 
 }

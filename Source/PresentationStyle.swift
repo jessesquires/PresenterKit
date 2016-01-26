@@ -20,34 +20,82 @@ import Foundation
 import UIKit
 
 
-public enum ModalType {
-    case Default
+public enum NavigationStyle {
+    case None
     case WithNavigation
 }
 
 
-public enum PresentationStyle: Equatable {
+public enum PresentationType {
+    case Modal(NavigationStyle, UIModalPresentationStyle, UIModalTransitionStyle)
+    case Popover
     case Push
-    case Modal(ModalType, UIModalPresentationStyle, UIModalTransitionStyle)
+    case Show
+    case ShowDetail(NavigationStyle)
     case Custom
 }
 
 
-public func ==(lhs: PresentationStyle, rhs: PresentationStyle) -> Bool {
-    switch (lhs, rhs) {
-    case (.Push, .Push):
-        return true
+public extension UIViewController {
 
-    case (let .Modal(m1, p1, t1), let .Modal(m2, p2, t2)):
-        return m1 == m2 && p1 == p2 && t1 == t2
+    public func withNavigation() -> UINavigationController {
+        return UINavigationController(rootViewController: self)
+    }
 
-    case (.Custom, .Custom):
-        return true
+    public func withPresentation(presentation: UIModalPresentationStyle) -> Self {
+        modalPresentationStyle = presentation
+        return self
+    }
 
-    default:
-        return false
+    public func withTransition(transition: UIModalTransitionStyle) -> Self {
+        modalTransitionStyle = transition
+        return self
+    }
+
+    public func withNavigationStyle(navigationStyle: NavigationStyle) -> UIViewController {
+        switch navigationStyle {
+        case .None:
+            return self
+        case .WithNavigation:
+            return withNavigation()
+        }
+    }
+
+    public func withStyles(
+        navigation navigation: NavigationStyle,
+        presentation: UIModalPresentationStyle,
+        transition: UIModalTransitionStyle) -> UIViewController {
+            return withPresentation(presentation).withTransition(transition).withNavigationStyle(navigation)
     }
 }
+
+
+public extension UIViewController {
+
+    public func presentViewController(viewController: UIViewController, type: PresentationType, animated: Bool = true) {
+        switch type {
+        case .Modal(let navigation, let presentation, let transition):
+            let vc = viewController.withStyles(navigation: navigation, presentation: presentation, transition: transition)
+            presentViewController(vc, animated: animated, completion: nil)
+        case .Popover:
+            break
+        case .Push:
+            navigationController!.pushViewController(viewController, animated: animated)
+        case .Show:
+            showViewController(viewController, sender: self)
+        case .ShowDetail(let navigation):
+            showDetailViewController(viewController.withNavigationStyle(navigation), sender: self)
+        case .Custom:
+            break
+        }
+    }
+}
+
+
+public final class Presenter: NSObject, UIViewControllerTransitioningDelegate {
+
+}
+
 
 
 //public extension PresentationStyle {

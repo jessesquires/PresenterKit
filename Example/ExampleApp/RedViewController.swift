@@ -21,25 +21,22 @@ import UIKit
 import PresenterKit
 
 
-final class RedViewController: UIViewController, DismissableViewController {
-
-    weak var dismissingDelegate: ViewControllerDismissing?
+final class RedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Red View"
         view.backgroundColor = .redColor()
 
-        if navigationItem.leftBarButtonItem == nil {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(
-                barButtonSystemItem: .Cancel,
-                target: self,
-                action: Selector("didTapCancel:"))
-        }
+//        print("nav item = ", navigationItem)
+//        print("nav controller = ", navigationController)
+//        print("nav root = ", navigationController?.viewControllers.first)
+//        print("trans style = ", modalTransitionStyle.rawValue)
+//        print("pres style = ", modalPresentationStyle.rawValue)
+//        print("pres controller = ", presentationController)
 
-    }
+        addDismissButtonIfNeeded()
 
-    func didTapCancel(sender: UIBarButtonItem) {
-        dismiss()
     }
     
 }

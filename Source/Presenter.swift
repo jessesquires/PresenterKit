@@ -19,91 +19,33 @@
 import Foundation
 import UIKit
 
-
-public protocol ViewControllerDismissing: class {
-    func didDismissViewController(viewController: UIViewController, animated: Bool) -> Void
-}
-
-
-public protocol DismissableViewController: class {
-    weak var dismissingDelegate: ViewControllerDismissing? { get set }
-}
-
-
-public extension DismissableViewController where Self: UIViewController {
-
-    public func dismiss(animated: Bool = true) {
-        dismissingDelegate?.didDismissViewController(self, animated: animated)
-    }
-
-    // can't do this :(
-
-//    public func addDismissButton(title title: String) {
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(
-//            title: title,
-//            style: .Plain,
-//            target: self,
-//            action: Selector("didTapDismissButton:"))
+//
+//public final class Presenter {
+//
+//    private weak var fromViewController: UIViewController?
+//    private let style: PresentationStyle
+//
+//    public init(from viewController: UIViewController, style: PresentationStyle) {
+//        self.fromViewController = viewController
+//        self.style = style
+//
+//        if style == .Push && viewController.navigationController == nil {
+//            fatalError("\(self.dynamicType) Error: Inconsistent presenter. " +
+//                "Cannot present view controller with \(style) style and nil navigationController")
+//        }
 //    }
 //
-//    public func didTapDismissButton(sender: UIBarButtonItem) {
-//        dismiss()
+//    public func present(toViewController: UIViewController, animated: Bool = true) {
+//        //        toViewController.dismissingDelegate = self
+//
+//        if case .Push = style {
+//            fromViewController?.navigationController?.pushViewController(toViewController, animated: animated)
+//            return
+//        }
+//
+//        fromViewController?.presentViewController(
+//            toViewController.controllerByApplyingStyle(style),
+//            animated: animated,
+//            completion: nil)
 //    }
-}
-
-
-
-public final class Presenter: ViewControllerDismissing {
-
-    private weak var fromViewController: UIViewController?
-    private let style: PresentationStyle
-
-    public init(from viewController: UIViewController, style: PresentationStyle) {
-        self.fromViewController = viewController
-        self.style = style
-
-        if style == .Push && viewController.navigationController == nil {
-            fatalError("\(self.dynamicType) Error: Inconsistent presenter. " +
-                "Cannot present view controller with \(style) style and nil navigationController")
-        }
-    }
-
-    public func present<T: UIViewController where T: DismissableViewController>(toViewController: T, animated: Bool = true) {
-        toViewController.dismissingDelegate = self
-
-        if case .Push = style {
-            fromViewController?.navigationController?.pushViewController(toViewController, animated: animated)
-            return
-        }
-
-        fromViewController?.presentViewController(
-            toViewController.controllerByApplyingStyle(style),
-            animated: animated,
-            completion: nil)
-    }
-
-
-    // MARK: ViewControllerDismissing
-
-    public func didDismissViewController(viewController: UIViewController, animated: Bool = true) {
-        if style == .Push {
-            fromViewController?.navigationController?.popViewControllerAnimated(animated)
-            return
-        }
-        
-        fromViewController?.dismissViewControllerAnimated(animated, completion: nil)
-    }
-}
-
-
-private extension UIViewController {
-    func controllerByApplyingStyle(style: PresentationStyle) -> UIViewController {
-        if case let .Modal(embed, presentationStyle, transitionStyle) = style {
-            let vc = (embed == .WithNavigation) ? UINavigationController(rootViewController: self) : self
-            vc.modalPresentationStyle = presentationStyle
-            vc.modalTransitionStyle = transitionStyle
-            return vc
-        }
-        return self
-    }
-}
+//}
