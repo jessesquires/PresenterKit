@@ -85,7 +85,9 @@ public extension UIViewController {
         case .ShowDetail(let navigation):
             showDetailViewController(viewController.withNavigationStyle(navigation), sender: self)
 
-        case .Custom:
+        case .Custom(let delegate):
+            viewController.modalPresentationStyle = .Custom
+            viewController.transitioningDelegate = delegate
             presentViewController(viewController, animated: true, completion: nil)
             break
         }

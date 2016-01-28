@@ -49,5 +49,5 @@ public enum PresentationType {
     case Push
     case Show
     case ShowDetail(NavigationStyle)
-    case Custom
+    case Custom(UIViewControllerTransitioningDelegate)
 }

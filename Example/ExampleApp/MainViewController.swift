@@ -68,10 +68,8 @@ final class MainViewController: UITableViewController, UIPopoverPresentationCont
 
         case 5:
             let vc = RedViewController()
-            vc.modalPresentationStyle = .Custom
-            vc.transitioningDelegate = halfModalDelegate
             vc.modalTransitionStyle = .CoverVertical
-            presentViewController(vc, type: .Custom)
+            presentViewController(vc, type: .Custom(halfModalDelegate))
 
 
         default:
