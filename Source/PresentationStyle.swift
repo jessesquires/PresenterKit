@@ -126,23 +126,3 @@ public extension UIViewController {
     }
 }
 
-
-public final class Presenter: NSObject, UIViewControllerTransitioningDelegate {
-
-}
-
-
-
-//public extension PresentationStyle {
-//    static var Default: PresentationStyle {
-//        return Modal(.Default, .FullScreen, .CoverVertical)
-//    }
-//
-//    static var ModalFlip: PresentationStyle {
-//        return Modal(.WithNavigation, .FullScreen, .FlipHorizontal)
-//    }
-//
-//    static var ModalForm: PresentationStyle {
-//        return Modal(.WithNavigation, .FormSheet, .CoverVertical)
-//    }
-//}

@@ -27,16 +27,6 @@ final class RedViewController: UIViewController {
         super.viewDidLoad()
         title = "Red View"
         view.backgroundColor = .redColor()
-
-//        print("nav item = ", navigationItem)
-//        print("nav controller = ", navigationController)
-//        print("nav root = ", navigationController?.viewControllers.first)
-//        print("trans style = ", modalTransitionStyle.rawValue)
-//        print("pres style = ", modalPresentationStyle.rawValue)
-//        print("pres controller = ", presentationController)
-
         addDismissButtonIfNeeded()
-
     }
-    
 }
