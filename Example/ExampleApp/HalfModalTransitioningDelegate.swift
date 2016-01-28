@@ -1,9 +1,19 @@
 //
-//  HalfModalTransitioningDelegate.swift
-//  ExampleApp
+//  Created by Jesse Squires
+//  http://www.jessesquires.com
 //
-//  Created by Jesse Squires on 1/27/16.
-//  Copyright © 2016 Hexed Bits. All rights reserved.
+//
+//  Documentation
+//  http://www.jessesquires.com/PresenterKit
+//
+//
+//  GitHub
+//  https://github.com/jessesquires/PresenterKit
+//
+//
+//  License
+//  Copyright © 2016-present Jesse Squires
+//  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
 import UIKit
@@ -14,7 +24,7 @@ class HalfModalTransitioningDelegate: NSObject, UIViewControllerTransitioningDel
         presented: UIViewController,
         presentingViewController presenting: UIViewController,
         sourceViewController source: UIViewController) -> UIPresentationController? {
-            
+
             return HalfModalPresentationController(
                 presentedViewController: presented,
                 presentingViewController: presenting)
