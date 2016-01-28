@@ -121,6 +121,7 @@ public extension UIViewController {
             showDetailViewController(viewController.withNavigationStyle(navigation), sender: self)
 
         case .Custom:
+            presentViewController(viewController, animated: true, completion: nil)
             break
         }
     }

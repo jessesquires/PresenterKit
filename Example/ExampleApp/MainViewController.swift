@@ -23,38 +23,60 @@ import PresenterKit
 
 final class MainViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
 
+    var transDel: UIViewControllerTransitioningDelegate = HalfModalTransitioningDelegate()
+
+
     @IBAction func didTapPopoverButton(sender: UIBarButtonItem) {
         let vc = RedViewController()
         let config = PopoverConfig(source: .BarButtonItem(sender), delegate: self)
         presentViewController(vc, type: .Popover(config))
     }
 
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var type: PresentationType?
+        defer {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
 
         switch indexPath.section {
         case 0:
-            type = .Push
+            let vc = RedViewController()
+            presentViewController(vc, type: .Push)
+
+
         case 1:
-            type = .Modal(.WithNavigation, .FormSheet, .CoverVertical)
+            let vc = RedViewController()
+            presentViewController(vc, type: .Modal(.WithNavigation, .FormSheet, .CoverVertical))
+
+
         case 2:
-            type = .Show
+            let vc = RedViewController()
+            presentViewController(vc, type: .Show)
+
+
         case 3:
-            type = .ShowDetail(.WithNavigation)
+            let vc = RedViewController()
+            presentViewController(vc, type: .ShowDetail(.WithNavigation))
+
+
         case 4:
             let cell = tableView.cellForRowAtIndexPath(indexPath)!.contentView
             let config = PopoverConfig(source: .View(cell), delegate: self)
-            type = .Popover(config)
+            let vc = RedViewController()
+            presentViewController(vc, type: .Popover(config))
+
+
         case 5:
-            // custom "half modal"
-            return
+            let vc = RedViewController()
+            vc.modalPresentationStyle = .Custom
+            vc.transitioningDelegate = transDel
+            vc.modalTransitionStyle = .CoverVertical
+            presentViewController(vc, type: .Custom)
+
 
         default:
             return
         }
-
-        let vc = RedViewController()
-        presentViewController(vc, type: type!)
     }
 
 
