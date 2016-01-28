@@ -57,6 +57,7 @@ public extension UIViewController {
 
     public func presentViewController(viewController: UIViewController, type: PresentationType, animated: Bool = true) {
         switch type {
+
         case .Modal(let n, let p, let t):
             let vc = viewController.withStyles(navigation: n, presentation: p, transition: t)
             presentViewController(vc, animated: animated, completion: nil)
@@ -89,7 +90,6 @@ public extension UIViewController {
             viewController.modalPresentationStyle = .Custom
             viewController.transitioningDelegate = delegate
             presentViewController(viewController, animated: true, completion: nil)
-            break
         }
     }
 }
