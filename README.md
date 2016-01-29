@@ -1,5 +1,7 @@
+### :warning: This is still a work in-progress :warning:
+
 # PresenterKit
-*Swifty view controller presenters for iOS*
+*Swifty presentation controllers for iOS*
 
 ## About
 
@@ -14,6 +16,8 @@
 ## Installation
 
 #### [CocoaPods](http://cocoapods.org) (recommended)
+
+> TODO: Not yet available via CocoaPods. Will be soon.
 
 ````ruby
 use_frameworks!
@@ -33,6 +37,8 @@ github "jessesquires/PresenterKit"
 
 ## Documentation
 
+> TODO:
+
 Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com). More information on the [`gh-pages`](https://github.com/jessesquires/PresenterKit/tree/gh-pages) branch.
 
 ## Getting Started
@@ -46,6 +52,8 @@ import PresenterKit
 > TODO:
 
 ## Unit tests
+
+> TODO:
 
 There's a suite of unit tests for `PresenterKit`. To run them, open `PresenterKit.xcodeproj`, select the `PresenterKit` scheme, then &#x2318;-u.
 
