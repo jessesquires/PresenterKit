@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		882550121C5472B700CE6D8D /* RedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882550111C5472B700CE6D8D /* RedViewController.swift */; };
 		887647121C59B5FD002048E2 /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887647111C59B5FD002048E2 /* HalfModalPresentationController.swift */; };
-		887647161C59BBA8002048E2 /* HalfModalTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887647151C59BBA8002048E2 /* HalfModalTransitioningDelegate.swift */; };
 		887E572B1C4DBC9B00684C85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E572A1C4DBC9B00684C85 /* AppDelegate.swift */; };
 		887E572D1C4DBC9B00684C85 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887E572C1C4DBC9B00684C85 /* MainViewController.swift */; };
 		887E57301C4DBC9B00684C85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887E572E1C4DBC9B00684C85 /* Main.storyboard */; };
@@ -76,7 +75,6 @@
 /* Begin PBXFileReference section */
 		882550111C5472B700CE6D8D /* RedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedViewController.swift; sourceTree = "<group>"; };
 		887647111C59B5FD002048E2 /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
-		887647151C59BBA8002048E2 /* HalfModalTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalTransitioningDelegate.swift; sourceTree = "<group>"; };
 		887E57271C4DBC9B00684C85 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		887E572A1C4DBC9B00684C85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		887E572C1C4DBC9B00684C85 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				887647111C59B5FD002048E2 /* HalfModalPresentationController.swift */,
-				887647151C59BBA8002048E2 /* HalfModalTransitioningDelegate.swift */,
 			);
 			name = "Half Modal";
 			sourceTree = "<group>";
@@ -347,7 +344,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				887647161C59BBA8002048E2 /* HalfModalTransitioningDelegate.swift in Sources */,
 				887647121C59B5FD002048E2 /* HalfModalPresentationController.swift in Sources */,
 				887E572D1C4DBC9B00684C85 /* MainViewController.swift in Sources */,
 				882550121C5472B700CE6D8D /* RedViewController.swift in Sources */,
