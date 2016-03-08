@@ -93,3 +93,48 @@ public extension UIViewController {
         }
     }
 }
+
+
+public extension UIViewController {
+
+    public func addDismissButtonIfNeeded(config config: DismissButtonConfig = DismissButtonConfig()) {
+        guard needsDismissButton else { return }
+        addDismissButton(config: config)
+    }
+
+    public func addDismissButton(config config: DismissButtonConfig = DismissButtonConfig()) {
+        let selector = Selector("_didTapDismissButton:")
+        let button: UIBarButtonItem?
+
+        if let title = config.text.title {
+            button = UIBarButtonItem(title: title, style: config.style.itemStyle, target: self, action: selector)
+        } else {
+            button = UIBarButtonItem(barButtonSystemItem: config.text.systemItem!, target: self, action: selector)
+        }
+
+        button?.style = config.style.itemStyle
+
+        switch config.location {
+        case .Left:
+            navigationItem.leftBarButtonItem = button
+        case .Right:
+            navigationItem.rightBarButtonItem = button
+        }
+    }
+
+    @objc private func _didTapDismissButton(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    private var needsDismissButton: Bool {
+        return isPresented && isNavigationRootViewController
+    }
+
+    private var isPresented: Bool {
+        return self.presentingViewController != nil
+    }
+
+    private var isNavigationRootViewController: Bool {
+        return navigationController?.viewControllers.first == self
+    }
+}

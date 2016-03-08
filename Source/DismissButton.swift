@@ -25,6 +25,20 @@ public struct DismissButton {
         case Right
     }
 
+    public enum Style {
+        case Bold
+        case Plain
+
+        public var itemStyle: UIBarButtonItemStyle {
+            switch self {
+            case .Bold:
+                return .Done
+            case .Plain:
+                return .Plain
+            }
+        }
+    }
+
     public enum Text {
         case Cancel
         case Done
@@ -53,69 +67,19 @@ public struct DismissButton {
             }
         }
     }
-
-    public enum Style {
-        case Bold
-        case Plain
-
-        public var itemStyle: UIBarButtonItemStyle {
-            switch self {
-            case .Bold:
-                return .Done
-            case .Plain:
-                return .Plain
-            }
-        }
-    }
 }
 
 
-public extension UIViewController {
+public struct DismissButtonConfig {
+    let location: DismissButton.Location
+    let style: DismissButton.Style
+    let text: DismissButton.Text
 
-    public func addDismissButtonIfNeeded(
-        text text: DismissButton.Text = .Cancel,
+    init(location: DismissButton.Location = .Left,
         style: DismissButton.Style = .Plain,
-        location: DismissButton.Location = .Left) {
-            guard needsDismissButton else { return }
-            addDismissButton(text: text, style: style, location: location)
-    }
-
-    public func addDismissButton(
-        text text: DismissButton.Text = .Cancel,
-        style: DismissButton.Style = .Plain,
-        location: DismissButton.Location = .Left) {
-            let selector = Selector("didTapDismissButton:")
-            let button: UIBarButtonItem?
-
-            if let title = text.title {
-                button = UIBarButtonItem(title: title, style: style.itemStyle, target: self, action: selector)
-            } else {
-                button = UIBarButtonItem(barButtonSystemItem: text.systemItem!, target: self, action: selector)
-            }
-
-            button?.style = style.itemStyle
-
-            switch location {
-            case .Left:
-                navigationItem.leftBarButtonItem = button
-            case .Right:
-                navigationItem.rightBarButtonItem = button
-            }
-    }
-
-    @objc private func didTapDismissButton(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-
-    private var needsDismissButton: Bool {
-        return isNavigationRootViewController || isPopover
-    }
-
-    private var isNavigationRootViewController: Bool {
-        return navigationController?.viewControllers.first == self
-    }
-
-    private var isPopover: Bool {
-        return modalPresentationStyle == .Popover
+        text: DismissButton.Text = .Cancel) {
+        self.location = location
+        self.style = style
+        self.text = text
     }
 }
