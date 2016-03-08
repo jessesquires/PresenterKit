@@ -7,7 +7,7 @@
 
 ## About
 
-> TODO:
+Swifty wrappers around view controller presentation, dismissal, and `UIPresentationController`. See my [blog post](http://www.jessesquires.com/swifty-presenters/) and [talk at Realm](https://realm.io/news/slug-jesse-squires-swifty-view-controller-presenters/).
 
 ## Requirements
 
@@ -18,8 +18,6 @@
 ## Installation
 
 #### [CocoaPods](http://cocoapods.org) (recommended)
-
-> TODO: Not yet available via CocoaPods. Will be soon.
 
 ````ruby
 use_frameworks!
@@ -39,8 +37,6 @@ github "jessesquires/PresenterKit"
 
 ## Documentation
 
-> TODO:
-
 Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com). More information on the [`gh-pages`](https://github.com/jessesquires/PresenterKit/tree/gh-pages) branch.
 
 ## Getting Started
@@ -51,11 +47,7 @@ import PresenterKit
 
 > Checkout the included [example project](https://github.com/jessesquires/PresenterKit/tree/develop/Example).
 
-> TODO:
-
 ## Unit tests
-
-> TODO:
 
 There's a suite of unit tests for `PresenterKit`. To run them, open `PresenterKit.xcodeproj`, select the `PresenterKit` scheme, then &#x2318;-u.
 
