@@ -3,6 +3,8 @@
 # PresenterKit
 *Swifty view controller presentation for iOS*
 
+[![Build Status](https://travis-ci.org/jessesquires/PresenterKit.svg?branch=master)](https://travis-ci.org/jessesquires/PresenterKit)
+
 ## About
 
 > TODO:
