@@ -1,7 +1,7 @@
 ### :warning: This is still a work in-progress :warning:
 
 # PresenterKit
-*Swifty presentation controllers for iOS*
+*Swifty view controller presentation for iOS*
 
 ## About
 
