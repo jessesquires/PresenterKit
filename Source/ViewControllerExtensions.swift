@@ -18,7 +18,8 @@
 
 import UIKit
 
-/// Styles
+
+// MARK: - Styles
 public extension UIViewController {
 
     public func withNavigation() -> UINavigationController {
@@ -52,7 +53,8 @@ public extension UIViewController {
     }
 }
 
-/// Presentation
+
+// MARK: - Presentation
 public extension UIViewController {
 
     public func presentViewController(viewController: UIViewController, type: PresentationType, animated: Bool = true) {
@@ -94,7 +96,8 @@ public extension UIViewController {
     }
 }
 
-/// Dismissal
+
+// MARK: - Dismissal
 public extension UIViewController {
 
     public func addDismissButtonIfNeeded(config config: DismissButtonConfig = DismissButtonConfig()) {

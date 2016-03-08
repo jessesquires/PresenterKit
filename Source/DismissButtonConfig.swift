@@ -19,7 +19,17 @@
 import UIKit
 
 
-public struct DismissButton {
+public struct DismissButtonConfig {
+    let location: Location
+    let style: Style
+    let text: Text
+
+    init(location: Location = .Left, style: Style = .Plain, text: Text = .Cancel) {
+        self.location = location
+        self.style = style
+        self.text = text
+    }
+
     public enum Location {
         case Left
         case Right
@@ -66,20 +76,5 @@ public struct DismissButton {
                 return nil
             }
         }
-    }
-}
-
-
-public struct DismissButtonConfig {
-    let location: DismissButton.Location
-    let style: DismissButton.Style
-    let text: DismissButton.Text
-
-    init(location: DismissButton.Location = .Left,
-        style: DismissButton.Style = .Plain,
-        text: DismissButton.Text = .Cancel) {
-        self.location = location
-        self.style = style
-        self.text = text
     }
 }

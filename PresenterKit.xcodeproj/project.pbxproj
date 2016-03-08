@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8876470E1C56FB2D002048E2 /* DismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876470D1C56FB2D002048E2 /* DismissButton.swift */; };
+		8876470E1C56FB2D002048E2 /* DismissButtonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876470D1C56FB2D002048E2 /* DismissButtonConfig.swift */; };
 		887647181C59E423002048E2 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887647171C59E423002048E2 /* ViewControllerExtensions.swift */; };
 		889CC4181C4345BD00CD2DBD /* PresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CC4171C4345BD00CD2DBD /* PresentationType.swift */; };
 		88B1CF621C3F762800D1348C /* PresenterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B1CF571C3F762700D1348C /* PresenterKit.framework */; };
@@ -26,7 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8876470D1C56FB2D002048E2 /* DismissButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissButton.swift; sourceTree = "<group>"; };
+		8876470D1C56FB2D002048E2 /* DismissButtonConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissButtonConfig.swift; sourceTree = "<group>"; };
 		887647171C59E423002048E2 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		889CC4171C4345BD00CD2DBD /* PresentationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationType.swift; sourceTree = "<group>"; };
 		88B1CF571C3F762700D1348C /* PresenterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PresenterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,11 +77,11 @@
 		88B1CF711C3F766C00D1348C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8876470D1C56FB2D002048E2 /* DismissButton.swift */,
+				88B1CF721C3F766C00D1348C /* Info.plist */,
+				88B1CF731C3F766C00D1348C /* PresenterKit.h */,
+				8876470D1C56FB2D002048E2 /* DismissButtonConfig.swift */,
 				889CC4171C4345BD00CD2DBD /* PresentationType.swift */,
 				887647171C59E423002048E2 /* ViewControllerExtensions.swift */,
-				88B1CF731C3F766C00D1348C /* PresenterKit.h */,
-				88B1CF721C3F766C00D1348C /* Info.plist */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -203,7 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8876470E1C56FB2D002048E2 /* DismissButton.swift in Sources */,
+				8876470E1C56FB2D002048E2 /* DismissButtonConfig.swift in Sources */,
 				887647181C59E423002048E2 /* ViewControllerExtensions.swift in Sources */,
 				889CC4181C4345BD00CD2DBD /* PresentationType.swift in Sources */,
 			);
