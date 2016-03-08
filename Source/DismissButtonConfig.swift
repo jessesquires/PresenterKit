@@ -18,16 +18,30 @@
 
 import UIKit
 
-
+/**
+ A configuration for `UIBarButtonItem`. 
+ Use this configuration to create dismissal buttons for modally presented view controllers.
+ */
 public struct DismissButtonConfig {
-    let location: Location
-    let style: Style
-    let text: Text
+    public let location: Location
+    public let style: Style
+    public let text: Text
 
-    init(location: Location = .Left, style: Style = .Plain, text: Text = .Cancel) {
+    public init(location: Location = .Left, style: Style = .Plain, text: Text = .Cancel) {
         self.location = location
         self.style = style
         self.text = text
+    }
+
+    public func barButtonItem(target: AnyObject, selector: Selector) -> UIBarButtonItem {
+        let button: UIBarButtonItem
+        if let title = text.title {
+            button = UIBarButtonItem(title: title, style: style.itemStyle, target: target, action: selector)
+        } else {
+            button = UIBarButtonItem(barButtonSystemItem: text.systemItem!, target: target, action: selector)
+        }
+        button.style = style.itemStyle
+        return button
     }
 
     public enum Location {
