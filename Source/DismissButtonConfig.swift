@@ -19,7 +19,7 @@
 import UIKit
 
 /**
- A configuration for `UIBarButtonItem`. 
+ A configuration for `UIBarButtonItem`.
  Use this configuration to create dismissal buttons for modally presented view controllers.
  */
 public struct DismissButtonConfig {
@@ -31,17 +31,6 @@ public struct DismissButtonConfig {
         self.location = location
         self.style = style
         self.text = text
-    }
-
-    public func barButtonItem(target: AnyObject, selector: Selector) -> UIBarButtonItem {
-        let button: UIBarButtonItem
-        if let title = text.title {
-            button = UIBarButtonItem(title: title, style: style.itemStyle, target: target, action: selector)
-        } else {
-            button = UIBarButtonItem(barButtonSystemItem: text.systemItem!, target: target, action: selector)
-        }
-        button.style = style.itemStyle
-        return button
     }
 
     public enum Location {
@@ -92,3 +81,17 @@ public struct DismissButtonConfig {
         }
     }
 }
+
+
+extension UIBarButtonItem {
+
+    convenience init(config: DismissButtonConfig, target: AnyObject, selector: Selector) {
+        if let title = config.text.title {
+            self.init(title: title, style: config.style.itemStyle, target: target, action: selector)
+        } else {
+            self.init(barButtonSystemItem: config.text.systemItem!, target: target, action: selector)
+        }
+        self.style = config.style.itemStyle
+    }
+}
+
