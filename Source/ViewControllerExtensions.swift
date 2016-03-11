@@ -145,7 +145,7 @@ public extension UIViewController {
     private var hasNavigationController: Bool {
         return self.navigationController != nil
     }
-
+    
     private var isNavigationRootViewController: Bool {
         return navigationController?.viewControllers.first == self
     }
