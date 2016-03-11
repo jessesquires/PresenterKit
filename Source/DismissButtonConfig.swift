@@ -42,7 +42,7 @@ public struct DismissButtonConfig {
 
      - returns: A new configuration instance.
      */
-    public init(location: Location = .Left, style: Style = .Plain, text: Text = .Cancel) {
+    public init(location: Location = .Left, style: Style = .Plain, text: Text = .SystemItem(.Cancel)) {
         self.location = location
         self.style = style
         self.text = text
@@ -68,14 +68,8 @@ public struct DismissButtonConfig {
 
     /// Specifies the text for the bar button.
     public enum Text {
-        /// Bar button system `.Cancel` text.
-        case Cancel
-
-        /// Bar button system `.Done` text.
-        case Done
-
-        /// Bar button system `.Save` text.
-        case Save
+        /// Specifies a `UIBarButtonSystemItem`.
+        case SystemItem(UIBarButtonSystemItem)
 
         /// Specifies custom text for the bar button.
         case Custom(String)
@@ -98,12 +92,8 @@ extension DismissButtonConfig.Style {
 extension DismissButtonConfig.Text {
     var systemItem: UIBarButtonSystemItem? {
         switch self {
-        case .Cancel:
-            return .Cancel
-        case .Done:
-            return .Done
-        case .Save:
-            return .Save
+        case .SystemItem(let item):
+            return item
         default:
             return nil
         }
@@ -119,7 +109,7 @@ extension DismissButtonConfig.Text {
     }
 }
 
-
+/// Extensions for `UIBarButtonItem`. 
 public extension UIBarButtonItem {
      /**
      Initializes a new bar button item using the specified configuration.
