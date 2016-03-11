@@ -100,6 +100,15 @@ public extension UIViewController {
 // MARK: - Dismissal
 public extension UIViewController {
 
+    public func dismiss() {
+        if isModallyPresented {
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            assert(navigationController != nil)
+            navigationController?.popViewControllerAnimated(true)
+        }
+    }
+
     public func addDismissButtonIfNeeded(config config: DismissButtonConfig = DismissButtonConfig()) {
         guard needsDismissButton else { return }
         addDismissButton(config: config)
@@ -117,15 +126,24 @@ public extension UIViewController {
     }
 
     @objc private func _didTapDismissButton(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss()
     }
 
     private var needsDismissButton: Bool {
-        return isPresented && isNavigationRootViewController
+        return isModallyPresented
     }
 
-    private var isPresented: Bool {
+    private var isModallyPresented: Bool {
+        return (hasPresentingController && !hasNavigationController)
+            || (hasPresentingController && hasNavigationController && isNavigationRootViewController)
+    }
+
+    private var hasPresentingController: Bool {
         return self.presentingViewController != nil
+    }
+
+    private var hasNavigationController: Bool {
+        return self.navigationController != nil
     }
 
     private var isNavigationRootViewController: Bool {
