@@ -115,7 +115,7 @@ public extension UIViewController {
     }
 
     public func addDismissButton(config config: DismissButtonConfig = DismissButtonConfig()) {
-        let button = UIBarButtonItem(config: config, target: self, action: Selector("_didTapDismissButton:"))
+        let button = UIBarButtonItem(config: config, target: self, action: #selector(UIViewController._didTapDismissButton(_:)))
 
         switch config.location {
         case .Left:

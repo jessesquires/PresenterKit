@@ -24,7 +24,7 @@ final class HalfModalPresentationController: UIPresentationController {
         let view = UIView()
         view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
         view.alpha = 0.0
-        let tap = UITapGestureRecognizer(target: self, action: Selector("dimmingViewTapped:"))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(HalfModalPresentationController.dimmingViewTapped(_:)))
         view.addGestureRecognizer(tap)
         return view
     }()
