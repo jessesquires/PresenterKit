@@ -100,9 +100,9 @@ public extension UIViewController {
 // MARK: - Dismissal
 public extension UIViewController {
 
-    public func dismiss() {
+    public func dismiss(completion: (() -> Void)? = nil) {
         if isModallyPresented {
-            dismissViewControllerAnimated(true, completion: nil)
+            dismissViewControllerAnimated(true, completion: completion)
         } else {
             assert(navigationController != nil)
             navigationController?.popViewControllerAnimated(true)
