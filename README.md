@@ -45,7 +45,23 @@ Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy
 import PresenterKit
 ```
 
-> Checkout the included [example project](https://github.com/jessesquires/PresenterKit/tree/develop/Example).
+- Watch [the talk](https://realm.io/news/slug-jesse-squires-swifty-view-controller-presenters/)
+- Read the [blog post](http://www.jessesquires.com/swifty-presenters/).
+- Run the [example project](https://github.com/jessesquires/PresenterKit/tree/develop/Example).
+
+#### Presenting a view controller modally
+
+```swift
+let vc = MyViewController()
+presentViewController(vc, type: .Modal(.WithNavigation, .FormSheet, .CoverVertical))
+```
+
+#### Pushing a view controller
+
+```swift
+let vc = MyViewController()
+presentViewController(vc, type: .Push)
+```
 
 ## Unit tests
 
