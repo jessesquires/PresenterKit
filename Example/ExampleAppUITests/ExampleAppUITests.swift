@@ -17,6 +17,8 @@
 //
 
 import XCTest
+import UIKit
+
 
 final class ExampleAppUITests: XCTestCase {
         
