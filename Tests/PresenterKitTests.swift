@@ -151,6 +151,9 @@ final class PresenterKitTests: XCTestCase {
         secondController.addDismissButtonIfNeeded()
         XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
         XCTAssertNil(secondController.navigationItem.rightBarButtonItem)
+
+        secondController.dismiss(animated: false)
+        XCTAssertEqual(firstController.topViewController, secondController)
     }
 
     func test_thatViewController_presentsViewController_withPresentationType_push_embedded() {
@@ -168,6 +171,9 @@ final class PresenterKitTests: XCTestCase {
         secondController.addDismissButtonIfNeeded()
         XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
         XCTAssertNil(secondController.navigationItem.rightBarButtonItem)
+
+        secondController.dismiss(animated: false)
+        XCTAssertEqual(navController.topViewController, firstController)
     }
 
     func test_thatViewController_presentsViewController_withPresentationType_show() {

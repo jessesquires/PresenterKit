@@ -140,7 +140,7 @@ public extension UIViewController {
         case .custom(let delegate):
             controller.modalPresentationStyle = .Custom
             controller.transitioningDelegate = delegate
-            presentViewController(controller, animated: true, completion: nil)
+            presentViewController(controller, animated: animated, completion: nil)
         }
     }
 }
@@ -151,13 +151,15 @@ public extension UIViewController {
 
     /**
      Dismisses the receiving view controller.
+
+     - parameter animated: Pass `true` to animate the presentation, `false` otherwise.
      */
-    public func dismiss() {
+    public func dismiss(animated animated: Bool = true) {
         if isModallyPresented {
-            dismissViewControllerAnimated(true, completion: nil)
+            dismissViewControllerAnimated(animated, completion: nil)
         } else {
             assert(navigationController != nil)
-            navigationController?.popViewControllerAnimated(true)
+            navigationController?.popViewControllerAnimated(animated)
         }
     }
 
