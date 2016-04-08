@@ -28,8 +28,8 @@ final class MainViewController: UITableViewController,
 
     @IBAction func didTapPopoverButton(sender: UIBarButtonItem) {
         let vc = RedViewController()
-        let config = PopoverConfig(source: .BarButtonItem(sender), delegate: self)
-        presentViewController(vc, type: .Popover(config))
+        let config = PopoverConfig(source: .barButtonItem(sender), delegate: self)
+        presentViewController(vc, type: .popover(config))
     }
 
 
@@ -41,35 +41,35 @@ final class MainViewController: UITableViewController,
         switch indexPath.section {
         case 0:
             let vc = RedViewController()
-            presentViewController(vc, type: .Push)
+            presentViewController(vc, type: .push)
 
 
         case 1:
             let vc = RedViewController()
-            presentViewController(vc, type: .Modal(.WithNavigation, .FormSheet, .CoverVertical))
+            presentViewController(vc, type: .modal(.withNavigation, .FormSheet, .CoverVertical))
 
 
         case 2:
             let vc = RedViewController()
-            presentViewController(vc, type: .Show)
+            presentViewController(vc, type: .show)
 
 
         case 3:
             let vc = RedViewController()
-            presentViewController(vc, type: .ShowDetail(.WithNavigation))
+            presentViewController(vc, type: .showDetail(.withNavigation))
 
 
         case 4:
             let cell = tableView.cellForRowAtIndexPath(indexPath)!.contentView
-            let config = PopoverConfig(source: .View(cell), delegate: self)
+            let config = PopoverConfig(source: .view(cell), delegate: self)
             let vc = RedViewController()
-            presentViewController(vc, type: .Popover(config))
+            presentViewController(vc, type: .popover(config))
 
 
         case 5:
             let vc = RedViewController()
             vc.modalTransitionStyle = .CoverVertical
-            presentViewController(vc, type: .Custom(self))
+            presentViewController(vc, type: .custom(self))
 
 
         default:
