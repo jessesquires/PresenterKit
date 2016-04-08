@@ -23,14 +23,6 @@ import UIKit
 
 
 final class PresenterKitTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
 
     func test_thatBarButtonItem_initializesWith_dismissConfig_default() {
         let config = DismissButtonConfig()
@@ -153,7 +145,12 @@ final class PresenterKitTests: XCTestCase {
         firstController.presentViewController(secondController, type: .push, animated: false)
 
         XCTAssertNotNil(secondController.navigationController)
+        XCTAssertNotNil(secondController.navigationItem)
         XCTAssertEqual(firstController.topViewController, secondController)
+
+        secondController.addDismissButtonIfNeeded()
+        XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
+        XCTAssertNil(secondController.navigationItem.rightBarButtonItem)
     }
 
     func test_thatViewController_presentsViewController_withPresentationType_push_embedded() {
@@ -165,7 +162,12 @@ final class PresenterKitTests: XCTestCase {
         firstController.presentViewController(secondController, type: .push, animated: false)
 
         XCTAssertNotNil(secondController.navigationController)
+        XCTAssertNotNil(secondController.navigationItem)
         XCTAssertEqual(navController.topViewController, secondController)
+
+        secondController.addDismissButtonIfNeeded()
+        XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
+        XCTAssertNil(secondController.navigationItem.rightBarButtonItem)
     }
 
     func test_thatViewController_presentsViewController_withPresentationType_show() {
@@ -174,36 +176,12 @@ final class PresenterKitTests: XCTestCase {
         firstController.presentViewController(secondController, type: .show, animated: false)
 
         XCTAssertNotNil(secondController.navigationController)
+        XCTAssertNotNil(secondController.navigationItem)
         XCTAssertEqual(firstController.topViewController, secondController)
-    }
 
-    func test_thatViewController_presentsViewController_withPresentationType_modal() {
-        let firstController = UIViewController()
-        let secondController = UIViewController()
-        let type = PresentationType.modal(.none, .FormSheet, .CrossDissolve)
-        firstController.presentViewController(secondController, type: type, animated: false) {
-            XCTAssertEqual(firstController.presentedViewController, secondController)
-
-            XCTAssertNil(secondController.navigationController)
-            XCTAssertEqual(secondController.presentingViewController, firstController)
-            XCTAssertEqual(secondController.modalPresentationStyle, UIModalPresentationStyle.FormSheet)
-            XCTAssertEqual(secondController.modalTransitionStyle, UIModalTransitionStyle.CrossDissolve)
-        }
-    }
-
-    func test_thatViewController_presentsViewController_withPresentationType_modal_withNavigation() {
-        let firstController = UIViewController()
-        let secondController = UIViewController()
-        let type = PresentationType.modal(.withNavigation, .FormSheet, .CrossDissolve)
-        firstController.presentViewController(secondController, type: type, animated: false) {
-            XCTAssertEqual(firstController.presentedViewController, secondController)
-            XCTAssertEqual(firstController.presentedViewController, secondController.navigationController)
-
-            XCTAssertNotNil(secondController.navigationController)
-            XCTAssertEqual(secondController.presentingViewController, firstController)
-            XCTAssertEqual(secondController.modalPresentationStyle, UIModalPresentationStyle.FormSheet)
-            XCTAssertEqual(secondController.modalTransitionStyle, UIModalTransitionStyle.CrossDissolve)
-        }
+        secondController.addDismissButtonIfNeeded()
+        XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
+        XCTAssertNil(secondController.navigationItem.rightBarButtonItem)
     }
 
 

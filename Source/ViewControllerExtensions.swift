@@ -103,24 +103,15 @@ public extension UIViewController {
      - parameter animated:       Pass `true` to animate the presentation, `false` otherwise.
      */
     public func presentViewController(controller: UIViewController, type: PresentationType, animated: Bool = true) {
-        presentViewController(controller, type: type, animated: animated, completion: nil)
-    }
-
-    /// This is available solely for testing purposes.
-    /// We need access to the completion block for tests, but do not want to expose this publicly.
-    /// Using these completions blocks is usually a code smell. 
-    /// Personally, I've never used them and not sure what a valid use case might be.
-    internal func presentViewController(viewController: UIViewController, type: PresentationType, animated: Bool = true, completion: (() -> Void)?) {
         switch type {
-
         case .modal(let n, let p, let t):
-            let vc = viewController.withStyles(navigation: n, presentation: p, transition: t)
-            presentViewController(vc, animated: animated, completion: completion)
+            let vc = controller.withStyles(navigation: n, presentation: p, transition: t)
+            presentViewController(vc, animated: animated, completion: nil)
 
         case .popover(let c):
-            viewController.withStyles(navigation: .none, presentation: .Popover, transition: .CrossDissolve)
+            controller.withStyles(navigation: .none, presentation: .Popover, transition: .CrossDissolve)
 
-            let popoverController = viewController.popoverPresentationController
+            let popoverController = controller.popoverPresentationController
             popoverController?.delegate = c.delegate
             popoverController?.permittedArrowDirections = c.arrowDirection
             switch c.source {
@@ -130,26 +121,26 @@ public extension UIViewController {
                 popoverController?.sourceView = v
                 popoverController?.sourceRect = v.frame
             }
-            presentViewController(viewController, animated: animated, completion: completion)
+            presentViewController(controller, animated: animated, completion: nil)
 
         case .push:
             if let nav = self as? UINavigationController {
-                nav.pushViewController(viewController, animated: animated)
+                nav.pushViewController(controller, animated: animated)
             }
             else {
-                navigationController!.pushViewController(viewController, animated: animated)
+                navigationController!.pushViewController(controller, animated: animated)
             }
 
         case .show:
-            showViewController(viewController, sender: self)
+            showViewController(controller, sender: self)
 
         case .showDetail(let navigation):
-            showDetailViewController(viewController.withNavigationStyle(navigation), sender: self)
+            showDetailViewController(controller.withNavigationStyle(navigation), sender: self)
 
         case .custom(let delegate):
-            viewController.modalPresentationStyle = .Custom
-            viewController.transitioningDelegate = delegate
-            presentViewController(viewController, animated: true, completion: completion)
+            controller.modalPresentationStyle = .Custom
+            controller.transitioningDelegate = delegate
+            presentViewController(controller, animated: true, completion: nil)
         }
     }
 }
