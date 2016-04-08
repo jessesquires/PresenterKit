@@ -102,12 +102,20 @@ public extension UIViewController {
      - parameter type:           The presentation type to use.
      - parameter animated:       Pass `true` to animate the presentation, `false` otherwise.
      */
-    public func presentViewController(viewController: UIViewController, type: PresentationType, animated: Bool = true) {
+    public func presentViewController(controller: UIViewController, type: PresentationType, animated: Bool = true) {
+        presentViewController(controller, type: type, animated: animated, completion: nil)
+    }
+
+    /// This is available solely for testing purposes.
+    /// We need access to the completion block for tests, but do not want to expose this publicly.
+    /// Using these completions blocks is usually a code smell. 
+    /// Personally, I've never used them and not sure what a valid use case might be.
+    internal func presentViewController(viewController: UIViewController, type: PresentationType, animated: Bool = true, completion: (() -> Void)?) {
         switch type {
 
         case .modal(let n, let p, let t):
             let vc = viewController.withStyles(navigation: n, presentation: p, transition: t)
-            presentViewController(vc, animated: animated, completion: nil)
+            presentViewController(vc, animated: animated, completion: completion)
 
         case .popover(let c):
             viewController.withStyles(navigation: .none, presentation: .Popover, transition: .CrossDissolve)
@@ -122,7 +130,7 @@ public extension UIViewController {
                 popoverController?.sourceView = v
                 popoverController?.sourceRect = v.frame
             }
-            presentViewController(viewController, animated: animated, completion: nil)
+            presentViewController(viewController, animated: animated, completion: completion)
 
         case .push:
             if let nav = self as? UINavigationController {
@@ -141,7 +149,7 @@ public extension UIViewController {
         case .custom(let delegate):
             viewController.modalPresentationStyle = .Custom
             viewController.transitioningDelegate = delegate
-            presentViewController(viewController, animated: true, completion: nil)
+            presentViewController(viewController, animated: true, completion: completion)
         }
     }
 }
@@ -166,7 +174,7 @@ public extension UIViewController {
      Adds a dismiss button having the provided configuration, if needed.
 
      - parameter config: The configuration to apply to the dismiss button.
-     
+
      - note: This method does nothing if the view controller is not presented modally.
      */
     public func addDismissButtonIfNeeded(config config: DismissButtonConfig = DismissButtonConfig()) {
@@ -178,7 +186,7 @@ public extension UIViewController {
      Adds a dismiss button having the provided configuration.
 
      - parameter config: The configuration to apply to the dismiss button.
-     
+
      - note: The view controller must have a non-nil `navigationItem`.
      */
     public func addDismissButton(config config: DismissButtonConfig = DismissButtonConfig()) {

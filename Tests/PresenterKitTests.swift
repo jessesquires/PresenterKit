@@ -177,6 +177,35 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertEqual(firstController.topViewController, secondController)
     }
 
+    func test_thatViewController_presentsViewController_withPresentationType_modal() {
+        let firstController = UIViewController()
+        let secondController = UIViewController()
+        let type = PresentationType.modal(.none, .FormSheet, .CrossDissolve)
+        firstController.presentViewController(secondController, type: type, animated: false) {
+            XCTAssertEqual(firstController.presentedViewController, secondController)
+
+            XCTAssertNil(secondController.navigationController)
+            XCTAssertEqual(secondController.presentingViewController, firstController)
+            XCTAssertEqual(secondController.modalPresentationStyle, UIModalPresentationStyle.FormSheet)
+            XCTAssertEqual(secondController.modalTransitionStyle, UIModalTransitionStyle.CrossDissolve)
+        }
+    }
+
+    func test_thatViewController_presentsViewController_withPresentationType_modal_withNavigation() {
+        let firstController = UIViewController()
+        let secondController = UIViewController()
+        let type = PresentationType.modal(.withNavigation, .FormSheet, .CrossDissolve)
+        firstController.presentViewController(secondController, type: type, animated: false) {
+            XCTAssertEqual(firstController.presentedViewController, secondController)
+            XCTAssertEqual(firstController.presentedViewController, secondController.navigationController)
+
+            XCTAssertNotNil(secondController.navigationController)
+            XCTAssertEqual(secondController.presentingViewController, firstController)
+            XCTAssertEqual(secondController.modalPresentationStyle, UIModalPresentationStyle.FormSheet)
+            XCTAssertEqual(secondController.modalTransitionStyle, UIModalTransitionStyle.CrossDissolve)
+        }
+    }
+
 
     // MARK: Helpers
 
