@@ -77,7 +77,6 @@ public struct DismissButtonConfig {
 }
 
 
-/// Extensions for `UIBarButtonItem`.
 public extension UIBarButtonItem {
      /**
      Initializes a new bar button item using the specified configuration.
