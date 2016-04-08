@@ -1,5 +1,3 @@
-### :warning: This is still a work in-progress :warning:
-
 # PresenterKit
 [![Build Status](https://travis-ci.org/jessesquires/PresenterKit.svg)](https://travis-ci.org/jessesquires/PresenterKit) [![Version Status](https://img.shields.io/cocoapods/v/PresenterKit.svg)][podLink] [![license MIT](https://img.shields.io/cocoapods/l/PresenterKit.svg)][mitLink] [![codecov.io](https://img.shields.io/codecov/c/github/jessesquires/PresenterKit.svg)](http://codecov.io/github/jessesquires/PresenterKit) [![Platform](https://img.shields.io/cocoapods/p/PresenterKit.svg)][docsLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
@@ -46,8 +44,8 @@ import PresenterKit
 ```
 
 - Watch [the talk](https://realm.io/news/slug-jesse-squires-swifty-view-controller-presenters/)
-- Read the [blog post](http://www.jessesquires.com/swifty-presenters/).
-- Run the [example project](https://github.com/jessesquires/PresenterKit/tree/develop/Example).
+- Read the [blog post](http://www.jessesquires.com/swifty-presenters/)
+- Run the [example project](https://github.com/jessesquires/PresenterKit/tree/develop/Example)
 
 #### Presenting a view controller modally
 
@@ -61,6 +59,14 @@ presentViewController(vc, type: .Modal(.WithNavigation, .FormSheet, .CoverVertic
 ```swift
 let vc = MyViewController()
 presentViewController(vc, type: .Push)
+```
+
+#### Presenting as a popover
+
+```swift
+let vc = MyViewController()
+let config = PopoverConfig(source: .BarButtonItem(item), delegate: self)
+presentViewController(vc, type: .Popover(config))
 ```
 
 ## Unit tests
