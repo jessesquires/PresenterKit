@@ -156,6 +156,18 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertEqual(firstController.topViewController, secondController)
     }
 
+    func test_thatViewController_presentsViewController_withPresentationType_push_embedded() {
+        let firstController = UIViewController()
+        let navController = UINavigationController(rootViewController: firstController)
+        XCTAssertEqual(navController.topViewController, firstController)
+
+        let secondController = UIViewController()
+        firstController.presentViewController(secondController, type: .push, animated: false)
+
+        XCTAssertNotNil(secondController.navigationController)
+        XCTAssertEqual(navController.topViewController, secondController)
+    }
+
     func test_thatViewController_presentsViewController_withPresentationType_show() {
         let firstController = UINavigationController()
         let secondController = UIViewController()

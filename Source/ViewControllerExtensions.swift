@@ -125,7 +125,12 @@ public extension UIViewController {
             presentViewController(viewController, animated: animated, completion: nil)
 
         case .push:
-            navigationController!.pushViewController(viewController, animated: animated)
+            if let nav = self as? UINavigationController {
+                nav.pushViewController(viewController, animated: animated)
+            }
+            else {
+                navigationController!.pushViewController(viewController, animated: animated)
+            }
 
         case .show:
             showViewController(viewController, sender: self)
