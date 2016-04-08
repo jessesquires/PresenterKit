@@ -69,6 +69,12 @@ let config = PopoverConfig(source: .BarButtonItem(item), delegate: self)
 presentViewController(vc, type: .Popover(config))
 ```
 
+#### Dismissing a view controller
+
+```swift
+vc.dismiss()
+```
+
 ## Unit tests
 
 There's a suite of unit tests for `PresenterKit`. To run them, open `PresenterKit.xcodeproj`, select the `PresenterKit` scheme, then &#x2318;-u.
