@@ -72,11 +72,25 @@ public struct PopoverConfig {
 }
 
 
+/**
+ Describes the type of presentation for a view controller.
+ */
 public enum PresentationType {
+    /// A modal presentation type with the specified navigation, presentation, and transition styles.
     case Modal(NavigationStyle, UIModalPresentationStyle, UIModalTransitionStyle)
+
+    /// A popover presentation type with the specified configuration.
     case Popover(PopoverConfig)
+
+    /// A push presentation type.
     case Push
+
+    /// A "show" presentation type. This is an adaptive presentation that usually corresponds to `.Push`.
     case Show
+
+    /// A "show detail" presentation type. This is an adaptive presentation that usually corresponds to `.Modal`.
     case ShowDetail(NavigationStyle)
+
+    /// A custom presentation style that uses the specified delegate.
     case Custom(UIViewControllerTransitioningDelegate)
 }
