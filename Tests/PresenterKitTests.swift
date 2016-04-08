@@ -128,7 +128,25 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertEqual(controller3.modalTransitionStyle, UIModalTransitionStyle.FlipHorizontal)
         XCTAssertEqual(other3.modalTransitionStyle, UIModalTransitionStyle.FlipHorizontal)
     }
-    
+
+    func test_thatViewController_appliesStyles_withStyles() {
+        let controller = UIViewController()
+        let other = controller.withStyles(navigation: .withNavigation,
+                                          presentation: .OverCurrentContext,
+                                          transition: .PartialCurl) as! UINavigationController
+        XCTAssertEqual(controller, other.topViewController)
+        XCTAssertEqual(controller.modalPresentationStyle, UIModalPresentationStyle.OverCurrentContext)
+        XCTAssertEqual(controller.modalTransitionStyle, UIModalTransitionStyle.PartialCurl)
+
+        let controller2 = UIViewController()
+        let other2 = controller2.withStyles(navigation: .none,
+                                          presentation: .None,
+                                          transition: .CoverVertical)
+        XCTAssertEqual(controller2, other2)
+        XCTAssertEqual(controller2.modalPresentationStyle, UIModalPresentationStyle.None)
+        XCTAssertEqual(controller2.modalTransitionStyle, UIModalTransitionStyle.CoverVertical)
+    }
+
 
     // MARK: Helpers
 
