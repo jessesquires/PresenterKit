@@ -77,7 +77,7 @@ public struct DismissButtonConfig {
 }
 
 
-extension DismissButtonConfig.Style {
+private extension DismissButtonConfig.Style {
     var itemStyle: UIBarButtonItemStyle {
         switch self {
         case .Bold:
@@ -89,7 +89,7 @@ extension DismissButtonConfig.Style {
 }
 
 
-extension DismissButtonConfig.Text {
+private extension DismissButtonConfig.Text {
     var systemItem: UIBarButtonSystemItem? {
         switch self {
         case .SystemItem(let item):
@@ -119,7 +119,7 @@ public extension UIBarButtonItem {
 
      - returns: A new bar button item instance.
      */
-    public convenience init(config: DismissButtonConfig, target: AnyObject, action: Selector) {
+    public convenience init(config: DismissButtonConfig, target: AnyObject?, action: Selector) {
         if let title = config.text.title {
             self.init(title: title, style: config.style.itemStyle, target: target, action: action)
         } else {
