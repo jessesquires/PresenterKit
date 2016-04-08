@@ -18,8 +18,6 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for PresenterKit.
 FOUNDATION_EXPORT double PresenterKitVersionNumber;
 
-//! Project version string for PresenterKit.
 FOUNDATION_EXPORT const unsigned char PresenterKitVersionString[];
