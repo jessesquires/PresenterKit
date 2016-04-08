@@ -36,7 +36,7 @@ script:
 
 
 - if [ $BUILD_EXAMPLE == "YES" ]; then
-      xcodebuild clean build -project Example/ExampleApp.xcodeproj -scheme ExampleApp -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c;
+      xcodebuild clean build -project Example/ExampleApp.xcodeproj -scheme ExampleApp -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty -c;
   fi
 
 
