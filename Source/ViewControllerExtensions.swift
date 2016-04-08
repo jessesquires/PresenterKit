@@ -22,20 +22,50 @@ import UIKit
 // MARK: - Styles
 public extension UIViewController {
 
+    /**
+     Wraps the receiving view controller in a navigation controller.
+     The receiver is set as the `rootViewController` of the navigation controller.
+
+     - returns: The navigation controller that contains the receiver as the `rootViewController`.
+     */
     public func withNavigation() -> UINavigationController {
         return UINavigationController(rootViewController: self)
     }
 
+    /**
+     Applies the specified modal presentation style to the view controller.
+
+     - parameter presentation: A modal presentation style.
+
+     - returns: The view controller after applying the style.
+     */
     public func withPresentation(presentation: UIModalPresentationStyle) -> Self {
         modalPresentationStyle = presentation
         return self
     }
 
+    /**
+     Applies the specified modal transition style to the view controller.
+
+     - parameter transition: A modal transition style.
+
+     - returns: The view controller after applying the style.
+     */
     public func withTransition(transition: UIModalTransitionStyle) -> Self {
         modalTransitionStyle = transition
         return self
     }
 
+    /**
+     Applies the specified navigation style to the view controller.
+
+     - parameter navigationStyle: A navigation style.
+
+     - returns: The view controller after applying the style.
+
+     - note: If `navigationStyle` is `.withNavigation`, then calling this method is equivalent to calling `withNavigation()`.
+     If `navigationStyle` is `.none`, then calling this method does nothing.
+     */
     public func withNavigationStyle(navigationStyle: NavigationStyle) -> UIViewController {
         switch navigationStyle {
         case .none:
@@ -45,11 +75,19 @@ public extension UIViewController {
         }
     }
 
-    public func withStyles(
-        navigation navigation: NavigationStyle,
-        presentation: UIModalPresentationStyle,
-        transition: UIModalTransitionStyle) -> UIViewController {
-            return withPresentation(presentation).withTransition(transition).withNavigationStyle(navigation)
+    /**
+     Applies the specified navigation style to the view controller.
+
+     - parameter navigation:   A navigation style.
+     - parameter presentation: A modal presentation style.
+     - parameter transition:   A modal transition style.
+
+     - returns: The view controller after applying the style.
+     */
+    public func withStyles(navigation navigation: NavigationStyle,
+                                      presentation: UIModalPresentationStyle,
+                                      transition: UIModalTransitionStyle) -> UIViewController {
+        return withPresentation(presentation).withTransition(transition).withNavigationStyle(navigation)
     }
 }
 
@@ -115,7 +153,9 @@ public extension UIViewController {
     }
 
     public func addDismissButton(config config: DismissButtonConfig = DismissButtonConfig()) {
-        let button = UIBarButtonItem(config: config, target: self, action: #selector(UIViewController._didTapDismissButton(_:)))
+        let button = UIBarButtonItem(config: config,
+                                     target: self,
+                                     action: #selector(UIViewController._didTapDismissButton(_:)))
 
         switch config.location {
         case .left:
