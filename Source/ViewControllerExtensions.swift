@@ -95,6 +95,13 @@ public extension UIViewController {
 // MARK: - Presentation
 public extension UIViewController {
 
+    /**
+     Presents a view controller using the specified presentation type.
+
+     - parameter viewController: The view controller to display over the current view controller.
+     - parameter type:           The presentation type to use.
+     - parameter animated:       Pass `true` to animate the presentation, `false` otherwise.
+     */
     public func presentViewController(viewController: UIViewController, type: PresentationType, animated: Bool = true) {
         switch type {
 
@@ -138,6 +145,9 @@ public extension UIViewController {
 // MARK: - Dismissal
 public extension UIViewController {
 
+    /**
+     Dismisses the receiving view controller.
+     */
     public func dismiss() {
         if isModallyPresented {
             dismissViewControllerAnimated(true, completion: nil)
@@ -147,11 +157,25 @@ public extension UIViewController {
         }
     }
 
+    /**
+     Adds a dismiss button having the provided configuration, if needed.
+
+     - parameter config: The configuration to apply to the dismiss button.
+     
+     - note: This method does nothing if the view controller is not presented modally.
+     */
     public func addDismissButtonIfNeeded(config config: DismissButtonConfig = DismissButtonConfig()) {
         guard needsDismissButton else { return }
         addDismissButton(config: config)
     }
 
+    /**
+     Adds a dismiss button having the provided configuration.
+
+     - parameter config: The configuration to apply to the dismiss button.
+     
+     - note: The view controller must have a non-nil `navigationItem`.
+     */
     public func addDismissButton(config config: DismissButtonConfig = DismissButtonConfig()) {
         let button = UIBarButtonItem(config: config,
                                      target: self,
