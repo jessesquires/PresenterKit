@@ -147,6 +147,24 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertEqual(controller2.modalTransitionStyle, UIModalTransitionStyle.CoverVertical)
     }
 
+    func test_thatViewController_presentsViewController_withPresentationType_push() {
+        let firstController = UINavigationController()
+        let secondController = UIViewController()
+        firstController.presentViewController(secondController, type: .push, animated: false)
+
+        XCTAssertNotNil(secondController.navigationController)
+        XCTAssertEqual(firstController.topViewController, secondController)
+    }
+
+    func test_thatViewController_presentsViewController_withPresentationType_show() {
+        let firstController = UINavigationController()
+        let secondController = UIViewController()
+        firstController.presentViewController(secondController, type: .show, animated: false)
+
+        XCTAssertNotNil(secondController.navigationController)
+        XCTAssertEqual(firstController.topViewController, secondController)
+    }
+
 
     // MARK: Helpers
 
