@@ -55,6 +55,7 @@ script:
 # Build for reporting test coverage
 - if [ $RUN_TESTS == "YES" ]; then
       xcodebuild test -project PresenterKit.xcodeproj -scheme PresenterKit -sdk iphonesimulator;
+      xcodebuild test -project Example/ExampleApp.xcodeproj -scheme ExampleApp -sdk iphonesimulator;
   fi
 
 
