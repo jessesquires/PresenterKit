@@ -23,10 +23,10 @@ import UIKit
  */
 public enum NavigationStyle {
     /// Do not embed view controller in a `UINavigationController`.
-    case None
+    case none
 
     /// Embed view controller in a `UINavigationController.
-    case WithNavigation
+    case withNavigation
 }
 
 
@@ -40,10 +40,10 @@ public struct PopoverConfig {
      */
     public enum Source {
         /// Specifies that the popover should display from a `UIBarButtonItem` instance.
-        case BarButtonItem(UIBarButtonItem)
+        case barButtonItem(UIBarButtonItem)
 
         /// Specifies that the popover should display from a `UIView` instance.
-        case View(UIView)
+        case view(UIView)
     }
 
     /// The source view for the popover.
@@ -77,20 +77,20 @@ public struct PopoverConfig {
  */
 public enum PresentationType {
     /// A modal presentation type with the specified navigation, presentation, and transition styles.
-    case Modal(NavigationStyle, UIModalPresentationStyle, UIModalTransitionStyle)
+    case modal(NavigationStyle, UIModalPresentationStyle, UIModalTransitionStyle)
 
     /// A popover presentation type with the specified configuration.
-    case Popover(PopoverConfig)
+    case popover(PopoverConfig)
 
     /// A push presentation type.
-    case Push
+    case push
 
     /// A "show" presentation type. This is an adaptive presentation that usually corresponds to `.Push`.
-    case Show
+    case show
 
     /// A "show detail" presentation type. This is an adaptive presentation that usually corresponds to `.Modal`.
-    case ShowDetail(NavigationStyle)
+    case showDetail(NavigationStyle)
 
     /// A custom presentation style that uses the specified delegate.
-    case Custom(UIViewControllerTransitioningDelegate)
+    case custom(UIViewControllerTransitioningDelegate)
 }

@@ -38,9 +38,9 @@ public extension UIViewController {
 
     public func withNavigationStyle(navigationStyle: NavigationStyle) -> UIViewController {
         switch navigationStyle {
-        case .None:
+        case .none:
             return self
-        case .WithNavigation:
+        case .withNavigation:
             return withNavigation()
         }
     }
@@ -60,35 +60,35 @@ public extension UIViewController {
     public func presentViewController(viewController: UIViewController, type: PresentationType, animated: Bool = true) {
         switch type {
 
-        case .Modal(let n, let p, let t):
+        case .modal(let n, let p, let t):
             let vc = viewController.withStyles(navigation: n, presentation: p, transition: t)
             presentViewController(vc, animated: animated, completion: nil)
 
-        case .Popover(let c):
-            viewController.withStyles(navigation: .None, presentation: .Popover, transition: .CrossDissolve)
+        case .popover(let c):
+            viewController.withStyles(navigation: .none, presentation: .Popover, transition: .CrossDissolve)
 
             let popoverController = viewController.popoverPresentationController
             popoverController?.delegate = c.delegate
             popoverController?.permittedArrowDirections = c.arrowDirection
             switch c.source {
-            case .BarButtonItem(let item):
+            case .barButtonItem(let item):
                 popoverController?.barButtonItem = item
-            case .View(let v):
+            case .view(let v):
                 popoverController?.sourceView = v
                 popoverController?.sourceRect = v.frame
             }
             presentViewController(viewController, animated: animated, completion: nil)
 
-        case .Push:
+        case .push:
             navigationController!.pushViewController(viewController, animated: animated)
 
-        case .Show:
+        case .show:
             showViewController(viewController, sender: self)
 
-        case .ShowDetail(let navigation):
+        case .showDetail(let navigation):
             showDetailViewController(viewController.withNavigationStyle(navigation), sender: self)
 
-        case .Custom(let delegate):
+        case .custom(let delegate):
             viewController.modalPresentationStyle = .Custom
             viewController.transitioningDelegate = delegate
             presentViewController(viewController, animated: true, completion: nil)
@@ -118,9 +118,9 @@ public extension UIViewController {
         let button = UIBarButtonItem(config: config, target: self, action: #selector(UIViewController._didTapDismissButton(_:)))
 
         switch config.location {
-        case .Left:
+        case .left:
             navigationItem.leftBarButtonItem = button
-        case .Right:
+        case .right:
             navigationItem.rightBarButtonItem = button
         }
     }

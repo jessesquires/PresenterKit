@@ -42,7 +42,7 @@ public struct DismissButtonConfig {
 
      - returns: A new configuration instance.
      */
-    public init(location: Location = .Left, style: Style = .Plain, text: Text = .SystemItem(.Cancel)) {
+    public init(location: Location = .left, style: Style = .plain, text: Text = .systemItem(.Cancel)) {
         self.location = location
         self.style = style
         self.text = text
@@ -51,63 +51,31 @@ public struct DismissButtonConfig {
     /// Specifies a bar button's location in a navigation bar.
     public enum Location {
         /// The left side of the navigation bar.
-        case Left
+        case left
 
         /// The right side of the navigation bar.
-        case Right
+        case right
     }
 
     /// Specifies a bar button's item style.
     public enum Style {
         /// Use bold text, `.Done` style.
-        case Bold
+        case bold
 
         /// Use regular text, `.Plain` style.
-        case Plain
+        case plain
     }
 
     /// Specifies the text for the bar button.
     public enum Text {
         /// Specifies a `UIBarButtonSystemItem`.
-        case SystemItem(UIBarButtonSystemItem)
+        case systemItem(UIBarButtonSystemItem)
 
         /// Specifies custom text for the bar button.
-        case Custom(String)
+        case custom(String)
     }
 }
 
-
-private extension DismissButtonConfig.Style {
-    var itemStyle: UIBarButtonItemStyle {
-        switch self {
-        case .Bold:
-            return .Done
-        case .Plain:
-            return .Plain
-        }
-    }
-}
-
-
-private extension DismissButtonConfig.Text {
-    var systemItem: UIBarButtonSystemItem? {
-        switch self {
-        case .SystemItem(let item):
-            return item
-        default:
-            return nil
-        }
-    }
-
-    var title: String? {
-        switch self {
-        case .Custom(let str):
-            return str
-        default:
-            return nil
-        }
-    }
-}
 
 public extension UIBarButtonItem {
      /**
@@ -126,5 +94,38 @@ public extension UIBarButtonItem {
             self.init(barButtonSystemItem: config.text.systemItem!, target: target, action: action)
         }
         self.style = config.style.itemStyle
+    }
+}
+
+
+private extension DismissButtonConfig.Style {
+    var itemStyle: UIBarButtonItemStyle {
+        switch self {
+        case .bold:
+            return .Done
+        case .plain:
+            return .Plain
+        }
+    }
+}
+
+
+private extension DismissButtonConfig.Text {
+    var systemItem: UIBarButtonSystemItem? {
+        switch self {
+        case .systemItem(let item):
+            return item
+        default:
+            return nil
+        }
+    }
+
+    var title: String? {
+        switch self {
+        case .custom(let str):
+            return str
+        default:
+            return nil
+        }
     }
 }
