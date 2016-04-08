@@ -22,10 +22,10 @@ import UIKit
  Specifies the navigation style for a view controller.
  */
 public enum NavigationStyle {
-    /// Do not embed view controller in a `UINavigationController`.
+    /// Do not embed a view controller in a `UINavigationController`.
     case none
 
-    /// Embed view controller in a `UINavigationController.
+    /// Embed view controller in a `UINavigationController`.
     case withNavigation
 }
 
