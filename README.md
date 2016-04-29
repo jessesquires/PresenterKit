@@ -1,5 +1,5 @@
 # PresenterKit
-[![Build Status](https://travis-ci.org/jessesquires/PresenterKit.svg)](https://travis-ci.org/jessesquires/PresenterKit) [![Version Status](https://img.shields.io/cocoapods/v/PresenterKit.svg)][podLink] [![license MIT](https://img.shields.io/cocoapods/l/PresenterKit.svg)][mitLink] [![codecov.io](https://img.shields.io/codecov/c/github/jessesquires/PresenterKit.svg)](http://codecov.io/github/jessesquires/PresenterKit) [![Platform](https://img.shields.io/cocoapods/p/PresenterKit.svg)][docsLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Build Status](https://travis-ci.org/jessesquires/PresenterKit.svg)](https://travis-ci.org/jessesquires/PresenterKit) [![Version Status](https://img.shields.io/cocoapods/v/PresenterKit.svg)][podLink] [![license MIT](https://img.shields.io/cocoapods/l/PresenterKit.svg)][mitLink] [![codecov](https://codecov.io/gh/jessesquires/PresenterKit/branch/develop/graph/badge.svg)](https://codecov.io/gh/jessesquires/PresenterKit) [![Platform](https://img.shields.io/cocoapods/p/PresenterKit.svg)][docsLink] [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 *Swifty view controller presentation for iOS*
 
