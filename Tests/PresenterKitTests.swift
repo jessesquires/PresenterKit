@@ -27,11 +27,11 @@ final class PresenterKitTests: XCTestCase {
     func test_thatBarButtonItem_initializesWith_dismissConfig_default() {
         let config = DismissButtonConfig()
         XCTAssertEqual(config.location, DismissButtonConfig.Location.left)
-        XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.Plain)
-        XCTAssertEqual(config.text.systemItem, UIBarButtonSystemItem.Cancel)
+        XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.plain)
+        XCTAssertEqual(config.text.systemItem, UIBarButtonSystemItem.cancel)
         XCTAssertNil(config.text.title)
 
-        let action = #selector(tapAction(_:))
+        let action = #selector(tapAction(sender:))
         let item = UIBarButtonItem(config: config, target: self, action: action)
 
         XCTAssertEqual(item.style, config.style.itemStyle)
@@ -40,13 +40,13 @@ final class PresenterKitTests: XCTestCase {
     }
 
     func test_thatBarButtonItem_initializesWith_dismissConfig_leftBoldCancel() {
-        let config = DismissButtonConfig(location: .left, style: .bold, text: .systemItem(.Done))
+        let config = DismissButtonConfig(location: .left, style: .bold, text: .systemItem(.done))
         XCTAssertEqual(config.location, DismissButtonConfig.Location.left)
-        XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.Done)
-        XCTAssertEqual(config.text.systemItem, UIBarButtonSystemItem.Done)
+        XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.done)
+        XCTAssertEqual(config.text.systemItem, UIBarButtonSystemItem.done)
         XCTAssertNil(config.text.title)
 
-        let action = #selector(tapAction(_:))
+        let action = #selector(tapAction(sender:))
         let item = UIBarButtonItem(config: config, target: self, action: action)
 
         XCTAssertEqual(item.style, config.style.itemStyle)
@@ -57,11 +57,11 @@ final class PresenterKitTests: XCTestCase {
     func test_thatBarButtonItem_initializesWith_dismissConfig_rightPlainCustomText() {
         let config = DismissButtonConfig(location: .right, style: .plain, text: .custom("title"))
         XCTAssertEqual(config.location, DismissButtonConfig.Location.right)
-        XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.Plain)
+        XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.plain)
         XCTAssertEqual(config.text.title, "title")
         XCTAssertNil(config.text.systemItem)
 
-        let action = #selector(tapAction(_:))
+        let action = #selector(tapAction(sender:))
         let item = UIBarButtonItem(config: config, target: self, action: action)
 
         XCTAssertEqual(item.style, config.style.itemStyle)
@@ -83,60 +83,60 @@ final class PresenterKitTests: XCTestCase {
 
     func test_thatViewController_appliesStyle_withPresentation() {
         let controller = UIViewController()
-        let other = controller.withPresentation(.FormSheet)
+        let other = controller.withPresentation(.formSheet)
         XCTAssertEqual(controller, other)
-        XCTAssertEqual(controller.modalPresentationStyle, UIModalPresentationStyle.FormSheet)
-        XCTAssertEqual(other.modalPresentationStyle, UIModalPresentationStyle.FormSheet)
+        XCTAssertEqual(controller.modalPresentationStyle, UIModalPresentationStyle.formSheet)
+        XCTAssertEqual(other.modalPresentationStyle, UIModalPresentationStyle.formSheet)
 
         let controller2 = UIViewController()
-        let other2 = controller2.withPresentation(.PageSheet)
+        let other2 = controller2.withPresentation(.pageSheet)
         XCTAssertEqual(controller2, other2)
-        XCTAssertEqual(controller2.modalPresentationStyle, UIModalPresentationStyle.PageSheet)
-        XCTAssertEqual(other2.modalPresentationStyle, UIModalPresentationStyle.PageSheet)
+        XCTAssertEqual(controller2.modalPresentationStyle, UIModalPresentationStyle.pageSheet)
+        XCTAssertEqual(other2.modalPresentationStyle, UIModalPresentationStyle.pageSheet)
 
         let controller3 = UIViewController()
-        let other3 = controller3.withPresentation(.Custom)
+        let other3 = controller3.withPresentation(.custom)
         XCTAssertEqual(controller3, other3)
-        XCTAssertEqual(controller3.modalPresentationStyle, UIModalPresentationStyle.Custom)
-        XCTAssertEqual(other3.modalPresentationStyle, UIModalPresentationStyle.Custom)
+        XCTAssertEqual(controller3.modalPresentationStyle, UIModalPresentationStyle.custom)
+        XCTAssertEqual(other3.modalPresentationStyle, UIModalPresentationStyle.custom)
     }
 
     func test_thatViewController_appliesStyle_withTransition() {
         let controller = UIViewController()
-        let other = controller.withTransition(.CoverVertical)
+        let other = controller.withTransition(.coverVertical)
         XCTAssertEqual(controller, other)
-        XCTAssertEqual(controller.modalTransitionStyle, UIModalTransitionStyle.CoverVertical)
-        XCTAssertEqual(other.modalTransitionStyle, UIModalTransitionStyle.CoverVertical)
+        XCTAssertEqual(controller.modalTransitionStyle, UIModalTransitionStyle.coverVertical)
+        XCTAssertEqual(other.modalTransitionStyle, UIModalTransitionStyle.coverVertical)
 
         let controller2 = UIViewController()
-        let other2 = controller2.withTransition(.CrossDissolve)
+        let other2 = controller2.withTransition(.crossDissolve)
         XCTAssertEqual(controller2, other2)
-        XCTAssertEqual(controller2.modalTransitionStyle, UIModalTransitionStyle.CrossDissolve)
-        XCTAssertEqual(other2.modalTransitionStyle, UIModalTransitionStyle.CrossDissolve)
+        XCTAssertEqual(controller2.modalTransitionStyle, UIModalTransitionStyle.crossDissolve)
+        XCTAssertEqual(other2.modalTransitionStyle, UIModalTransitionStyle.crossDissolve)
 
         let controller3 = UIViewController()
-        let other3 = controller3.withTransition(.FlipHorizontal)
+        let other3 = controller3.withTransition(.flipHorizontal)
         XCTAssertEqual(controller3, other3)
-        XCTAssertEqual(controller3.modalTransitionStyle, UIModalTransitionStyle.FlipHorizontal)
-        XCTAssertEqual(other3.modalTransitionStyle, UIModalTransitionStyle.FlipHorizontal)
+        XCTAssertEqual(controller3.modalTransitionStyle, UIModalTransitionStyle.flipHorizontal)
+        XCTAssertEqual(other3.modalTransitionStyle, UIModalTransitionStyle.flipHorizontal)
     }
 
     func test_thatViewController_appliesStyles_withStyles() {
         let controller = UIViewController()
         let other = controller.withStyles(navigation: .withNavigation,
-                                          presentation: .OverCurrentContext,
-                                          transition: .PartialCurl) as! UINavigationController
+                                          presentation: .overCurrentContext,
+                                          transition: .partialCurl) as! UINavigationController
         XCTAssertEqual(controller, other.topViewController)
-        XCTAssertEqual(controller.modalPresentationStyle, UIModalPresentationStyle.OverCurrentContext)
-        XCTAssertEqual(controller.modalTransitionStyle, UIModalTransitionStyle.PartialCurl)
+        XCTAssertEqual(controller.modalPresentationStyle, UIModalPresentationStyle.overCurrentContext)
+        XCTAssertEqual(controller.modalTransitionStyle, UIModalTransitionStyle.partialCurl)
 
         let controller2 = UIViewController()
         let other2 = controller2.withStyles(navigation: .none,
-                                            presentation: .None,
-                                            transition: .CoverVertical)
+                                            presentation: .none,
+                                            transition: .coverVertical)
         XCTAssertEqual(controller2, other2)
-        XCTAssertEqual(controller2.modalPresentationStyle, UIModalPresentationStyle.None)
-        XCTAssertEqual(controller2.modalTransitionStyle, UIModalTransitionStyle.CoverVertical)
+        XCTAssertEqual(controller2.modalPresentationStyle, UIModalPresentationStyle.none)
+        XCTAssertEqual(controller2.modalTransitionStyle, UIModalTransitionStyle.coverVertical)
     }
 
     func test_thatViewController_presentsViewController_withPresentationType_push() {
@@ -192,6 +192,6 @@ final class PresenterKitTests: XCTestCase {
     
     
     // MARK: Helpers
-    
+
     func tapAction(sender: UIBarButtonItem) { }
 }

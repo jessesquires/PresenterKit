@@ -42,7 +42,7 @@ public struct DismissButtonConfig {
 
      - returns: A new configuration instance.
      */
-    public init(location: Location = .left, style: Style = .plain, text: Text = .systemItem(.Cancel)) {
+    public init(location: Location = .left, style: Style = .plain, text: Text = .systemItem(.cancel)) {
         self.location = location
         self.style = style
         self.text = text
@@ -102,9 +102,9 @@ internal extension DismissButtonConfig.Style {
     var itemStyle: UIBarButtonItemStyle {
         switch self {
         case .bold:
-            return .Done
+            return .done
         case .plain:
-            return .Plain
+            return .plain
         }
     }
 }

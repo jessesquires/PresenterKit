@@ -65,7 +65,7 @@ public struct PopoverConfig {
      - returns: A new `PopoverConfig` object.
      */
     public init(source: Source,
-                arrowDirection: UIPopoverArrowDirection = .Any,
+                arrowDirection: UIPopoverArrowDirection = .any,
                 delegate: UIPopoverPresentationControllerDelegate? = nil) {
         self.source = source
         self.arrowDirection = arrowDirection

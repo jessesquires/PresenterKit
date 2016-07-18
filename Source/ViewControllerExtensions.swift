@@ -28,6 +28,7 @@ public extension UIViewController {
 
      - returns: The navigation controller that contains the receiver as the `rootViewController`.
      */
+    @discardableResult
     public func withNavigation() -> UINavigationController {
         return UINavigationController(rootViewController: self)
     }
@@ -39,7 +40,8 @@ public extension UIViewController {
 
      - returns: The view controller after applying the style.
      */
-    public func withPresentation(presentation: UIModalPresentationStyle) -> Self {
+    @discardableResult
+    public func withPresentation(_ presentation: UIModalPresentationStyle) -> Self {
         modalPresentationStyle = presentation
         return self
     }
@@ -51,7 +53,8 @@ public extension UIViewController {
 
      - returns: The view controller after applying the style.
      */
-    public func withTransition(transition: UIModalTransitionStyle) -> Self {
+    @discardableResult
+    public func withTransition(_ transition: UIModalTransitionStyle) -> Self {
         modalTransitionStyle = transition
         return self
     }
@@ -66,7 +69,8 @@ public extension UIViewController {
      - note: If `navigationStyle` is `.withNavigation`, then calling this method is equivalent to calling `withNavigation()`.
      If `navigationStyle` is `.none`, then calling this method does nothing.
      */
-    public func withNavigationStyle(navigationStyle: NavigationStyle) -> UIViewController {
+    @discardableResult
+    public func withNavigationStyle(_ navigationStyle: NavigationStyle) -> UIViewController {
         switch navigationStyle {
         case .none:
             return self
@@ -84,9 +88,10 @@ public extension UIViewController {
 
      - returns: The view controller after applying the style.
      */
-    public func withStyles(navigation navigation: NavigationStyle,
-                                      presentation: UIModalPresentationStyle,
-                                      transition: UIModalTransitionStyle) -> UIViewController {
+    @discardableResult
+    public func withStyles(navigation: NavigationStyle,
+                           presentation: UIModalPresentationStyle,
+                           transition: UIModalTransitionStyle) -> UIViewController {
         return withPresentation(presentation).withTransition(transition).withNavigationStyle(navigation)
     }
 }
@@ -102,14 +107,14 @@ public extension UIViewController {
      - parameter type:           The presentation type to use.
      - parameter animated:       Pass `true` to animate the presentation, `false` otherwise.
      */
-    public func presentViewController(controller: UIViewController, type: PresentationType, animated: Bool = true) {
+    public func presentViewController(_ controller: UIViewController, type: PresentationType, animated: Bool = true) {
         switch type {
         case .modal(let n, let p, let t):
             let vc = controller.withStyles(navigation: n, presentation: p, transition: t)
-            presentViewController(vc, animated: animated, completion: nil)
+            present(vc, animated: animated, completion: nil)
 
         case .popover(let c):
-            controller.withStyles(navigation: .none, presentation: .Popover, transition: .CrossDissolve)
+            controller.withStyles(navigation: .none, presentation: .popover, transition: .crossDissolve)
 
             let popoverController = controller.popoverPresentationController
             popoverController?.delegate = c.delegate
@@ -121,7 +126,7 @@ public extension UIViewController {
                 popoverController?.sourceView = v
                 popoverController?.sourceRect = v.frame
             }
-            presentViewController(controller, animated: animated, completion: nil)
+            present(controller, animated: animated, completion: nil)
 
         case .push:
             if let nav = self as? UINavigationController {
@@ -132,15 +137,15 @@ public extension UIViewController {
             }
 
         case .show:
-            showViewController(controller, sender: self)
+            show(controller, sender: self)
 
         case .showDetail(let navigation):
             showDetailViewController(controller.withNavigationStyle(navigation), sender: self)
 
         case .custom(let delegate):
-            controller.modalPresentationStyle = .Custom
+            controller.modalPresentationStyle = .custom
             controller.transitioningDelegate = delegate
-            presentViewController(controller, animated: animated, completion: nil)
+            present(controller, animated: animated, completion: nil)
         }
     }
 }
@@ -154,12 +159,12 @@ public extension UIViewController {
 
      - parameter animated: Pass `true` to animate the presentation, `false` otherwise.
      */
-    public func dismiss(animated animated: Bool = true) {
+    public func dismiss(animated: Bool = true) {
         if isModallyPresented {
-            dismissViewControllerAnimated(animated, completion: nil)
+            self.dismiss(animated: animated, completion: nil)
         } else {
             assert(navigationController != nil)
-            navigationController?.popViewControllerAnimated(animated)
+            _ = navigationController?.popViewController(animated: animated)
         }
     }
 
@@ -170,7 +175,7 @@ public extension UIViewController {
 
      - note: This method does nothing if the view controller is not presented modally.
      */
-    public func addDismissButtonIfNeeded(config config: DismissButtonConfig = DismissButtonConfig()) {
+    public func addDismissButtonIfNeeded(config: DismissButtonConfig = DismissButtonConfig()) {
         guard needsDismissButton else { return }
         addDismissButton(config: config)
     }
@@ -182,7 +187,7 @@ public extension UIViewController {
 
      - note: The view controller must have a non-nil `navigationItem`.
      */
-    public func addDismissButton(config config: DismissButtonConfig = DismissButtonConfig()) {
+    public func addDismissButton(config: DismissButtonConfig = DismissButtonConfig()) {
         let button = UIBarButtonItem(config: config,
                                      target: self,
                                      action: #selector(UIViewController._didTapDismissButton(_:)))
@@ -195,7 +200,7 @@ public extension UIViewController {
         }
     }
 
-    @objc private func _didTapDismissButton(sender: UIBarButtonItem) {
+    @objc private func _didTapDismissButton(_ sender: UIBarButtonItem) {
         dismiss()
     }
 
