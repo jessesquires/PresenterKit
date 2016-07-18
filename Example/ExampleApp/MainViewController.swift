@@ -22,8 +22,7 @@ import PresenterKit
 
 
 final class MainViewController: UITableViewController,
-                                UIViewControllerTransitioningDelegate,
-                                UIPopoverPresentationControllerDelegate {
+UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBAction func didTapPopoverButton(sender: UIBarButtonItem) {
         let vc = RedViewController()
@@ -74,21 +73,19 @@ final class MainViewController: UITableViewController,
 
     // MARK: UIViewControllerTransitioningDelegate
 
-    func presentationControllerForPresentedViewController(
-        presented: UIViewController,
-        presentingViewController presenting: UIViewController,
-        sourceViewController source: UIViewController) -> UIPresentationController? {
+    func presentationControllerForPresentedViewController(presented: UIViewController,
+                                                          presentingViewController presenting: UIViewController?,
+                                                                                   sourceViewController source: UIViewController) -> UIPresentationController? {
 
-            return HalfModalPresentationController(
-                presentedViewController: presented,
-                presentingViewController: presenting)
+        return HalfModalPresentationController(presentedViewController: presented,
+                                               presentingViewController: presenting)
     }
-
-
+    
+    
     // MARK: UIPopoverPresentationControllerDelegate
-
+    
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .None
     }
-
+    
 }

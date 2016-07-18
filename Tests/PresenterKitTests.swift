@@ -33,7 +33,7 @@ final class PresenterKitTests: XCTestCase {
 
         let action = #selector(tapAction(_:))
         let item = UIBarButtonItem(config: config, target: self, action: action)
-        
+
         XCTAssertEqual(item.style, config.style.itemStyle)
         XCTAssertTrue(item.target === self)
         XCTAssertEqual(item.action, action)
@@ -132,8 +132,8 @@ final class PresenterKitTests: XCTestCase {
 
         let controller2 = UIViewController()
         let other2 = controller2.withStyles(navigation: .none,
-                                          presentation: .None,
-                                          transition: .CoverVertical)
+                                            presentation: .None,
+                                            transition: .CoverVertical)
         XCTAssertEqual(controller2, other2)
         XCTAssertEqual(controller2.modalPresentationStyle, UIModalPresentationStyle.None)
         XCTAssertEqual(controller2.modalTransitionStyle, UIModalTransitionStyle.CoverVertical)
@@ -189,9 +189,9 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
         XCTAssertNil(secondController.navigationItem.rightBarButtonItem)
     }
-
-
+    
+    
     // MARK: Helpers
-
+    
     func tapAction(sender: UIBarButtonItem) { }
 }
