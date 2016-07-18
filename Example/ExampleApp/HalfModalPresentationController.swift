@@ -22,21 +22,21 @@ final class HalfModalPresentationController: UIPresentationController {
 
     lazy private var dimmingView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        view.backgroundColor = UIColor.black().withAlphaComponent(0.5)
         view.alpha = 0.0
         let tap = UITapGestureRecognizer(target: self, action: #selector(HalfModalPresentationController.dimmingViewTapped(_:)))
         view.addGestureRecognizer(tap)
         return view
     }()
 
-    override init(presentedViewController: UIViewController, presentingViewController: UIViewController?) {
-        super.init(presentedViewController: presentedViewController, presentingViewController: presentingViewController)
+    override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
 
     override func presentationTransitionWillBegin() {
         dimmingView.frame = containerView!.bounds
         dimmingView.alpha = 0.0
-        containerView?.insertSubview(dimmingView, atIndex: 0)
+        containerView?.insertSubview(dimmingView, at: 0)
 
         let animations = {
             self.dimmingView.alpha = 1.0
@@ -44,7 +44,7 @@ final class HalfModalPresentationController: UIPresentationController {
 
         if let transitionCoordinator = presentingViewController.transitionCoordinator() {
 
-            transitionCoordinator.animateAlongsideTransition({ (context) in
+            transitionCoordinator.animate(alongsideTransition: { (context) in
                 animations()
                 },
                 completion: nil)
@@ -59,7 +59,7 @@ final class HalfModalPresentationController: UIPresentationController {
         }
 
         if let transitionCoordinator = presentingViewController.transitionCoordinator() {
-            transitionCoordinator.animateAlongsideTransition({ (context) in
+            transitionCoordinator.animate(alongsideTransition: { (context) in
                 animations()
                 }, completion: nil)
         } else {
@@ -68,14 +68,14 @@ final class HalfModalPresentationController: UIPresentationController {
     }
 
     override func adaptivePresentationStyle() -> UIModalPresentationStyle {
-        return .None
+        return .none
     }
 
     override func shouldPresentInFullscreen() -> Bool {
         return true
     }
 
-    override func sizeForChildContentContainer(container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
+    override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
         return CGSize(
             width: parentSize.width,
             height: round(parentSize.height / 2.0))
@@ -87,7 +87,7 @@ final class HalfModalPresentationController: UIPresentationController {
     }
 
     override func frameOfPresentedViewInContainerView() -> CGRect {
-        let size = sizeForChildContentContainer(presentedViewController, withParentContainerSize: containerView!.bounds.size)
+        let size = self.size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView!.bounds.size)
 
         return CGRect(
             origin: CGPoint(x: 0.0, y: containerView!.frame.maxY / 2),
@@ -96,7 +96,7 @@ final class HalfModalPresentationController: UIPresentationController {
 
     // MARK: Private
 
-    @objc private func dimmingViewTapped(tap: UITapGestureRecognizer) {
-        presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+    @objc private func dimmingViewTapped(_ tap: UITapGestureRecognizer) {
+        presentingViewController.dismiss(animated: true, completion: nil)
     }
 }
