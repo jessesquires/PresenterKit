@@ -93,7 +93,7 @@ public extension UIBarButtonItem {
         } else {
             self.init(barButtonSystemItem: config.text.systemItem!, target: target, action: action)
         }
-        self.style = config.style.itemStyle
+        style = config.style.itemStyle
     }
 }
 

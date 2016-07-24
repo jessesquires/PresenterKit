@@ -142,7 +142,7 @@ final class PresenterKitTests: XCTestCase {
     func test_thatViewController_presentsViewController_withPresentationType_push() {
         let firstController = UINavigationController()
         let secondController = UIViewController()
-        firstController.presentViewController(secondController, type: .push, animated: false)
+        firstController.present(secondController, type: .push, animated: false)
 
         XCTAssertNotNil(secondController.navigationController)
         XCTAssertNotNil(secondController.navigationItem)
@@ -162,7 +162,7 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertEqual(navController.topViewController, firstController)
 
         let secondController = UIViewController()
-        firstController.presentViewController(secondController, type: .push, animated: false)
+        firstController.present(secondController, type: .push, animated: false)
 
         XCTAssertNotNil(secondController.navigationController)
         XCTAssertNotNil(secondController.navigationItem)
@@ -179,7 +179,7 @@ final class PresenterKitTests: XCTestCase {
     func test_thatViewController_presentsViewController_withPresentationType_show() {
         let firstController = UINavigationController()
         let secondController = UIViewController()
-        firstController.presentViewController(secondController, type: .show, animated: false)
+        firstController.present(secondController, type: .show, animated: false)
 
         XCTAssertNotNil(secondController.navigationController)
         XCTAssertNotNil(secondController.navigationItem)

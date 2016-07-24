@@ -46,9 +46,9 @@ final class HalfModalPresentationController: UIPresentationController {
 
             transitionCoordinator.animate(alongsideTransition: { (context) in
                 animations()
-                },
-                completion: nil)
-        } else {
+                }, completion: nil)
+        }
+        else {
             animations()
         }
     }
@@ -62,7 +62,8 @@ final class HalfModalPresentationController: UIPresentationController {
             transitionCoordinator.animate(alongsideTransition: { (context) in
                 animations()
                 }, completion: nil)
-        } else {
+        }
+        else {
             animations()
         }
     }
@@ -76,9 +77,8 @@ final class HalfModalPresentationController: UIPresentationController {
     }
 
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
-        return CGSize(
-            width: parentSize.width,
-            height: round(parentSize.height / 2.0))
+        return CGSize(width: parentSize.width,
+                      height: round(parentSize.height / 2.0))
     }
 
     override func containerViewWillLayoutSubviews() {
@@ -89,9 +89,8 @@ final class HalfModalPresentationController: UIPresentationController {
     override func frameOfPresentedViewInContainerView() -> CGRect {
         let size = self.size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView!.bounds.size)
 
-        return CGRect(
-            origin: CGPoint(x: 0.0, y: containerView!.frame.maxY / 2),
-            size: size)
+        return CGRect(origin: CGPoint(x: 0.0, y: containerView!.frame.maxY / 2),
+                      size: size)
     }
 
     // MARK: Private
