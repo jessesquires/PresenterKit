@@ -95,4 +95,7 @@ public enum PresentationType {
 
     /// A custom presentation style that uses the specified delegate.
     case custom(UIViewControllerTransitioningDelegate)
+
+    /// No presentation type specified, use UIKit defaults.
+    case none
 }

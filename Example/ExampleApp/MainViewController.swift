@@ -27,7 +27,7 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
     @IBAction func didTapPopoverButton(_ sender: UIBarButtonItem) {
         let vc = RedViewController()
         let config = PopoverConfig(source: .barButtonItem(sender), delegate: self)
-        presentViewController(vc, type: .popover(config))
+        present(vc, type: .popover(config))
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -37,33 +37,33 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
 
         let animated = true
 
-        switch (indexPath as NSIndexPath).section {
+        switch indexPath.section {
         case 0:
             let vc = RedViewController()
-            presentViewController(vc, type: .push, animated: animated)
+            present(vc, type: .push, animated: animated)
 
         case 1:
             let vc = RedViewController()
-            presentViewController(vc, type: .modal(.withNavigation, .formSheet, .coverVertical), animated: animated)
+            present(vc, type: .modal(.withNavigation, .formSheet, .coverVertical), animated: animated)
 
         case 2:
             let vc = RedViewController()
-            presentViewController(vc, type: .show, animated: animated)
+            present(vc, type: .show, animated: animated)
 
         case 3:
             let vc = RedViewController()
-            presentViewController(vc, type: .showDetail(.withNavigation), animated: animated)
+            present(vc, type: .showDetail(.withNavigation), animated: animated)
 
         case 4:
             let cell = tableView.cellForRow(at: indexPath)!.contentView
             let config = PopoverConfig(source: .view(cell), delegate: self)
             let vc = RedViewController()
-            presentViewController(vc, type: .popover(config), animated: animated)
+            present(vc, type: .popover(config), animated: animated)
 
         case 5:
             let vc = RedViewController()
             vc.modalTransitionStyle = .coverVertical
-            presentViewController(vc, type: .custom(self), animated: animated)
+            present(vc, type: .custom(self), animated: animated)
 
         default:
             return

@@ -107,7 +107,7 @@ public extension UIViewController {
      - parameter type:           The presentation type to use.
      - parameter animated:       Pass `true` to animate the presentation, `false` otherwise.
      */
-    public func presentViewController(_ controller: UIViewController, type: PresentationType, animated: Bool = true) {
+    public func present(_ controller: UIViewController, type: PresentationType, animated: Bool = true) {
         switch type {
         case .modal(let n, let p, let t):
             let vc = controller.withStyles(navigation: n, presentation: p, transition: t)
@@ -146,6 +146,9 @@ public extension UIViewController {
             controller.modalPresentationStyle = .custom
             controller.transitioningDelegate = delegate
             present(controller, animated: animated, completion: nil)
+
+        case .none:
+            present(controller, animated: animated, completion: nil)
         }
     }
 }
@@ -161,7 +164,7 @@ public extension UIViewController {
      */
     public func dismiss(animated: Bool = true) {
         if isModallyPresented {
-            self.dismiss(animated: animated, completion: nil)
+            dismiss(animated: animated, completion: nil)
         } else {
             assert(navigationController != nil)
             _ = navigationController?.popViewController(animated: animated)
@@ -190,7 +193,7 @@ public extension UIViewController {
     public func addDismissButton(config: DismissButtonConfig = DismissButtonConfig()) {
         let button = UIBarButtonItem(config: config,
                                      target: self,
-                                     action: #selector(UIViewController._didTapDismissButton(_:)))
+                                     action: #selector(_didTapDismissButton(_:)))
 
         switch config.location {
         case .left:
