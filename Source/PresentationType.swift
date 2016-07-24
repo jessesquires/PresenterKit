@@ -96,6 +96,6 @@ public enum PresentationType {
     /// A custom presentation style that uses the specified delegate.
     case custom(UIViewControllerTransitioningDelegate)
 
-    /// No presentation type specified, use UIKit defaults.
+    /// No presentation type specified, use UIKit defaults. Use this when presenting system controllers, like `UIAlertController`.
     case none
 }
