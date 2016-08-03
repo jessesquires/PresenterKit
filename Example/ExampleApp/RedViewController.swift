@@ -53,7 +53,7 @@ final class RedViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.textLabel?.text = "cell \((indexPath as NSIndexPath).row)"
-        cell.textLabel?.textColor = .red()
+        cell.textLabel?.textColor = .red
         return cell
     }
 
