@@ -64,5 +64,4 @@ final class RedViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return "Footer title"
     }
-    
 }

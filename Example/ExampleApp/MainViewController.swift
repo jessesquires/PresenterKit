@@ -22,7 +22,7 @@ import PresenterKit
 
 
 final class MainViewController: UITableViewController,
-    UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
+UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBAction func didTapPopoverButton(_ sender: UIBarButtonItem) {
         let vc = RedViewController()
