@@ -129,6 +129,8 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertEqual(controller, other.topViewController)
         XCTAssertEqual(controller.modalPresentationStyle, UIModalPresentationStyle.overCurrentContext)
         XCTAssertEqual(controller.modalTransitionStyle, UIModalTransitionStyle.partialCurl)
+        XCTAssertEqual(other.modalPresentationStyle, UIModalPresentationStyle.overCurrentContext)
+        XCTAssertEqual(other.modalTransitionStyle, UIModalTransitionStyle.partialCurl)
 
         let controller2 = UIViewController()
         let other2 = controller2.withStyles(navigation: .none,
@@ -137,6 +139,16 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertEqual(controller2, other2)
         XCTAssertEqual(controller2.modalPresentationStyle, UIModalPresentationStyle.none)
         XCTAssertEqual(controller2.modalTransitionStyle, UIModalTransitionStyle.coverVertical)
+
+        let controller3 = UIViewController()
+        let other3 = controller3.withStyles(navigation: .withNavigation,
+                                            presentation: .formSheet,
+                                            transition: .coverVertical) as! UINavigationController
+        XCTAssertEqual(controller3, other3.topViewController)
+        XCTAssertEqual(controller3.modalPresentationStyle, UIModalPresentationStyle.formSheet)
+        XCTAssertEqual(controller3.modalTransitionStyle, UIModalTransitionStyle.coverVertical)
+        XCTAssertEqual(other3.modalPresentationStyle, UIModalPresentationStyle.formSheet)
+        XCTAssertEqual(other3.modalTransitionStyle, UIModalTransitionStyle.coverVertical)
     }
 
     func test_thatViewController_presentsViewController_withPresentationType_push() {

@@ -92,7 +92,9 @@ public extension UIViewController {
     public func withStyles(navigation: NavigationStyle,
                            presentation: UIModalPresentationStyle,
                            transition: UIModalTransitionStyle) -> UIViewController {
-        return withPresentation(presentation).withTransition(transition).withNavigationStyle(navigation)
+        // apple styles to self, then to navigation controller
+        withPresentation(presentation).withTransition(transition)
+        return withNavigationStyle(navigation).withPresentation(presentation).withTransition(transition)
     }
 }
 
