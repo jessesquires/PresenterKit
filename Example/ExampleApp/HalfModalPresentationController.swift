@@ -29,7 +29,7 @@ final class HalfModalPresentationController: UIPresentationController {
         return view
     }()
 
-    override init(presentedViewController: UIViewController, presentingViewController: UIViewController) {
+    override init(presentedViewController: UIViewController, presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presentingViewController: presentingViewController)
     }
 
