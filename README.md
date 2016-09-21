@@ -10,7 +10,7 @@ Swifty wrappers around view controller presentation, dismissal, and `UIPresentat
 ## Requirements
 
 * Swift 2.3
-* Xcode 8.0
+* Xcode 8
 * iOS 8.0+
 
 ## Installation
