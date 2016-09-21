@@ -4,6 +4,11 @@ The changelog for `PresenterKit`. Also see the [releases](https://github.com/jes
 
 --------------------------------------
 
+2.0.0
+-----
+
+
+
 1.0.0
 -----
 
