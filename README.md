@@ -9,9 +9,9 @@ Swifty wrappers around view controller presentation, dismissal, and `UIPresentat
 
 ## Requirements
 
-* Xcode 7.3+
+* Swift 2.3
+* Xcode 8.0
 * iOS 8.0+
-* Swift 2.2+
 
 ## Installation
 
@@ -51,7 +51,7 @@ import PresenterKit
 
 ```swift
 let vc = MyViewController()
-presentViewController(vc, type: .Modal(.WithNavigation, .FormSheet, .CoverVertical))
+presentViewController(vc, type: .modal(.withNavigation, .FormSheet, .CoverVertical))
 ```
 
 #### Pushing a view controller
