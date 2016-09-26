@@ -219,11 +219,11 @@ public extension UIViewController {
     }
 
     private var hasPresentingController: Bool {
-        return self.presentingViewController != nil
+        return presentingViewController != nil
     }
 
     private var hasNavigationController: Bool {
-        return self.navigationController != nil
+        return navigationController != nil
     }
     
     private var isNavigationRootViewController: Bool {
