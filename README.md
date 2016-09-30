@@ -9,7 +9,7 @@ Swifty wrappers around view controller presentation, dismissal, and `UIPresentat
 
 ## Requirements
 
-* Swift 2.3
+* Swift 3.0
 * Xcode 8
 * iOS 8.0+
 
@@ -51,14 +51,14 @@ import PresenterKit
 
 ```swift
 let vc = MyViewController()
-presentViewController(vc, type: .modal(.withNavigation, .FormSheet, .CoverVertical))
+present(vc, type: .modal(.withNavigation, .FormSheet, .CoverVertical))
 ```
 
 #### Pushing a view controller
 
 ```swift
 let vc = MyViewController()
-presentViewController(vc, type: .Push)
+present(vc, type: .Push)
 ```
 
 #### Presenting as a popover
@@ -66,13 +66,13 @@ presentViewController(vc, type: .Push)
 ```swift
 let vc = MyViewController()
 let config = PopoverConfig(source: .BarButtonItem(item), delegate: self)
-presentViewController(vc, type: .Popover(config))
+present(vc, type: .Popover(config))
 ```
 
 #### Dismissing a view controller
 
 ```swift
-vc.dismiss()
+dismiss()
 ```
 
 ## Unit tests
