@@ -35,7 +35,19 @@ github "jessesquires/PresenterKit"
 
 ## Documentation
 
-Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com). More information on the [`gh-pages`](https://github.com/jessesquires/PresenterKit/tree/gh-pages) branch.
+Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
+
+#### Generate
+
+````bash
+$ ./build_docs.sh
+````
+
+#### Preview
+
+````bash
+$ open index.html -a Safari
+````
 
 ## Getting Started
 
