@@ -65,7 +65,7 @@ public struct PopoverConfig {
      - returns: A new `PopoverConfig` object.
      */
     public init(source: Source,
-                arrowDirection: UIPopoverArrowDirection = .Any,
+                arrowDirection: UIPopoverArrowDirection = .any,
                 delegate: UIPopoverPresentationControllerDelegate? = nil) {
         self.source = source
         self.arrowDirection = arrowDirection
@@ -95,4 +95,7 @@ public enum PresentationType {
 
     /// A custom presentation style that uses the specified delegate.
     case custom(UIViewControllerTransitioningDelegate)
+
+    /// No presentation type specified, use UIKit defaults. Use this when presenting system controllers, like `UIAlertController`.
+    case none
 }

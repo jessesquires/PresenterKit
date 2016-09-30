@@ -24,15 +24,15 @@ import PresenterKit
 final class MainViewController: UITableViewController,
 UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
 
-    @IBAction func didTapPopoverButton(sender: UIBarButtonItem) {
+    @IBAction func didTapPopoverButton(_ sender: UIBarButtonItem) {
         let vc = RedViewController()
         let config = PopoverConfig(source: .barButtonItem(sender), delegate: self)
-        presentViewController(vc, type: .popover(config))
+        present(vc, type: .popover(config))
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         defer {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
 
         let animated = true
@@ -40,52 +40,47 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
         switch indexPath.section {
         case 0:
             let vc = RedViewController()
-            presentViewController(vc, type: .push, animated: animated)
+            present(vc, type: .push, animated: animated)
 
         case 1:
             let vc = RedViewController()
-            presentViewController(vc, type: .modal(.withNavigation, .FormSheet, .CoverVertical), animated: animated)
+            present(vc, type: .modal(.withNavigation, .formSheet, .coverVertical), animated: animated)
 
         case 2:
             let vc = RedViewController()
-            presentViewController(vc, type: .show, animated: animated)
+            present(vc, type: .show, animated: animated)
 
         case 3:
             let vc = RedViewController()
-            presentViewController(vc, type: .showDetail(.withNavigation), animated: animated)
+            present(vc, type: .showDetail(.withNavigation), animated: animated)
 
         case 4:
-            let cell = tableView.cellForRowAtIndexPath(indexPath)!.contentView
+            let cell = tableView.cellForRow(at: indexPath)!.contentView
             let config = PopoverConfig(source: .view(cell), delegate: self)
             let vc = RedViewController()
-            presentViewController(vc, type: .popover(config), animated: animated)
+            present(vc, type: .popover(config), animated: animated)
 
         case 5:
             let vc = RedViewController()
-            vc.modalTransitionStyle = .CoverVertical
-            presentViewController(vc, type: .custom(self), animated: animated)
+            vc.modalTransitionStyle = .coverVertical
+            present(vc, type: .custom(self), animated: animated)
 
         default:
             return
         }
     }
 
-
     // MARK: UIViewControllerTransitioningDelegate
 
-    func presentationControllerForPresentedViewController(presented: UIViewController,
-                                                          presentingViewController presenting: UIViewController?,
-                                                                                   sourceViewController source: UIViewController) -> UIPresentationController? {
+    func presentationController(forPresented presented: UIViewController,
+                                presenting: UIViewController?,
+                                source: UIViewController) -> UIPresentationController? {
+        return HalfModalPresentationController(presentedViewController: presented, presenting: presenting)
+    }
 
-        return HalfModalPresentationController(presentedViewController: presented,
-                                               presentingViewController: presenting)
-    }
-    
-    
     // MARK: UIPopoverPresentationControllerDelegate
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
-    
 }
