@@ -98,7 +98,6 @@ public extension UIViewController {
     }
 }
 
-
 // MARK: - Presentation
 public extension UIViewController {
 
@@ -108,12 +107,13 @@ public extension UIViewController {
      - parameter viewController: The view controller to display over the current view controller.
      - parameter type:           The presentation type to use.
      - parameter animated:       Pass `true` to animate the presentation, `false` otherwise.
+     - parameter completion:     Completion block to be called.
      */
-    public func present(_ controller: UIViewController, type: PresentationType, animated: Bool = true) {
+    public func present(_ controller: UIViewController, type: PresentationType, animated: Bool = true, completion: ((Void) -> Void)? = nil) {
         switch type {
         case .modal(let n, let p, let t):
             let vc = controller.withStyles(navigation: n, presentation: p, transition: t)
-            present(vc, animated: animated, completion: nil)
+            present(vc, animated: animated, completion: completion)
 
         case .popover(let c):
             controller.withStyles(navigation: .none, presentation: .popover, transition: .crossDissolve)
@@ -128,14 +128,14 @@ public extension UIViewController {
                 popoverController?.sourceView = v
                 popoverController?.sourceRect = v.frame
             }
-            present(controller, animated: animated, completion: nil)
+            present(controller, animated: animated, completion: completion)
 
         case .push:
             if let nav = self as? UINavigationController {
-                nav.pushViewController(controller, animated: animated)
+                nav.pushViewController(controller, animated: animated, completion: completion ?? {})
             }
             else {
-                navigationController!.pushViewController(controller, animated: animated)
+                navigationController!.pushViewController(controller, animated: animated, completion: completion ?? {})
             }
 
         case .show:
@@ -147,10 +147,10 @@ public extension UIViewController {
         case .custom(let delegate):
             controller.modalPresentationStyle = .custom
             controller.transitioningDelegate = delegate
-            present(controller, animated: animated, completion: nil)
+            present(controller, animated: animated, completion: completion)
 
         case .none:
-            present(controller, animated: animated, completion: nil)
+            present(controller, animated: animated, completion: completion)
         }
     }
 }
