@@ -154,11 +154,18 @@ final class PresenterKitTests: XCTestCase {
     func test_thatViewController_presentsViewController_withPresentationType_push() {
         let firstController = UINavigationController()
         let secondController = UIViewController()
-        firstController.present(secondController, type: .push, animated: false)
+        
+        let cb_expectation = expectation(description: "completion block called")
+        
+        firstController.present(secondController, type: .push, animated: false) {
+            cb_expectation.fulfill()
+        }
 
         XCTAssertNotNil(secondController.navigationController)
         XCTAssertNotNil(secondController.navigationItem)
         XCTAssertEqual(firstController.topViewController, secondController)
+        
+        waitForExpectations(timeout: 1)
 
         secondController.addDismissButtonIfNeeded()
         XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
@@ -166,19 +173,27 @@ final class PresenterKitTests: XCTestCase {
 
         secondController.dismiss(animated: false)
         XCTAssertEqual(firstController.topViewController, secondController)
+        
     }
 
     func test_thatViewController_presentsViewController_withPresentationType_push_embedded() {
         let firstController = UIViewController()
         let navController = UINavigationController(rootViewController: firstController)
+        
+        let cb_expectation = expectation(description: "completion block called")
+        
         XCTAssertEqual(navController.topViewController, firstController)
 
         let secondController = UIViewController()
-        firstController.present(secondController, type: .push, animated: false)
+        firstController.present(secondController, type: .push, animated: false) {
+            cb_expectation.fulfill()
+        }
 
         XCTAssertNotNil(secondController.navigationController)
         XCTAssertNotNil(secondController.navigationItem)
         XCTAssertEqual(navController.topViewController, secondController)
+        
+        waitForExpectations(timeout: 1)
 
         secondController.addDismissButtonIfNeeded()
         XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
@@ -191,6 +206,7 @@ final class PresenterKitTests: XCTestCase {
     func test_thatViewController_presentsViewController_withPresentationType_show() {
         let firstController = UINavigationController()
         let secondController = UIViewController()
+        
         firstController.present(secondController, type: .show, animated: false)
 
         XCTAssertNotNil(secondController.navigationController)
@@ -201,7 +217,7 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
         XCTAssertNil(secondController.navigationItem.rightBarButtonItem)
     }
-    
+
     
     // MARK: Helpers
 
