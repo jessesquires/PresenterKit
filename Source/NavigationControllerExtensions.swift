@@ -15,8 +15,7 @@ extension UINavigationController {
      completion.
      
      - parameter viewController: View controller to be pushed.
-     - parameter animated: Whether view controller should be pushed animated or
-     not.
+     - parameter animated: Whether view controller should be pushed animated or not.
      - parameter completion: Block to be called on animation completion.
      */
     public func pushViewController(_ viewController: UIViewController,
