@@ -109,7 +109,10 @@ public extension UIViewController {
      - parameter animated:       Pass `true` to animate the presentation, `false` otherwise.
      - parameter completion:     Completion block to be called. Will be ignored in `show` and `showDetail` presentation types.
      */
-    public func present(_ controller: UIViewController, type: PresentationType, animated: Bool = true, completion: ((Void) -> Void)? = nil) {
+    public func present(_ controller: UIViewController,
+                        type: PresentationType,
+                        animated: Bool = true,
+                        completion: ((Void) -> Void)? = nil) {
         switch type {
         case .modal(let n, let p, let t):
             let vc = controller.withStyles(navigation: n, presentation: p, transition: t)

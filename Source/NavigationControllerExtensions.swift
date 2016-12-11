@@ -19,11 +19,9 @@ extension UINavigationController {
      not.
      - parameter completion: Block to be called on animation completion.
      */
-    public func pushViewController(
-        _ viewController: UIViewController,
-        animated: Bool,
-        completion: @escaping (Void) -> Void
-    ) {
+    public func pushViewController(_ viewController: UIViewController,
+                                   animated: Bool,
+                                   completion: @escaping (Void) -> Void) {
         self.pushViewController(viewController, animated: animated)
         
         guard animated, let coordinator = self.transitionCoordinator else {
