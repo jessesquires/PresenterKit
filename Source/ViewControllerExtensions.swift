@@ -107,7 +107,7 @@ public extension UIViewController {
      - parameter viewController: The view controller to display over the current view controller.
      - parameter type:           The presentation type to use.
      - parameter animated:       Pass `true` to animate the presentation, `false` otherwise.
-     - parameter completion:     Completion block to be called.
+     - parameter completion:     Completion block to be called. Will be ignored in `show` and `showDetail` presentation types.
      */
     public func present(_ controller: UIViewController, type: PresentationType, animated: Bool = true, completion: ((Void) -> Void)? = nil) {
         switch type {
