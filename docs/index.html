@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PresenterKit  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="PresenterKit  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">PresenterKit Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/jessesquires/PresenterKit"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">PresenterKit Reference</a>
+        <img id="carat" src="img/carat.png" />
+        PresenterKit  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/NavigationStyle.html">NavigationStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/PresentationType.html">PresentationType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/UIBarButtonItem.html">UIBarButtonItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIViewController.html">UIViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/DismissButtonConfig.html">DismissButtonConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DismissButtonConfig/Location.html">– Location</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DismissButtonConfig/Style.html">– Style</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DismissButtonConfig/Text.html">– Text</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/PopoverConfig.html">PopoverConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/PopoverConfig/Source.html">– Source</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#presenterkit' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='presenterkit'>PresenterKit</h1>
+
+<p><a href="https://travis-ci.org/jessesquires/PresenterKit"><img src="https://travis-ci.org/jessesquires/PresenterKit.svg" alt="Build Status"></a> <a href="https://cocoapods.org/pods/PresenterKit"><img src="https://img.shields.io/cocoapods/v/PresenterKit.svg" alt="Version Status"></a> <a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/cocoapods/l/PresenterKit.svg" alt="license MIT"></a> <a href="https://codecov.io/gh/jessesquires/PresenterKit"><img src="https://codecov.io/gh/jessesquires/PresenterKit/branch/develop/graph/badge.svg" alt="codecov"></a> <a href="http://www.jessesquires.com/PresenterKit"><img src="https://img.shields.io/cocoapods/p/PresenterKit.svg" alt="Platform"></a> <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a></p>
+
+<p><em>Swifty view controller presentation for iOS</em></p>
+<a href='#about' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='about'>About</h2>
+
+<p>Swifty wrappers around view controller presentation, dismissal, and <code>UIPresentationController</code>. See my <a href="http://www.jessesquires.com/swifty-presenters/">blog post</a> and <a href="https://realm.io/news/slug-jesse-squires-swifty-view-controller-presenters/">talk at Realm</a>.</p>
+<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+
+<ul>
+<li>Swift 3.0</li>
+<li>Xcode 8</li>
+<li>iOS 8.0+</li>
+</ul>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
+<a href='#a-href-http-cocoapods-org-cocoapods-a-recommended' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='a-href-http-cocoapods-org-cocoapods-a-recommended'><a href="http://cocoapods.org">CocoaPods</a> (recommended)</h4>
+<pre class="highlight ruby"><code><span class="n">use_frameworks!</span>
+
+<span class="c1"># For latest release in cocoapods</span>
+<span class="n">pod</span> <span class="s1">'PresenterKit'</span>
+
+<span class="c1"># Feeling adventurous? Get the latest on develop</span>
+<span class="n">pod</span> <span class="s1">'PresenterKit'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/jessesquires/PresenterKit.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'develop'</span>
+</code></pre>
+<a href='#a-href-https-github-com-carthage-carthage-carthage-a' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='a-href-https-github-com-carthage-carthage-carthage-a'><a href="https://github.com/Carthage/Carthage">Carthage</a></h4>
+<pre class="highlight shell"><code>github <span class="s2">"jessesquires/PresenterKit"</span>
+</code></pre>
+<a href='#documentation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='documentation'>Documentation</h2>
+
+<p>Read the <a href="http://www.jessesquires.com/PresenterKit">docs</a>. Generated with <a href="https://github.com/realm/jazzy">jazzy</a>. Hosted by <a href="https://pages.github.com">GitHub Pages</a>.</p>
+<a href='#generate' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='generate'>Generate</h4>
+<pre class="highlight shell"><code><span class="gp">$ </span>./build_docs.sh
+</code></pre>
+<a href='#preview' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='preview'>Preview</h4>
+<pre class="highlight shell"><code><span class="gp">$ </span>open index.html -a Safari
+</code></pre>
+<a href='#getting-started' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='getting-started'>Getting Started</h2>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PresenterKit</span>
+</code></pre>
+
+<ul>
+<li>Watch <a href="https://realm.io/news/slug-jesse-squires-swifty-view-controller-presenters/">the talk</a></li>
+<li>Read the <a href="http://www.jessesquires.com/swifty-presenters/">blog post</a></li>
+<li>Run the <a href="https://github.com/jessesquires/PresenterKit/tree/develop/Example">example project</a></li>
+</ul>
+<a href='#presenting-a-view-controller-modally' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='presenting-a-view-controller-modally'>Presenting a view controller modally</h4>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
+<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="nf">modal</span><span class="p">(</span><span class="o">.</span><span class="n">withNavigation</span><span class="p">,</span> <span class="o">.</span><span class="kt">FormSheet</span><span class="p">,</span> <span class="o">.</span><span class="kt">CoverVertical</span><span class="p">))</span>
+</code></pre>
+<a href='#pushing-a-view-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='pushing-a-view-controller'>Pushing a view controller</h4>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
+<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="kt">Push</span><span class="p">)</span>
+</code></pre>
+<a href='#presenting-as-a-popover' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='presenting-as-a-popover'>Presenting as a popover</h4>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">PopoverConfig</span><span class="p">(</span><span class="nv">source</span><span class="p">:</span> <span class="o">.</span><span class="kt">BarButtonItem</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="kt">Popover</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
+</code></pre>
+<a href='#dismissing-a-view-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='dismissing-a-view-controller'>Dismissing a view controller</h4>
+<pre class="highlight swift"><code><span class="nf">dismiss</span><span class="p">()</span>
+</code></pre>
+<a href='#unit-tests' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='unit-tests'>Unit tests</h2>
+
+<p>There&rsquo;s a suite of unit tests for <code>PresenterKit</code>. To run them, open <code>PresenterKit.xcodeproj</code>, select the <code>PresenterKit</code> scheme, then &#x2318;-u.</p>
+<a href='#contribute' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='contribute'>Contribute</h2>
+
+<p>Please follow these <a href="https://github.com/jessesquires/HowToContribute">contribution guidelines</a>.</p>
+<a href='#credits' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='credits'>Credits</h2>
+
+<p>Created and maintained by <a href="https://twitter.com/jesse_squires"><strong>@jesse_squires</strong></a>.</p>
+<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+
+<p><code>PresenterKit</code> is released under an <a href="http://opensource.org/licenses/MIT">MIT License</a>. See <code>LICENSE</code> for details.</p>
+
+<blockquote>
+<p><strong>Copyright &copy; 2016-present Jesse Squires.</strong></p>
+</blockquote>
+
+<p><em>Please provide attribution, it is greatly appreciated.</em></p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2016-12-05)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

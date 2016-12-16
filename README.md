@@ -9,9 +9,9 @@ Swifty wrappers around view controller presentation, dismissal, and `UIPresentat
 
 ## Requirements
 
-* Xcode 7.3+
+* Swift 3.0
+* Xcode 8
 * iOS 8.0+
-* Swift 2.2+
 
 ## Installation
 
@@ -35,7 +35,19 @@ github "jessesquires/PresenterKit"
 
 ## Documentation
 
-Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com). More information on the [`gh-pages`](https://github.com/jessesquires/PresenterKit/tree/gh-pages) branch.
+Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy). Hosted by [GitHub Pages](https://pages.github.com).
+
+#### Generate
+
+````bash
+$ ./build_docs.sh
+````
+
+#### Preview
+
+````bash
+$ open index.html -a Safari
+````
 
 ## Getting Started
 
@@ -51,14 +63,14 @@ import PresenterKit
 
 ```swift
 let vc = MyViewController()
-presentViewController(vc, type: .Modal(.WithNavigation, .FormSheet, .CoverVertical))
+present(vc, type: .modal(.withNavigation, .FormSheet, .CoverVertical))
 ```
 
 #### Pushing a view controller
 
 ```swift
 let vc = MyViewController()
-presentViewController(vc, type: .Push)
+present(vc, type: .Push)
 ```
 
 #### Presenting as a popover
@@ -66,13 +78,13 @@ presentViewController(vc, type: .Push)
 ```swift
 let vc = MyViewController()
 let config = PopoverConfig(source: .BarButtonItem(item), delegate: self)
-presentViewController(vc, type: .Popover(config))
+present(vc, type: .Popover(config))
 ```
 
 #### Dismissing a view controller
 
 ```swift
-vc.dismiss()
+dismiss()
 ```
 
 ## Unit tests
