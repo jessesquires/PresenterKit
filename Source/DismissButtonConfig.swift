@@ -30,22 +30,22 @@ public struct DismissButtonConfig {
     /// The style for the bar button.
     public let style: Style
 
-    /// The text for the bar button.
-    public let text: Text
+    /// The itemType for the bar button.
+    public let itemType: ItemType
 
     /**
      Initializes a new configuration instance.
 
      - parameter location: The location for the bar button.
      - parameter style:    The style for the bar button.
-     - parameter text:     The text for the bar button.
+     - parameter itemType: The itemType for the bar button.
 
      - returns: A new configuration instance.
      */
-    public init(location: Location = .left, style: Style = .plain, text: Text = .systemItem(.cancel)) {
+    public init(location: Location = .left, style: Style = .plain, itemType: ItemType = .systemItem(.cancel)) {
         self.location = location
         self.style = style
-        self.text = text
+        self.itemType = itemType
     }
 
     /// Specifies a bar button's location in a navigation bar.
@@ -66,13 +66,16 @@ public struct DismissButtonConfig {
         case plain
     }
 
-    /// Specifies the text for the bar button.
-    public enum Text {
+    /// Specifies the itemType for the bar button.
+    public enum ItemType {
         /// Specifies a `UIBarButtonSystemItem`.
         case systemItem(UIBarButtonSystemItem)
 
         /// Specifies custom text for the bar button.
         case custom(String)
+        
+        /// Specifies custom image for the bar button.
+        case image(UIImage)
     }
 }
 
@@ -88,10 +91,14 @@ public extension UIBarButtonItem {
      - returns: A new bar button item instance.
      */
     public convenience init(config: DismissButtonConfig, target: AnyObject?, action: Selector) {
-        if let title = config.text.title {
+        
+        switch config.itemType {
+        case .custom(let title):
             self.init(title: title, style: config.style.itemStyle, target: target, action: action)
-        } else {
-            self.init(barButtonSystemItem: config.text.systemItem!, target: target, action: action)
+        case .image(let image):
+            self.init(image: image, style: config.style.itemStyle, target: target, action: action)
+        case .systemItem(let systemItem):
+            self.init(barButtonSystemItem: systemItem, target: target, action: action)
         }
         style = config.style.itemStyle
     }
@@ -110,11 +117,20 @@ internal extension DismissButtonConfig.Style {
 }
 
 
-internal extension DismissButtonConfig.Text {
+internal extension DismissButtonConfig.ItemType {
     var systemItem: UIBarButtonSystemItem? {
         switch self {
         case .systemItem(let item):
             return item
+        default:
+            return nil
+        }
+    }
+    
+    var image: UIImage? {
+        switch self {
+        case .image(let image):
+            return image
         default:
             return nil
         }
