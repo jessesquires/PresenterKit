@@ -25,8 +25,9 @@ final class RedViewController: UITableViewController {
 
     let cellId = "cell"
     var dismissConfig: DismissButtonConfig?
-
-    init() {
+    
+    init(dismissConfig: DismissButtonConfig? = nil) {
+        self.dismissConfig = dismissConfig
         super.init(style: .grouped)
     }
 
