@@ -66,7 +66,7 @@ public struct DismissButtonConfig {
         case plain
     }
 
-    /// Specifies the Content for the bar button.
+    /// Specifies the content (title or image) for the bar button.
     public enum Content {
         /// Specifies a `UIBarButtonSystemItem`.
         case systemItem(UIBarButtonSystemItem)
