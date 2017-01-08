@@ -4,6 +4,19 @@ The changelog for `PresenterKit`. Also see the [releases](https://github.com/jes
 
 --------------------------------------
 
+4.0.0
+-----
+
+This release closes the [4.0.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/4?closed=1).
+
+### Breaking changes
+
+- `public struct DismissButtonConfig` was changed to accomodate custom images in bar button items. ([#24](https://github.com/jessesquires/PresenterKit/pull/24), [#22](https://github.com/jessesquires/PresenterKit/issues/22), [@psartzetakis](https://github.com/psartzetakis))
+    - `DismissButtonConfig.text` was renamed to `DismissButtonConfig.content`
+    - `public enum DismissButtonConfig.Text` was renamed to `public enum DismissButtonConfig.Conent` and it now has 3 cases: `.systemItem`, `.text`, `.image`
+    - `DismissButtonConfig.init(location: style: text:)` was renamed to `DismissButtonConfig.init(location: style: content:)`
+
+
 3.0.0
 -----
 
@@ -21,7 +34,7 @@ This release closes the [3.0.0 milestone](https://github.com/jessesquires/Presen
 
 ### Bug fixes
 
-- Fixed bug in `withStyles()` where modal presentation/transition styles might not be applied correctly (#24).
+- Fixed bug in `withStyles()` where modal presentation/transition styles might not be applied correctly ([#14](https://github.com/jessesquires/PresenterKit/issues/14)).
 
 2.0.0
 -----
