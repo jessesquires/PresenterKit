@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Extensions  Reference</title>
+    <title>Getting Started  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,7 +10,7 @@
     
   </head>
   <body>
-    <a title="Extensions  Reference"></a>
+    <a title="Getting Started  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">PresenterKit Docs</a> (100% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="index.html">PresenterKit Reference</a>
         <img id="carat" src="img/carat.png" />
-        Extensions  Reference
+        Getting Started  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -85,66 +85,35 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Extensions</h1>
-            <p>The following extensions are available globally.</p>
+            
+            <a href='#getting-started' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='getting-started'>Getting Started</h1>
 
-          </section>
-          <section class="section task-group-section">
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)UIBarButtonItem"></a>
-                    <a name="//apple_ref/swift/Extension/UIBarButtonItem" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)UIBarButtonItem">UIBarButtonItem</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
+<p>This guide provides a brief overview for how to get started using <code>PresenterKit</code>.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PresenterKit</span>
+</code></pre>
 
-                        <a href="Extensions/UIBarButtonItem.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Styles"></a>
-                <a name="//apple_ref/swift/Section/Styles" class="dashAnchor"></a>
-                <a href="#/Styles">
-                  <h3 class="section-name">Styles</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)UIViewController"></a>
-                    <a name="//apple_ref/swift/Extension/UIViewController" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)UIViewController">UIViewController</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
+<ul>
+<li>Watch <a href="https://realm.io/news/slug-jesse-squires-swifty-view-controller-presenters/">the talk</a></li>
+<li>Read the <a href="http://www.jessesquires.com/swifty-presenters/">blog post</a></li>
+<li>Run the <a href="https://github.com/jessesquires/PresenterKit/tree/develop/Example">example project</a></li>
+</ul>
+<a href='#presenting-a-view-controller-modally' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='presenting-a-view-controller-modally'>Presenting a view controller modally</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
+<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="nf">modal</span><span class="p">(</span><span class="o">.</span><span class="n">withNavigation</span><span class="p">,</span> <span class="o">.</span><span class="kt">FormSheet</span><span class="p">,</span> <span class="o">.</span><span class="kt">CoverVertical</span><span class="p">))</span>
+</code></pre>
+<a href='#pushing-a-view-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='pushing-a-view-controller'>Pushing a view controller</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
+<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="kt">Push</span><span class="p">)</span>
+</code></pre>
+<a href='#presenting-as-a-popover' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='presenting-as-a-popover'>Presenting as a popover</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">PopoverConfig</span><span class="p">(</span><span class="nv">source</span><span class="p">:</span> <span class="o">.</span><span class="kt">BarButtonItem</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="kt">Popover</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
+</code></pre>
+<a href='#dismissing-a-view-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='dismissing-a-view-controller'>Dismissing a view controller</h2>
+<pre class="highlight swift"><code><span class="nf">dismiss</span><span class="p">()</span>
+</code></pre>
 
-                        <a href="Extensions/UIViewController.html" class="slightly-smaller">See more</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
           </section>
         </section>
         <section id="footer">

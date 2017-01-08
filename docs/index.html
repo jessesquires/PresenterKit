@@ -28,6 +28,14 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
+            <a href="Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="getting-started.html">Getting Started</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="Enums.html">Enums</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -85,7 +93,7 @@
 <p><em>Swifty view controller presentation for iOS</em></p>
 <a href='#about' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='about'>About</h2>
 
-<p>Swifty wrappers around view controller presentation, dismissal, and <code>UIPresentationController</code>. See my <a href="http://www.jessesquires.com/swifty-presenters/">blog post</a> and <a href="https://realm.io/news/slug-jesse-squires-swifty-view-controller-presenters/">talk at Realm</a>.</p>
+<p>Swifty wrappers around view controller presentation, dismissal, and <code>UIPresentationController</code>.</p>
 <a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
 
 <ul>
@@ -97,10 +105,10 @@
 <a href='#a-href-http-cocoapods-org-cocoapods-a-recommended' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='a-href-http-cocoapods-org-cocoapods-a-recommended'><a href="http://cocoapods.org">CocoaPods</a> (recommended)</h4>
 <pre class="highlight ruby"><code><span class="n">use_frameworks!</span>
 
-<span class="c1"># For latest release in cocoapods</span>
+<span class="c1"># Latest release in CocoaPods</span>
 <span class="n">pod</span> <span class="s1">'PresenterKit'</span>
 
-<span class="c1"># Feeling adventurous? Get the latest on develop</span>
+<span class="c1"># Get the latest on develop</span>
 <span class="n">pod</span> <span class="s1">'PresenterKit'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'https://github.com/jessesquires/PresenterKit.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'develop'</span>
 </code></pre>
 <a href='#a-href-https-github-com-carthage-carthage-carthage-a' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='a-href-https-github-com-carthage-carthage-carthage-a'><a href="https://github.com/Carthage/Carthage">Carthage</a></h4>
@@ -115,34 +123,6 @@
 <a href='#preview' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='preview'>Preview</h4>
 <pre class="highlight shell"><code><span class="gp">$ </span>open index.html -a Safari
 </code></pre>
-<a href='#getting-started' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='getting-started'>Getting Started</h2>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PresenterKit</span>
-</code></pre>
-
-<ul>
-<li>Watch <a href="https://realm.io/news/slug-jesse-squires-swifty-view-controller-presenters/">the talk</a></li>
-<li>Read the <a href="http://www.jessesquires.com/swifty-presenters/">blog post</a></li>
-<li>Run the <a href="https://github.com/jessesquires/PresenterKit/tree/develop/Example">example project</a></li>
-</ul>
-<a href='#presenting-a-view-controller-modally' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='presenting-a-view-controller-modally'>Presenting a view controller modally</h4>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
-<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="nf">modal</span><span class="p">(</span><span class="o">.</span><span class="n">withNavigation</span><span class="p">,</span> <span class="o">.</span><span class="kt">FormSheet</span><span class="p">,</span> <span class="o">.</span><span class="kt">CoverVertical</span><span class="p">))</span>
-</code></pre>
-<a href='#pushing-a-view-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='pushing-a-view-controller'>Pushing a view controller</h4>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
-<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="kt">Push</span><span class="p">)</span>
-</code></pre>
-<a href='#presenting-as-a-popover' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='presenting-as-a-popover'>Presenting as a popover</h4>
-<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
-<span class="k">let</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">PopoverConfig</span><span class="p">(</span><span class="nv">source</span><span class="p">:</span> <span class="o">.</span><span class="kt">BarButtonItem</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
-<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="kt">Popover</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
-</code></pre>
-<a href='#dismissing-a-view-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='dismissing-a-view-controller'>Dismissing a view controller</h4>
-<pre class="highlight swift"><code><span class="nf">dismiss</span><span class="p">()</span>
-</code></pre>
-<a href='#unit-tests' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='unit-tests'>Unit tests</h2>
-
-<p>There&rsquo;s a suite of unit tests for <code>PresenterKit</code>. To run them, open <code>PresenterKit.xcodeproj</code>, select the <code>PresenterKit</code> scheme, then &#x2318;-u.</p>
 <a href='#contribute' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='contribute'>Contribute</h2>
 
 <p>Please follow these <a href="https://github.com/jessesquires/HowToContribute">contribution guidelines</a>.</p>
@@ -162,7 +142,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2016-12-05)</p>
+          <p>&copy; 2017 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2017-01-08)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
