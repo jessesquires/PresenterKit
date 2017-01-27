@@ -129,7 +129,7 @@ public extension UIViewController {
                 popoverController?.barButtonItem = item
             case .view(let v):
                 popoverController?.sourceView = v
-                popoverController?.sourceRect = v.frame
+                popoverController?.sourceRect = v.bounds
             }
             present(controller, animated: animated, completion: completion)
 
