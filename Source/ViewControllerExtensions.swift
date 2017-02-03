@@ -124,9 +124,9 @@ public extension UIViewController {
             switch c.source {
             case .barButtonItem(let item):
                 popoverController?.barButtonItem = item
-            case .view(let v):
-                popoverController?.sourceView = v
-                popoverController?.sourceRect = v.frame
+            case .view(let container, let frame):
+                popoverController?.sourceView = container
+                popoverController?.sourceRect = frame ?? container.frame
             }
             present(controller, animated: animated, completion: nil)
 
