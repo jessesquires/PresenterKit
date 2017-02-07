@@ -11,7 +11,7 @@ This release closes the [4.0.0 milestone](https://github.com/jessesquires/Presen
 
 ### Breaking changes
 
-- `public struct PopoverConfig` was changed to accomodate custom frame so it can be used as anchor for the popover.  ([#27](https://github.com/jessesquires/PresenterKit/pull/27), [#26](https://github.com/jessesquires/PresenterKit/issues/26))
+- `public struct PopoverConfig` was changed to accomodate custom frame so it can be used as anchor for the popover.  ([#27](https://github.com/jessesquires/PresenterKit/pull/27), [#26](https://github.com/jessesquires/PresenterKit/issues/26), [@psartzetakis](https://github.com/psartzetakis))
   - `PopoverConfig.Source.view(_)` was changed to `PopoverConfig.Source.view(container: frame:)`
 
 
