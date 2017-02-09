@@ -42,8 +42,9 @@ public struct PopoverConfig {
         /// Specifies that the popover should display from a `UIBarButtonItem` instance.
         case barButtonItem(UIBarButtonItem)
 
-        /// Specifies that the popover should display from a `UIView` instance.
-        case view(UIView)
+        /// Specifies that the popover should display from a `UIView` instance and be anchored on the specific `frame`. 
+        /// If the `frame` is `nil` then the provided view's frame will be used as the anchor frame.
+        case view(container: UIView, frame: CGRect?)
     }
 
     /// The source view for the popover.

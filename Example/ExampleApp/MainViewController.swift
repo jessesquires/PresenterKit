@@ -58,7 +58,7 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
 
         case 4:
             let cell = tableView.cellForRow(at: indexPath)!.contentView
-            let config = PopoverConfig(source: .view(cell), delegate: self)
+            let config = PopoverConfig(source: .view(container: cell, frame: nil), delegate: self)
             let vc = RedViewController()
             present(vc, type: .popover(config), animated: animated)
 
