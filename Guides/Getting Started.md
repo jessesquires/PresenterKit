@@ -14,22 +14,22 @@ import PresenterKit
 
 ```swift
 let vc = MyViewController()
-present(vc, type: .modal(.withNavigation, .FormSheet, .CoverVertical))
+present(vc, type: .modal(.withNavigation, .formSheet, .coverVertical))
 ```
 
 ## Pushing a view controller
 
 ```swift
 let vc = MyViewController()
-present(vc, type: .Push)
+present(vc, type: .push)
 ```
 
 ## Presenting as a popover
 
 ```swift
 let vc = MyViewController()
-let config = PopoverConfig(source: .BarButtonItem(item), delegate: self)
-present(vc, type: .Popover(config))
+let config = PopoverConfig(source: .barButtonItem(item), delegate: self)
+present(vc, type: .popover(config))
 ```
 
 ## Dismissing a view controller
