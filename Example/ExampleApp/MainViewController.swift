@@ -4,7 +4,7 @@
 //
 //
 //  Documentation
-//  http://www.jessesquires.com/PresenterKit
+//  http://jessesquires.github.io/PresenterKit
 //
 //
 //  GitHub
