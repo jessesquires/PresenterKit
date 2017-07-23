@@ -67,5 +67,5 @@ Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires
 *Please provide attribution, it is greatly appreciated.*
 
 [mitLink]:http://opensource.org/licenses/MIT
-[docsLink]:http://www.jessesquires.com/PresenterKit
+[docsLink]:http://jessesquires.github.io/PresenterKit
 [podLink]:https://cocoapods.org/pods/PresenterKit
