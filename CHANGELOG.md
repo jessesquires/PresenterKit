@@ -24,6 +24,10 @@ This release closes the [4.0.0 milestone](https://github.com/jessesquires/Presen
     - `public enum DismissButtonConfig.Text` was renamed to `public enum DismissButtonConfig.Content` and it now has 3 cases: `.systemItem`, `.text`, `.image`
     - `DismissButtonConfig.init(location: style: text:)` was renamed to `DismissButtonConfig.init(location: style: content:)`
 
+### New
+
+- Added support for `completion` closure parameter on `present(..)` method. ([#21](https://github.com/jessesquires/PresenterKit/pull/21), [@Sumolari](https://github.com/Sumolari))
+
 3.0.0
 -----
 
