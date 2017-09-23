@@ -21,7 +21,6 @@ import UIKit
 
 @testable import PresenterKit
 
-
 final class PresenterKitTests: XCTestCase {
 
     func test_thatBarButtonItem_initializesWith_dismissConfig_default() {
@@ -171,17 +170,17 @@ final class PresenterKitTests: XCTestCase {
         let firstController = UINavigationController()
         let secondController = UIViewController()
         
-        let cb_expectation = expectation(description: "completion block called")
+        let expect = expectation(description: "completion block called")
         
         firstController.present(secondController, type: .push, animated: false) {
-            cb_expectation.fulfill()
+            expect.fulfill()
         }
 
         XCTAssertNotNil(secondController.navigationController)
         XCTAssertNotNil(secondController.navigationItem)
         XCTAssertEqual(firstController.topViewController, secondController)
         
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: 5)
 
         secondController.addDismissButtonIfNeeded()
         XCTAssertNil(secondController.navigationItem.leftBarButtonItem)

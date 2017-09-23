@@ -18,7 +18,6 @@
 
 import UIKit
 
-
 // MARK: - Styles
 public extension UIViewController {
 
@@ -107,12 +106,15 @@ public extension UIViewController {
      - parameter viewController: The view controller to display over the current view controller.
      - parameter type:           The presentation type to use.
      - parameter animated:       Pass `true` to animate the presentation, `false` otherwise.
-     - parameter completion:     Completion block to be called. Will be ignored in `show` and `showDetail` presentation types.
+     - parameter completion:     The closure to be called.
+
+     - warning: The `completion` parameter is ignored for `show` and `showDetail` presentation types.
      */
+
     public func present(_ controller: UIViewController,
                         type: PresentationType,
                         animated: Bool = true,
-                        completion: ((Void) -> Void)? = nil) {
+                        completion: (() -> Void)? = nil) {
         switch type {
         case .modal(let n, let p, let t):
             let vc = controller.withStyles(navigation: n, presentation: p, transition: t)
@@ -135,16 +137,18 @@ public extension UIViewController {
 
         case .push:
             if let nav = self as? UINavigationController {
-                nav.pushViewController(controller, animated: animated, completion: completion ?? {})
+                nav.push(controller, animated: animated, completion: completion)
             }
             else {
-                navigationController!.pushViewController(controller, animated: animated, completion: completion ?? {})
+                navigationController!.push(controller, animated: animated, completion: completion)
             }
 
         case .show:
+            assert(completion == nil, "Completion closure parameter is ignored for `.show`")
             show(controller, sender: self)
 
         case .showDetail(let navigation):
+            assert(completion == nil, "Completion closure parameter is ignored for `.showDetail`")
             showDetailViewController(controller.withNavigationStyle(navigation), sender: self)
 
         case .custom(let delegate):

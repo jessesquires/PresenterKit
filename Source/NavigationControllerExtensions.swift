@@ -1,9 +1,19 @@
 //
-//  NavigationControllerExtensions.swift
-//  Pods
+//  Created by Jesse Squires
+//  http://www.jessesquires.com
 //
-//  Created by Lluís Ulzurrun de Asanza Sàez on 14/11/16.
 //
+//  Documentation
+//  http://jessesquires.github.io/PresenterKit
+//
+//
+//  GitHub
+//  https://github.com/jessesquires/PresenterKit
+//
+//
+//  License
+//  Copyright © 2016-present Jesse Squires
+//  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
 import UIKit
@@ -11,24 +21,27 @@ import UIKit
 extension UINavigationController {
     
     /**
-     Pushes given view controller, optionally animated, calling given block on
-     completion.
+     Pushes the given view controller and calls the given closure upon completion.
      
-     - parameter viewController: View controller to be pushed.
-     - parameter animated: Whether view controller should be pushed animated or not.
-     - parameter completion: Block to be called on animation completion.
+     - parameter viewController: The view controller to push onto the stack.
+     - parameter animated: Specify `true` to animate the transition or `false`
+     if you do not want the transition to be animated.
+     - parameter completion: The closure to be called upon completion.
      */
-    public func pushViewController(_ viewController: UIViewController,
-                                   animated: Bool,
-                                   completion: @escaping (Void) -> Void) {
+    public func push(_ viewController: UIViewController,
+                     animated: Bool = true,
+                     completion: (() -> Void)? = nil) {
         self.pushViewController(viewController, animated: animated)
-        
+
+        guard let completion = completion else {
+            return
+        }
+
         guard animated, let coordinator = self.transitionCoordinator else {
             completion()
             return
         }
-        
+
         coordinator.animate(alongsideTransition: nil) { _ in completion() }
     }
-    
 }
