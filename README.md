@@ -10,13 +10,13 @@ Swifty wrappers around view controller presentation, dismissal, and `UIPresentat
 
 ## Requirements
 
-* Swift 3.0
-* Xcode 8
-* iOS 8.0+
+* Swift 4.0+
+* Xcode 9+
+* iOS 9.0+
 
 ## Installation
 
-#### [CocoaPods](http://cocoapods.org) (recommended)
+#### [CocoaPods](https://cocoapods.org) (recommended)
 
 ````ruby
 use_frameworks!
@@ -66,6 +66,6 @@ Created and maintained by [**@jesse_squires**](https://twitter.com/jesse_squires
 
 *Please provide attribution, it is greatly appreciated.*
 
-[mitLink]:http://opensource.org/licenses/MIT
-[docsLink]:http://jessesquires.github.io/PresenterKit
+[mitLink]:https://opensource.org/licenses/MIT
+[docsLink]:https://jessesquires.github.io/PresenterKit
 [podLink]:https://cocoapods.org/pods/PresenterKit
