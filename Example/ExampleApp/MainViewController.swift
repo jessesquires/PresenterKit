@@ -4,7 +4,7 @@
 //
 //
 //  Documentation
-//  http://www.jessesquires.com/PresenterKit
+//  http://jessesquires.github.io/PresenterKit
 //
 //
 //  GitHub
@@ -43,7 +43,9 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
             present(vc, type: .push, animated: animated)
 
         case 1:
-            let vc = RedViewController()
+            let image = #imageLiteral(resourceName: "ic_dismiss")
+            let dismissConfig = DismissButtonConfig(location: .left, style: .plain, content: .image(image))
+            let vc = RedViewController(dismissConfig: dismissConfig)
             present(vc, type: .modal(.withNavigation, .formSheet, .coverVertical), animated: animated)
 
         case 2:
@@ -56,7 +58,7 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
 
         case 4:
             let cell = tableView.cellForRow(at: indexPath)!.contentView
-            let config = PopoverConfig(source: .view(cell), delegate: self)
+            let config = PopoverConfig(source: .view(container: cell, frame: nil), delegate: self)
             let vc = RedViewController()
             present(vc, type: .popover(config), animated: animated)
 

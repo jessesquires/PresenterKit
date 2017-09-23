@@ -4,7 +4,7 @@
 //
 //
 //  Documentation
-//  http://www.jessesquires.com/PresenterKit
+//  http://jessesquires.github.io/PresenterKit
 //
 //
 //  GitHub
@@ -24,8 +24,10 @@ import PresenterKit
 final class RedViewController: UITableViewController {
 
     let cellId = "cell"
-
-    init() {
+    var dismissConfig: DismissButtonConfig?
+    
+    init(dismissConfig: DismissButtonConfig? = nil) {
+        self.dismissConfig = dismissConfig
         super.init(style: .grouped)
     }
 
@@ -43,7 +45,9 @@ final class RedViewController: UITableViewController {
         tableView.backgroundColor = UIColor(red: 1.0, green: 0.4933, blue: 0.474, alpha: 1.0)
         tableView.allowsSelection = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        addDismissButtonIfNeeded()
+        
+        let config = dismissConfig ?? DismissButtonConfig()
+        addDismissButtonIfNeeded(config: config)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

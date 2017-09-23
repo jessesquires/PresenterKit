@@ -4,7 +4,7 @@
 //
 //
 //  Documentation
-//  http://www.jessesquires.com/PresenterKit
+//  http://jessesquires.github.io/PresenterKit
 //
 //
 //  GitHub
@@ -28,8 +28,8 @@ final class PresenterKitTests: XCTestCase {
         let config = DismissButtonConfig()
         XCTAssertEqual(config.location, DismissButtonConfig.Location.left)
         XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.plain)
-        XCTAssertEqual(config.text.systemItem, UIBarButtonSystemItem.cancel)
-        XCTAssertNil(config.text.title)
+        XCTAssertEqual(config.content.systemItem, UIBarButtonSystemItem.cancel)
+        XCTAssertNil(config.content.title)
 
         let action = #selector(tapAction(sender:))
         let item = UIBarButtonItem(config: config, target: self, action: action)
@@ -40,11 +40,11 @@ final class PresenterKitTests: XCTestCase {
     }
 
     func test_thatBarButtonItem_initializesWith_dismissConfig_leftBoldCancel() {
-        let config = DismissButtonConfig(location: .left, style: .bold, text: .systemItem(.done))
+        let config = DismissButtonConfig(location: .left, style: .bold, content: .systemItem(.done))
         XCTAssertEqual(config.location, DismissButtonConfig.Location.left)
         XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.done)
-        XCTAssertEqual(config.text.systemItem, UIBarButtonSystemItem.done)
-        XCTAssertNil(config.text.title)
+        XCTAssertEqual(config.content.systemItem, UIBarButtonSystemItem.done)
+        XCTAssertNil(config.content.title)
 
         let action = #selector(tapAction(sender:))
         let item = UIBarButtonItem(config: config, target: self, action: action)
@@ -55,11 +55,11 @@ final class PresenterKitTests: XCTestCase {
     }
 
     func test_thatBarButtonItem_initializesWith_dismissConfig_rightPlainCustomText() {
-        let config = DismissButtonConfig(location: .right, style: .plain, text: .custom("title"))
+        let config = DismissButtonConfig(location: .right, style: .plain, content: .text("title"))
         XCTAssertEqual(config.location, DismissButtonConfig.Location.right)
         XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.plain)
-        XCTAssertEqual(config.text.title, "title")
-        XCTAssertNil(config.text.systemItem)
+        XCTAssertEqual(config.content.title, "title")
+        XCTAssertNil(config.content.systemItem)
 
         let action = #selector(tapAction(sender:))
         let item = UIBarButtonItem(config: config, target: self, action: action)
@@ -68,6 +68,22 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertTrue(item.target === self)
         XCTAssertEqual(item.action, action)
     }
+    
+    func test_thatBarButtonItem_initializesWith_dismissConfig_leftImage() {
+        let image = UIImage()
+        let config = DismissButtonConfig(location: .left, style: .plain, content: .image(image))
+        XCTAssertEqual(config.location, DismissButtonConfig.Location.left)
+        XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.plain)
+        XCTAssertEqual(config.content.image, image)
+        XCTAssertNil(config.content.systemItem)
+        
+        let action = #selector(tapAction(sender:))
+        let item = UIBarButtonItem(config: config, target: self, action: action)
+        XCTAssertEqual(item.style, config.style.itemStyle)
+        XCTAssertTrue(item.target === self)
+        XCTAssertEqual(item.action, action)
+    }
+
 
     func test_thatViewController_appliesStyle_withNavigation() {
         let controller = UIViewController()

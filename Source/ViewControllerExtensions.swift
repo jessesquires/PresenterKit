@@ -4,7 +4,7 @@
 //
 //
 //  Documentation
-//  http://www.jessesquires.com/PresenterKit
+//  http://jessesquires.github.io/PresenterKit
 //
 //
 //  GitHub
@@ -127,9 +127,9 @@ public extension UIViewController {
             switch c.source {
             case .barButtonItem(let item):
                 popoverController?.barButtonItem = item
-            case .view(let v):
-                popoverController?.sourceView = v
-                popoverController?.sourceRect = v.bounds
+            case .view(let container, let frame):
+                popoverController?.sourceView = container
+                popoverController?.sourceRect = frame ?? container.bounds
             }
             present(controller, animated: animated, completion: completion)
 
