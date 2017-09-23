@@ -1,10 +1,10 @@
 //
 //  Created by Jesse Squires
-//  http://www.jessesquires.com
+//  https://www.jessesquires.com
 //
 //
 //  Documentation
-//  http://jessesquires.github.io/PresenterKit
+//  https://jessesquires.github.io/PresenterKit
 //
 //
 //  GitHub
@@ -13,15 +13,14 @@
 //
 //  License
 //  Copyright © 2016-present Jesse Squires
-//  Released under an MIT license: http://opensource.org/licenses/MIT
+//  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
 import XCTest
 import UIKit
 
-
 final class ExampleAppUITests: XCTestCase {
-        
+
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
@@ -33,9 +32,9 @@ final class ExampleAppUITests: XCTestCase {
     }
 
     func test_popover() {
-        let presenterkitNavigationBar = XCUIApplication().navigationBars["PresenterKit"]
-        presenterkitNavigationBar.buttons["Popover"].tap()
-        presenterkitNavigationBar.staticTexts["PresenterKit"].tap()
+        let app = XCUIApplication()
+        app.navigationBars["PresenterKit"].buttons["Popover"].tap()
+        app/*@START_MENU_TOKEN@*/.otherElements["PopoverDismissRegion"]/*[[".otherElements[\"dismiss popup\"]",".otherElements[\"PopoverDismissRegion\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
     }
     
     func test_push() {
@@ -65,12 +64,12 @@ final class ExampleAppUITests: XCTestCase {
     func test_popoverFromView() {
         let app = XCUIApplication()
         app.tables.staticTexts["PopoverFromView"].tap()
-        app.navigationBars["PresenterKit"].staticTexts["PresenterKit"].tap()
+        app/*@START_MENU_TOKEN@*/.otherElements["PopoverDismissRegion"]/*[[".otherElements[\"dismiss popup\"]",".otherElements[\"PopoverDismissRegion\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
     }
 
     func test_custom() {
         let app = XCUIApplication()
-        app.tables.staticTexts["Custom (\"Half Modal\")"].tap()
-        app.navigationBars["PresenterKit"].staticTexts["PresenterKit"].tap()
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Custom (\"Half Modal\")"]/*[[".cells.staticTexts[\"Custom (\\\"Half Modal\\\")\"]",".staticTexts[\"Custom (\\\"Half Modal\\\")\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).tap()
     }
 }

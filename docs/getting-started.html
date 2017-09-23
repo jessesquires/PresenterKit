@@ -70,7 +70,7 @@
                 <a href="Structs/DismissButtonConfig/Style.html">– Style</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/DismissButtonConfig/Text.html">– Text</a>
+                <a href="Structs/DismissButtonConfig/Content.html">– Content</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/PopoverConfig.html">PopoverConfig</a>
@@ -86,7 +86,7 @@
         <section>
           <section class="section">
             
-            <a href='#getting-started' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='getting-started'>Getting Started</h1>
+            <h1 id='getting-started' class='heading'>Getting Started</h1>
 
 <p>This guide provides a brief overview for how to get started using <code>PresenterKit</code>.</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PresenterKit</span>
@@ -97,28 +97,28 @@
 <li>Read the <a href="http://www.jessesquires.com/swifty-presenters/">blog post</a></li>
 <li>Run the <a href="https://github.com/jessesquires/PresenterKit/tree/develop/Example">example project</a></li>
 </ul>
-<a href='#presenting-a-view-controller-modally' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='presenting-a-view-controller-modally'>Presenting a view controller modally</h2>
+<h2 id='presenting-a-view-controller-modally' class='heading'>Presenting a view controller modally</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
-<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="nf">modal</span><span class="p">(</span><span class="o">.</span><span class="n">withNavigation</span><span class="p">,</span> <span class="o">.</span><span class="kt">FormSheet</span><span class="p">,</span> <span class="o">.</span><span class="kt">CoverVertical</span><span class="p">))</span>
+<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="nf">modal</span><span class="p">(</span><span class="o">.</span><span class="n">withNavigation</span><span class="p">,</span> <span class="o">.</span><span class="n">formSheet</span><span class="p">,</span> <span class="o">.</span><span class="n">coverVertical</span><span class="p">))</span>
 </code></pre>
-<a href='#pushing-a-view-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='pushing-a-view-controller'>Pushing a view controller</h2>
+<h2 id='pushing-a-view-controller' class='heading'>Pushing a view controller</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
-<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="kt">Push</span><span class="p">)</span>
+<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="n">push</span><span class="p">)</span>
 </code></pre>
-<a href='#presenting-as-a-popover' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='presenting-as-a-popover'>Presenting as a popover</h2>
+<h2 id='presenting-as-a-popover' class='heading'>Presenting as a popover</h2>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">vc</span> <span class="o">=</span> <span class="kt">MyViewController</span><span class="p">()</span>
-<span class="k">let</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">PopoverConfig</span><span class="p">(</span><span class="nv">source</span><span class="p">:</span> <span class="o">.</span><span class="kt">BarButtonItem</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
-<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="kt">Popover</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
+<span class="k">let</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">PopoverConfig</span><span class="p">(</span><span class="nv">source</span><span class="p">:</span> <span class="o">.</span><span class="nf">barButtonItem</span><span class="p">(</span><span class="n">item</span><span class="p">),</span> <span class="nv">delegate</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+<span class="nf">present</span><span class="p">(</span><span class="n">vc</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="o">.</span><span class="nf">popover</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
 </code></pre>
-<a href='#dismissing-a-view-controller' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='dismissing-a-view-controller'>Dismissing a view controller</h2>
+<h2 id='dismissing-a-view-controller' class='heading'>Dismissing a view controller</h2>
 <pre class="highlight swift"><code><span class="nf">dismiss</span><span class="p">()</span>
 </code></pre>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2017-01-08)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2017-09-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

@@ -1,4 +1,9 @@
-//
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FILEHEADER</key>
+	<string>
 //  Created by Jesse Squires
 //  https://www.jessesquires.com
 //
@@ -14,17 +19,6 @@
 //  License
 //  Copyright © 2016-present Jesse Squires
 //  Released under an MIT license: https://opensource.org/licenses/MIT
-//
-
-import UIKit
-
-@UIApplicationMain
-final class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-    func application(_ application: UIApplication,
-                     willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        return true
-    }
-}
+//</string>
+</dict>
+</plist>

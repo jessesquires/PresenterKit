@@ -11,15 +11,22 @@ This release closes the [4.0.0 milestone](https://github.com/jessesquires/Presen
 
 ### Breaking changes
 
-- `public struct PopoverConfig` was changed to accomodate custom frame so it can be used as anchor for the popover.  ([#27](https://github.com/jessesquires/PresenterKit/pull/27), [#26](https://github.com/jessesquires/PresenterKit/issues/26), [@psartzetakis](https://github.com/psartzetakis))
+- Converted to Swift 4
+
+- iOS 9 minimum deployment target
+
+- `public struct PopoverConfig` was changed to accommodate custom frame so it can be used as anchor for the popover.  ([#27](https://github.com/jessesquires/PresenterKit/pull/27), [#26](https://github.com/jessesquires/PresenterKit/issues/26), [@psartzetakis](https://github.com/psartzetakis))
   - `PopoverConfig.Source.view(_)` was changed to `PopoverConfig.Source.view(container: frame:)`
 
 
-- `public struct DismissButtonConfig` was changed to accomodate custom images in bar button items. ([#24](https://github.com/jessesquires/PresenterKit/pull/24), [#22](https://github.com/jessesquires/PresenterKit/issues/22), [@psartzetakis](https://github.com/psartzetakis))
+- `public struct DismissButtonConfig` was changed to accommodate custom images in bar button items. ([#24](https://github.com/jessesquires/PresenterKit/pull/24), [#22](https://github.com/jessesquires/PresenterKit/issues/22), [@psartzetakis](https://github.com/psartzetakis))
     - `DismissButtonConfig.text` was renamed to `DismissButtonConfig.content`
     - `public enum DismissButtonConfig.Text` was renamed to `public enum DismissButtonConfig.Content` and it now has 3 cases: `.systemItem`, `.text`, `.image`
     - `DismissButtonConfig.init(location: style: text:)` was renamed to `DismissButtonConfig.init(location: style: content:)`
 
+### New
+
+- Added support for `completion` closure parameter on `present(..)` method. ([#21](https://github.com/jessesquires/PresenterKit/pull/21), [@Sumolari](https://github.com/Sumolari))
 
 3.0.0
 -----
@@ -50,4 +57,4 @@ This release closes the [2.0.0 milestone](https://github.com/jessesquires/Presen
 1.0.0
 -----
 
-Initial release :tada:
+Initial release 🎉
