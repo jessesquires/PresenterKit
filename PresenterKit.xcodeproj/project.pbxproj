@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13C26AD71DFD2C99004CC79D /* NavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C26AD61DFD2C99004CC79D /* NavigationControllerExtensions.swift */; };
 		8876470E1C56FB2D002048E2 /* DismissButtonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876470D1C56FB2D002048E2 /* DismissButtonConfig.swift */; };
 		887647181C59E423002048E2 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887647171C59E423002048E2 /* ViewControllerExtensions.swift */; };
 		889CC4181C4345BD00CD2DBD /* PresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CC4171C4345BD00CD2DBD /* PresentationType.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13C26AD61DFD2C99004CC79D /* NavigationControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		8876470D1C56FB2D002048E2 /* DismissButtonConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissButtonConfig.swift; sourceTree = "<group>"; };
 		887647171C59E423002048E2 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		889CC4171C4345BD00CD2DBD /* PresentationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationType.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				8876470D1C56FB2D002048E2 /* DismissButtonConfig.swift */,
 				889CC4171C4345BD00CD2DBD /* PresentationType.swift */,
 				887647171C59E423002048E2 /* ViewControllerExtensions.swift */,
+				13C26AD61DFD2C99004CC79D /* NavigationControllerExtensions.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				8876470E1C56FB2D002048E2 /* DismissButtonConfig.swift in Sources */,
 				887647181C59E423002048E2 /* ViewControllerExtensions.swift in Sources */,
 				889CC4181C4345BD00CD2DBD /* PresentationType.swift in Sources */,
+				13C26AD71DFD2C99004CC79D /* NavigationControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

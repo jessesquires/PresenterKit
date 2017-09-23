@@ -170,11 +170,18 @@ final class PresenterKitTests: XCTestCase {
     func test_thatViewController_presentsViewController_withPresentationType_push() {
         let firstController = UINavigationController()
         let secondController = UIViewController()
-        firstController.present(secondController, type: .push, animated: false)
+        
+        let cb_expectation = expectation(description: "completion block called")
+        
+        firstController.present(secondController, type: .push, animated: false) {
+            cb_expectation.fulfill()
+        }
 
         XCTAssertNotNil(secondController.navigationController)
         XCTAssertNotNil(secondController.navigationItem)
         XCTAssertEqual(firstController.topViewController, secondController)
+        
+        waitForExpectations(timeout: 1)
 
         secondController.addDismissButtonIfNeeded()
         XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
