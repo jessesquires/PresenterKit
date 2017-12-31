@@ -37,7 +37,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Enums.html">Enums</a>
+            <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Enums/NavigationStyle.html">NavigationStyle</a>
@@ -54,12 +54,15 @@
                 <a href="../Extensions/UIBarButtonItem.html">UIBarButtonItem</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Extensions/UINavigationController.html">UINavigationController</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Extensions/UIViewController.html">UIViewController</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Structs.html">Structs</a>
+            <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Structs/DismissButtonConfig.html">DismissButtonConfig</a>
@@ -301,8 +304,8 @@ If <code>navigationStyle</code> is <code>.none</code>, then calling this method 
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">withStyles</span><span class="p">(</span><span class="nv">navigation</span><span class="p">:</span> <span class="kt"><a href="../Enums/NavigationStyle.html">NavigationStyle</a></span><span class="p">,</span>
-                           <span class="nv">presentation</span><span class="p">:</span> <span class="kt">UIModalPresentationStyle</span><span class="p">,</span>
-                           <span class="nv">transition</span><span class="p">:</span> <span class="kt">UIModalTransitionStyle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span></code></pre>
+                       <span class="nv">presentation</span><span class="p">:</span> <span class="kt">UIModalPresentationStyle</span><span class="p">,</span>
+                       <span class="nv">transition</span><span class="p">:</span> <span class="kt">UIModalTransitionStyle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span></code></pre>
 
                         </div>
                       </div>
@@ -363,9 +366,9 @@ If <code>navigationStyle</code> is <code>.none</code>, then calling this method 
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:So16UIViewControllerC12PresenterKitE7presentyAB_AC16PresentationTypeO4typeSb8animatedtF"></a>
-                    <a name="//apple_ref/swift/Method/present(_:type:animated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:So16UIViewControllerC12PresenterKitE7presentyAB_AC16PresentationTypeO4typeSb8animatedtF">present(_:type:animated:)</a>
+                    <a name="/s:So16UIViewControllerC12PresenterKitE7presentyAB_AC16PresentationTypeO4typeSb8animatedyycSg10completiontF"></a>
+                    <a name="//apple_ref/swift/Method/present(_:type:animated:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So16UIViewControllerC12PresenterKitE7presentyAB_AC16PresentationTypeO4typeSb8animatedyycSg10completiontF">present(_:type:animated:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -374,13 +377,21 @@ If <code>navigationStyle</code> is <code>.none</code>, then calling this method 
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Presents a view controller using the specified presentation type.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>The <code>completion</code> parameter is ignored for <code>show</code> and <code>showDetail</code> presentation types.</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">present</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/PresentationType.html">PresentationType</a></span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">present</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
+                    <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/PresentationType.html">PresentationType</a></span><span class="p">,</span>
+                    <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -421,6 +432,18 @@ If <code>navigationStyle</code> is <code>.none</code>, then calling this method 
                               <td>
                                 <div>
                                   <p>Pass <code>true</code> to animate the presentation, <code>false</code> otherwise.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure to be called.</p>
                                 </div>
                               </td>
                             </tr>
@@ -587,8 +610,8 @@ If <code>navigationStyle</code> is <code>.none</code>, then calling this method 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2017-09-23)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.3</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://twitter.com/jesse_squires" target="_blank" rel="external">Jesse Squires</a>. All rights reserved. (Last updated: 2017-12-31)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
