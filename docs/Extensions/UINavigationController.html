@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>NavigationStyle Enumeration Reference</title>
+    <title>UINavigationController Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/NavigationStyle" class="dashAnchor"></a>
-    <a title="NavigationStyle Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Extension/UINavigationController" class="dashAnchor"></a>
+    <a title="UINavigationController Extension Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">PresenterKit Docs</a> (100% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">PresenterKit Reference</a>
         <img id="carat" src="../img/carat.png" />
-        NavigationStyle Enumeration Reference
+        UINavigationController Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -89,15 +89,8 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>NavigationStyle</h1>
-              <div class="declaration">
-                <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">NavigationStyle</span></code></pre>
-
-                </div>
-              </div>
-            <p>Specifies the navigation style for a view controller.</p>
-
+            <h1>UINavigationController</h1>
+            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -105,9 +98,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12PresenterKit15NavigationStyleO4noneA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/none" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12PresenterKit15NavigationStyleO4noneA2CmF">none</a>
+                    <a name="/s:So22UINavigationControllerC12PresenterKitE4pushySo06UIViewB0C_Sb8animatedyycSg10completiontF"></a>
+                    <a name="//apple_ref/swift/Method/push(_:animated:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:So22UINavigationControllerC12PresenterKitE4pushySo06UIViewB0C_Sb8animatedyycSg10completiontF">push(_:animated:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -115,47 +108,62 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Do not embed a view controller in a <code>UINavigationController</code>.</p>
+                        <p>Pushes the given view controller and calls the given closure upon completion.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="k">none</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">push</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span>
+                 <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+                 <span class="nv">completion</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:12PresenterKit15NavigationStyleO04withC0A2CmF"></a>
-                    <a name="//apple_ref/swift/Element/withNavigation" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12PresenterKit15NavigationStyleO04withC0A2CmF">withNavigation</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Embed view controller in a <code>UINavigationController</code>.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">case</span> <span class="n">withNavigation</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The view controller to push onto the stack.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>animated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Specify <code>true</code> to animate the transition or <code>false</code>
+if you do not want the transition to be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The closure to be called upon completion.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
