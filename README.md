@@ -10,9 +10,10 @@ Swifty wrappers around view controller presentation, dismissal, and `UIPresentat
 
 ## Requirements
 
-* Swift 4.0+
 * Xcode 9+
+* Swift 4.0+
 * iOS 9.0+
+* [SwiftLint](https://github.com/realm/SwiftLint)
 
 ## Installation
 
@@ -41,7 +42,7 @@ Read the [docs][docsLink]. Generated with [jazzy](https://github.com/realm/jazzy
 #### Generate
 
 ````bash
-$ ./build_docs.sh
+$ ./scripts/build_docs.sh
 ````
 
 #### Preview

@@ -20,7 +20,6 @@ import UIKit
 
 import PresenterKit
 
-
 final class MainViewController: UITableViewController,
 UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
 
@@ -78,7 +77,7 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
             })
 
         default:
-            fatalError()
+            fatalError("invalid index path: \(indexPath)")
         }
     }
 

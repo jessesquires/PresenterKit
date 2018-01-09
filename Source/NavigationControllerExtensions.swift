@@ -19,7 +19,7 @@
 import UIKit
 
 extension UINavigationController {
-    
+
     /**
      Pushes the given view controller and calls the given closure upon completion.
      

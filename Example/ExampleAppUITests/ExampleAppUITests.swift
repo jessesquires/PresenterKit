@@ -16,8 +16,10 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import UIKit
+import XCTest
+
+// swiftlint:disable line_length
 
 final class ExampleAppUITests: XCTestCase {
 
@@ -36,7 +38,7 @@ final class ExampleAppUITests: XCTestCase {
         app.navigationBars["PresenterKit"].buttons["Popover"].tap()
         app/*@START_MENU_TOKEN@*/.otherElements["PopoverDismissRegion"]/*[[".otherElements[\"dismiss popup\"]",".otherElements[\"PopoverDismissRegion\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
     }
-    
+
     func test_push() {
         let app = XCUIApplication()
         app.tables.staticTexts["Push"].tap()
@@ -48,7 +50,7 @@ final class ExampleAppUITests: XCTestCase {
         app.tables.staticTexts["Modal"].tap()
         app.navigationBars["Red View"].buttons["ic dismiss"].tap()
     }
-    
+
     func test_show() {
         let app = XCUIApplication()
         app.tables.staticTexts["Show"].tap()
@@ -73,3 +75,5 @@ final class ExampleAppUITests: XCTestCase {
         app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).tap()
     }
 }
+
+// swiftlint:enable line_length

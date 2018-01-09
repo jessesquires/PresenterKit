@@ -29,7 +29,6 @@ public enum NavigationStyle {
     case withNavigation
 }
 
-
 /**
  A configuration for `UIPopoverPresentationController`.
  */
@@ -73,7 +72,6 @@ public struct PopoverConfig {
         self.delegate = delegate
     }
 }
-
 
 /**
  Describes the type of presentation for a view controller.

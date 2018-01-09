@@ -20,12 +20,11 @@ import UIKit
 
 import PresenterKit
 
-
 final class RedViewController: UITableViewController {
 
     let cellId = "cell"
     var dismissConfig: DismissButtonConfig?
-    
+
     init(dismissConfig: DismissButtonConfig? = nil) {
         self.dismissConfig = dismissConfig
         super.init(style: .grouped)
@@ -42,10 +41,10 @@ final class RedViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Red View"
-        tableView.backgroundColor = UIColor(red: 1.0, green: 0.4933, blue: 0.474, alpha: 1.0)
+        tableView.backgroundColor = UIColor(red: 1.0, green: 0.493_3, blue: 0.474, alpha: 1.0)
         tableView.allowsSelection = false
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        
+
         let config = dismissConfig ?? DismissButtonConfig()
         addDismissButtonIfNeeded(config: config)
     }

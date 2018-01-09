@@ -73,12 +73,11 @@ public struct DismissButtonConfig {
 
         /// Specifies custom text for the bar button.
         case text(String)
-        
+
         /// Specifies a custom image for the bar button.
         case image(UIImage)
     }
 }
-
 
 public extension UIBarButtonItem {
     /**
@@ -91,7 +90,7 @@ public extension UIBarButtonItem {
      - returns: A new bar button item instance.
      */
     public convenience init(config: DismissButtonConfig, target: AnyObject?, action: Selector) {
-        
+
         switch config.content {
         case .text(let title):
             self.init(title: title, style: config.style.itemStyle, target: target, action: action)
@@ -104,7 +103,6 @@ public extension UIBarButtonItem {
     }
 }
 
-
 internal extension DismissButtonConfig.Style {
     var itemStyle: UIBarButtonItemStyle {
         switch self {
@@ -116,7 +114,6 @@ internal extension DismissButtonConfig.Style {
     }
 }
 
-
 internal extension DismissButtonConfig.Content {
     var systemItem: UIBarButtonSystemItem? {
         switch self {
@@ -126,7 +123,7 @@ internal extension DismissButtonConfig.Content {
             return nil
         }
     }
-    
+
     var image: UIImage? {
         switch self {
         case .image(let image):

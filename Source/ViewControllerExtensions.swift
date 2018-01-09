@@ -138,8 +138,7 @@ public extension UIViewController {
         case .push:
             if let nav = self as? UINavigationController {
                 nav.push(controller, animated: animated, completion: completion)
-            }
-            else {
+            } else {
                 navigationController!.push(controller, animated: animated, completion: completion)
             }
 
@@ -161,7 +160,6 @@ public extension UIViewController {
         }
     }
 }
-
 
 // MARK: - Dismissal
 public extension UIViewController {
@@ -212,7 +210,8 @@ public extension UIViewController {
         }
     }
 
-    @objc private func _didTapDismissButton(_ sender: UIBarButtonItem) {
+    @objc
+    private func _didTapDismissButton(_ sender: UIBarButtonItem) {
         dismiss()
     }
 
@@ -232,7 +231,7 @@ public extension UIViewController {
     private var hasNavigationController: Bool {
         return navigationController != nil
     }
-    
+
     private var isNavigationRootViewController: Bool {
         return navigationController?.viewControllers.first == self
     }

@@ -46,9 +46,8 @@ final class HalfModalPresentationController: UIPresentationController {
 
             transitionCoordinator.animate(alongsideTransition: { (context) in
                 animations()
-                }, completion: nil)
-        }
-        else {
+            }, completion: nil)
+        } else {
             animations()
         }
     }
@@ -61,23 +60,18 @@ final class HalfModalPresentationController: UIPresentationController {
         if let transitionCoordinator = presentingViewController.transitionCoordinator {
             transitionCoordinator.animate(alongsideTransition: { (context) in
                 animations()
-                }, completion: nil)
-        }
-        else {
+            }, completion: nil)
+        } else {
             animations()
         }
     }
 
     override var adaptivePresentationStyle: UIModalPresentationStyle {
-        get {
-            return .none
-        }
+        return .none
     }
 
     override var shouldPresentInFullscreen: Bool {
-        get {
-            return true
-        }
+        return true
     }
 
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
@@ -91,17 +85,16 @@ final class HalfModalPresentationController: UIPresentationController {
     }
 
     override var frameOfPresentedViewInContainerView: CGRect {
-        get {
-            let size = self.size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView!.bounds.size)
+        let size = self.size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView!.bounds.size)
 
-            return CGRect(origin: CGPoint(x: 0.0, y: containerView!.frame.maxY / 2),
-                          size: size)
-        }
+        return CGRect(origin: CGPoint(x: 0.0, y: containerView!.frame.maxY / 2),
+                      size: size)
     }
 
     // MARK: Private
 
-    @objc private func dimmingViewTapped(_ tap: UITapGestureRecognizer) {
+    @objc
+    private func dimmingViewTapped(_ tap: UITapGestureRecognizer) {
         presentingViewController.dismiss(animated: true, completion: nil)
     }
 }

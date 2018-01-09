@@ -16,8 +16,8 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import XCTest
 import UIKit
+import XCTest
 
 @testable import PresenterKit
 
@@ -67,7 +67,7 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertTrue(item.target === self)
         XCTAssertEqual(item.action, action)
     }
-    
+
     func test_thatBarButtonItem_initializesWith_dismissConfig_leftImage() {
         let image = UIImage()
         let config = DismissButtonConfig(location: .left, style: .plain, content: .image(image))
@@ -75,14 +75,13 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.plain)
         XCTAssertEqual(config.content.image, image)
         XCTAssertNil(config.content.systemItem)
-        
+
         let action = #selector(tapAction(sender:))
         let item = UIBarButtonItem(config: config, target: self, action: action)
         XCTAssertEqual(item.style, config.style.itemStyle)
         XCTAssertTrue(item.target === self)
         XCTAssertEqual(item.action, action)
     }
-
 
     func test_thatViewController_appliesStyle_withNavigation() {
         let controller = UIViewController()
@@ -169,9 +168,9 @@ final class PresenterKitTests: XCTestCase {
     func test_thatViewController_presentsViewController_withPresentationType_push() {
         let firstController = UINavigationController()
         let secondController = UIViewController()
-        
+
         let expect = expectation(description: "completion block called")
-        
+
         firstController.present(secondController, type: .push, animated: false) {
             expect.fulfill()
         }
@@ -179,7 +178,7 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertNotNil(secondController.navigationController)
         XCTAssertNotNil(secondController.navigationItem)
         XCTAssertEqual(firstController.topViewController, secondController)
-        
+
         waitForExpectations(timeout: 5)
 
         secondController.addDismissButtonIfNeeded()
@@ -223,8 +222,7 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
         XCTAssertNil(secondController.navigationItem.rightBarButtonItem)
     }
-    
-    
+
     // MARK: Helpers
 
     func tapAction(sender: UIBarButtonItem) { }
