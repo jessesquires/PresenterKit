@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
    s.source = { :git => 'https://github.com/jessesquires/PresenterKit.git', :tag => s.version }
    s.source_files = 'Source/*.swift'
 
+   s.swift_version = '4.0'
    s.ios.deployment_target = '9.0'
 
    s.requires_arc = true
