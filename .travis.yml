@@ -1,5 +1,9 @@
 language: objective-c
 osx_image: xcode9.2
+branches:
+  only:
+    - master
+    - develop
 
 env:
    global:
@@ -24,6 +28,11 @@ env:
    - DESTINATION="OS=11.1,name=iPhone X"   SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO" RUN_UI_TESTS="NO"
    - DESTINATION="OS=11.2,name=iPhone X"   SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="NO"  POD_LINT="NO" RUN_UI_TESTS="NO"
 
+before_install:
+   - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+   - brew update
+   - brew outdated swiftlint || brew upgrade swiftlint
+   
 script:
 - set -o pipefail
 - xcodebuild -version -sdk
