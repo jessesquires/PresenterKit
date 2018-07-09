@@ -13,6 +13,7 @@ This release closes the [5.0.0 milestone](https://github.com/jessesquires/Presen
 - iOS 10 minimum deployment target (Dropped iOS 9)
 - Xcode 9.4
 - Upgrade Swiftlint to 0.26.0
+- Respect transition context `.isCancelled` when pushing on a navigation stack (#38)
 
 4.0.0
 -----

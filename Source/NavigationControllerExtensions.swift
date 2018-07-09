@@ -42,6 +42,9 @@ extension UINavigationController {
             return
         }
 
-        coordinator.animate(alongsideTransition: nil) { _ in completion() }
+        coordinator.animate(alongsideTransition: nil) { context in
+            guard !context.isCancelled else { return }
+            completion()
+        }
     }
 }
