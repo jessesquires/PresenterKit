@@ -167,13 +167,15 @@ public extension UIViewController {
      Dismisses the receiving view controller.
 
      - parameter animated: Pass `true` to animate the presentation, `false` otherwise.
+     - parameter completion: The closure to be called upon completion.
      */
-    public func dismiss(animated: Bool = true) {
+    public func dismissController(animated: Bool = true, completion: (() -> Void)? = nil) {
         if isModallyPresented {
-            dismiss(animated: animated, completion: nil)
+            assert(presentingViewController != nil)
+            dismiss(animated: animated, completion: completion)
         } else {
             assert(navigationController != nil)
-            _ = navigationController?.popViewController(animated: animated)
+            _ = navigationController?.pop(animated: animated, completion: completion)
         }
     }
 
@@ -211,7 +213,7 @@ public extension UIViewController {
 
     @objc
     private func _didTapDismissButton(_ sender: UIBarButtonItem) {
-        dismiss()
+        dismissController()
     }
 
     private var needsDismissButton: Bool {

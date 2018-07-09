@@ -169,24 +169,29 @@ final class PresenterKitTests: XCTestCase {
         let firstController = UINavigationController()
         let secondController = UIViewController()
 
-        let expect = expectation(description: "completion block called")
+        let expectPush = expectation(description: "completion block called")
 
         firstController.present(secondController, type: .push, animated: false) {
-            expect.fulfill()
+            expectPush.fulfill()
         }
 
         XCTAssertNotNil(secondController.navigationController)
         XCTAssertNotNil(secondController.navigationItem)
         XCTAssertEqual(firstController.topViewController, secondController)
 
-        waitForExpectations(timeout: 5)
-
         secondController.addDismissButtonIfNeeded()
         XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
         XCTAssertNil(secondController.navigationItem.rightBarButtonItem)
 
-        secondController.dismiss(animated: false)
+        let expectPop = expectation(description: "completion block called")
+
+        secondController.dismissController(animated: false) {
+            expectPop.fulfill()
+        }
+
         XCTAssertEqual(firstController.topViewController, secondController)
+
+        waitForExpectations(timeout: 5)
     }
 
     func test_thatViewController_presentsViewController_withPresentationType_push_embedded() {
@@ -205,7 +210,7 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertNil(secondController.navigationItem.leftBarButtonItem)
         XCTAssertNil(secondController.navigationItem.rightBarButtonItem)
 
-        secondController.dismiss(animated: false)
+        secondController.dismissController(animated: false)
         XCTAssertEqual(navController.topViewController, firstController)
     }
 

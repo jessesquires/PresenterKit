@@ -15,6 +15,7 @@ This release closes the [5.0.0 milestone](https://github.com/jessesquires/Presen
 - iOS 10 minimum deployment target (Dropped iOS 9)
 - Xcode 9.4
 - Upgrade Swiftlint to 0.26.0
+- Renamed `dismiss()` function to `dismissController()` to avoid ambiguous naming with UIKit (#41)
 
 ### Fixed
 
@@ -22,7 +23,9 @@ This release closes the [5.0.0 milestone](https://github.com/jessesquires/Presen
 
 ### New
 
-- Add new `pop()` method extension on `UINavigationController` that accepts a `completion` parameter. Similar to existing `push()` method. (#40)
+- Add new `pop()` method extension on `UINavigationController` that accepts a `completion` parameter. Similar to existing `push()` method (#40)
+
+- Added `completion` parameter to `dismiss()` method extension on `UIViewController` (#41)
 
 4.0.0
 -----
