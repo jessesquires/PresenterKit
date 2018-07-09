@@ -4,6 +4,16 @@ The changelog for `PresenterKit`. Also see the [releases](https://github.com/jes
 
 --------------------------------------
 
+5.0.0
+-----
+
+This release closes the [5.0.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/6?closed=1).
+
+- Swift 4.1
+- iOS 10 minimum deployment target (Dropped iOS 9)
+- Xcode 9.4
+- Upgrade Swiftlint to 0.26.0
+
 4.0.0
 -----
 
