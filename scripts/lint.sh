@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="0.24.2"
+VERSION="0.26.0"
 FOUND=$(swiftlint version)
 
 if which swiftlint >/dev/null; then
