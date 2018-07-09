@@ -32,7 +32,23 @@ extension UINavigationController {
                      animated: Bool = true,
                      completion: (() -> Void)? = nil) {
         self.pushViewController(viewController, animated: animated)
+        _handle(animated: animated, completion: completion)
+    }
 
+    /**
+     Pops the top view controller and calls the given closure upon completion.
+
+     - parameter animated: Specify `true` to animate the transition or `false`
+     if you do not want the transition to be animated.
+     - parameter completion: The closure to be called upon completion.
+     */
+    public func pop(animated: Bool = true,
+                    completion: (() -> Void)? = nil) {
+        self.popViewController(animated: animated)
+        _handle(animated: animated, completion: completion)
+    }
+
+    private func _handle(animated: Bool, completion: (() -> Void)?) {
         guard let completion = completion else {
             return
         }

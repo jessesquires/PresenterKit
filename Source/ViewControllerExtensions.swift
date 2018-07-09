@@ -110,7 +110,6 @@ public extension UIViewController {
 
      - warning: The `completion` parameter is ignored for `show` and `showDetail` presentation types.
      */
-
     public func present(_ controller: UIViewController,
                         type: PresentationType,
                         animated: Bool = true,

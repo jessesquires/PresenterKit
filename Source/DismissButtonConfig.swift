@@ -103,7 +103,7 @@ public extension UIBarButtonItem {
     }
 }
 
-internal extension DismissButtonConfig.Style {
+extension DismissButtonConfig.Style {
     var itemStyle: UIBarButtonItemStyle {
         switch self {
         case .bold:
@@ -114,7 +114,7 @@ internal extension DismissButtonConfig.Style {
     }
 }
 
-internal extension DismissButtonConfig.Content {
+extension DismissButtonConfig.Content {
     var systemItem: UIBarButtonSystemItem? {
         switch self {
         case .systemItem(let item):
