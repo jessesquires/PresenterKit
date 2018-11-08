@@ -69,7 +69,7 @@ public struct DismissButtonConfig {
     /// Specifies the content (title or image) for the bar button.
     public enum Content {
         /// Specifies a `UIBarButtonSystemItem`.
-        case systemItem(UIBarButtonSystemItem)
+        case systemItem(UIBarButtonItem.SystemItem)
 
         /// Specifies custom text for the bar button.
         case text(String)
@@ -104,7 +104,7 @@ public extension UIBarButtonItem {
 }
 
 extension DismissButtonConfig.Style {
-    var itemStyle: UIBarButtonItemStyle {
+    var itemStyle: UIBarButtonItem.Style {
         switch self {
         case .bold:
             return .done
@@ -115,7 +115,7 @@ extension DismissButtonConfig.Style {
 }
 
 extension DismissButtonConfig.Content {
-    var systemItem: UIBarButtonSystemItem? {
+    var systemItem: UIBarButtonItem.SystemItem? {
         switch self {
         case .systemItem(let item):
             return item

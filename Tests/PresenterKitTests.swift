@@ -26,8 +26,8 @@ final class PresenterKitTests: XCTestCase {
     func test_thatBarButtonItem_initializesWith_dismissConfig_default() {
         let config = DismissButtonConfig()
         XCTAssertEqual(config.location, DismissButtonConfig.Location.left)
-        XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.plain)
-        XCTAssertEqual(config.content.systemItem, UIBarButtonSystemItem.cancel)
+        XCTAssertEqual(config.style.itemStyle, UIBarButtonItem.Style.plain)
+        XCTAssertEqual(config.content.systemItem, UIBarButtonItem.SystemItem.cancel)
         XCTAssertNil(config.content.title)
 
         let action = #selector(tapAction(sender:))
@@ -41,8 +41,8 @@ final class PresenterKitTests: XCTestCase {
     func test_thatBarButtonItem_initializesWith_dismissConfig_leftBoldCancel() {
         let config = DismissButtonConfig(location: .left, style: .bold, content: .systemItem(.done))
         XCTAssertEqual(config.location, DismissButtonConfig.Location.left)
-        XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.done)
-        XCTAssertEqual(config.content.systemItem, UIBarButtonSystemItem.done)
+        XCTAssertEqual(config.style.itemStyle, UIBarButtonItem.Style.done)
+        XCTAssertEqual(config.content.systemItem, UIBarButtonItem.SystemItem.done)
         XCTAssertNil(config.content.title)
 
         let action = #selector(tapAction(sender:))
@@ -56,7 +56,7 @@ final class PresenterKitTests: XCTestCase {
     func test_thatBarButtonItem_initializesWith_dismissConfig_rightPlainCustomText() {
         let config = DismissButtonConfig(location: .right, style: .plain, content: .text("title"))
         XCTAssertEqual(config.location, DismissButtonConfig.Location.right)
-        XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.plain)
+        XCTAssertEqual(config.style.itemStyle, UIBarButtonItem.Style.plain)
         XCTAssertEqual(config.content.title, "title")
         XCTAssertNil(config.content.systemItem)
 
@@ -72,7 +72,7 @@ final class PresenterKitTests: XCTestCase {
         let image = UIImage()
         let config = DismissButtonConfig(location: .left, style: .plain, content: .image(image))
         XCTAssertEqual(config.location, DismissButtonConfig.Location.left)
-        XCTAssertEqual(config.style.itemStyle, UIBarButtonItemStyle.plain)
+        XCTAssertEqual(config.style.itemStyle, UIBarButtonItem.Style.plain)
         XCTAssertEqual(config.content.image, image)
         XCTAssertNil(config.content.systemItem)
 
