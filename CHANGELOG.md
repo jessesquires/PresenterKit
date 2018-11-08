@@ -4,6 +4,15 @@ The changelog for `PresenterKit`. Also see the [releases](https://github.com/jes
 
 --------------------------------------
 
+5.1.0
+-----
+
+This release closes the [5.1.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/7?closed=1)
+
+- Upgrade to Swift 4.2
+- Xcode 10.1
+- Upgrade Swiftlint to 0.27.0
+
 5.0.0
 -----
 
