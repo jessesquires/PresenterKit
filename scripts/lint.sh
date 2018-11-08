@@ -12,7 +12,6 @@ else
     Download from https://github.com/realm/SwiftLint,
     or brew install swiftlint.
     "
-    exit 1
 fi
 
 if [ $(swiftlint version) != $VERSION ]; then
