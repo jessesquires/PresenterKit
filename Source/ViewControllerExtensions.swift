@@ -19,7 +19,7 @@
 import UIKit
 
 // MARK: - Styles
-public extension UIViewController {
+extension UIViewController {
 
     /**
      Wraps the receiving view controller in a navigation controller.
@@ -73,6 +73,7 @@ public extension UIViewController {
         switch navigationStyle {
         case .none:
             return self
+
         case .withNavigation:
             return withNavigation()
         }
@@ -98,7 +99,7 @@ public extension UIViewController {
 }
 
 // MARK: - Presentation
-public extension UIViewController {
+extension UIViewController {
 
     /**
      Presents a view controller using the specified presentation type.
@@ -128,6 +129,7 @@ public extension UIViewController {
             switch c.source {
             case .barButtonItem(let item):
                 popoverController?.barButtonItem = item
+
             case .view(let container, let frame):
                 popoverController?.sourceView = container
                 popoverController?.sourceRect = frame ?? container.bounds
@@ -161,7 +163,7 @@ public extension UIViewController {
 }
 
 // MARK: - Dismissal
-public extension UIViewController {
+extension UIViewController {
 
     /**
      Dismisses the receiving view controller.
@@ -206,6 +208,7 @@ public extension UIViewController {
         switch config.location {
         case .left:
             navigationItem.leftBarButtonItem = button
+
         case .right:
             navigationItem.rightBarButtonItem = button
         }

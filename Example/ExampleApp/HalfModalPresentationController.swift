@@ -20,7 +20,7 @@ import UIKit
 
 final class HalfModalPresentationController: UIPresentationController {
 
-    lazy private var dimmingView: UIView = {
+    private lazy var dimmingView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         view.alpha = 0.0
@@ -44,7 +44,7 @@ final class HalfModalPresentationController: UIPresentationController {
 
         if let transitionCoordinator = presentingViewController.transitionCoordinator {
 
-            transitionCoordinator.animate(alongsideTransition: { (context) in
+            transitionCoordinator.animate(alongsideTransition: { _ in
                 animations()
             }, completion: nil)
         } else {
@@ -58,7 +58,7 @@ final class HalfModalPresentationController: UIPresentationController {
         }
 
         if let transitionCoordinator = presentingViewController.transitionCoordinator {
-            transitionCoordinator.animate(alongsideTransition: { (context) in
+            transitionCoordinator.animate(alongsideTransition: { _ in
                 animations()
             }, completion: nil)
         } else {

@@ -26,9 +26,9 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
     @IBAction func didTapPopoverButton(_ sender: UIBarButtonItem) {
         let vc = RedViewController()
         let config = PopoverConfig(source: .barButtonItem(sender), delegate: self)
-        present(vc, type: .popover(config), completion: {
+        present(vc, type: .popover(config)) {
             print("Completed")
-        })
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -46,7 +46,7 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
             })
 
         case 1:
-            let image = #imageLiteral(resourceName: "ic_dismiss")
+            let image = UIImage(named: "ic_dismiss")!
             let dismissConfig = DismissButtonConfig(location: .left, style: .plain, content: .image(image))
             let vc = RedViewController(dismissConfig: dismissConfig)
             present(vc, type: .modal(.withNavigation, .formSheet, .coverVertical), animated: animated, completion: {

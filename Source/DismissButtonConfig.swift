@@ -79,7 +79,7 @@ public struct DismissButtonConfig {
     }
 }
 
-public extension UIBarButtonItem {
+extension UIBarButtonItem {
     /**
      Initializes a new bar button item using the specified configuration.
 
@@ -94,8 +94,10 @@ public extension UIBarButtonItem {
         switch config.content {
         case .text(let title):
             self.init(title: title, style: config.style.itemStyle, target: target, action: action)
+
         case .image(let image):
             self.init(image: image, style: config.style.itemStyle, target: target, action: action)
+
         case .systemItem(let systemItem):
             self.init(barButtonSystemItem: systemItem, target: target, action: action)
         }
@@ -108,6 +110,7 @@ extension DismissButtonConfig.Style {
         switch self {
         case .bold:
             return .done
+
         case .plain:
             return .plain
         }
@@ -119,6 +122,7 @@ extension DismissButtonConfig.Content {
         switch self {
         case .systemItem(let item):
             return item
+
         default:
             return nil
         }
@@ -128,6 +132,7 @@ extension DismissButtonConfig.Content {
         switch self {
         case .image(let image):
             return image
+
         default:
             return nil
         }
@@ -137,6 +142,7 @@ extension DismissButtonConfig.Content {
         switch self {
         case .text(let str):
             return str
+
         default:
             return nil
         }
