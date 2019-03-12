@@ -1,11 +1,16 @@
 os: osx
 osx_image: xcode10.1
+rvm: 2.5.1
 
 addons:
   homebrew:
     packages:
     - swiftlint
     update: true
+
+cache:
+  - bundler
+  - pip
 
 branches:
   only:
@@ -28,7 +33,9 @@ env:
    - DESTINATION="OS=12.1,name=iPhone X" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO" RUN_UI_TESTS="YES"
 
 before_install:
-   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
+    - pip3 install proselint
+    - gem update --system
+    - gem install bundler
 
 script:
 - set -o pipefail
@@ -56,6 +63,8 @@ script:
 - if [ $RUN_TESTS == "YES" ]; then
       xcodebuild test -project PresenterKit.xcodeproj -scheme PresenterKit -destination "platform=iOS Simulator,name=iPhone 7" CODE_SIGNING_REQUIRED=NO;
   fi
+
+- bundle exec danger
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
