@@ -1,6 +1,6 @@
 os: osx
 osx_image: xcode10.1
-rvm: 2.5.1
+rvm: 2.6.0
 
 addons:
   homebrew:
@@ -18,53 +18,48 @@ branches:
     - develop
 
 env:
-   global:
-   - LANG=en_US.UTF-8
+  global:
+    - PROJECT="PresenterKit.xcodeproj"
+    - IOS_SCHEME="PresenterKit"
+    - IOS_SDK=iphonesimulator12.1
 
-   - PROJECT="PresenterKit.xcodeproj"
-   - IOS_SCHEME="PresenterKit"
-   - IOS_SDK=iphonesimulator12.1
+  matrix:
+    - DESTINATION="OS=10.3.1,name=iPhone 7" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" RUN_UI_TESTS="NO"
 
-   matrix:
-   - DESTINATION="OS=10.3.1,name=iPhone 7" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="YES" RUN_UI_TESTS="NO"
+    - DESTINATION="OS=11.4,name=iPhone X" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" RUN_UI_TESTS="NO"
 
-   - DESTINATION="OS=11.4,name=iPhone X" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO" RUN_UI_TESTS="NO"
-
-   - DESTINATION="OS=12.1,name=iPhone X" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" POD_LINT="NO" RUN_UI_TESTS="YES"
+    - DESTINATION="OS=12.1,name=iPhone X" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES" BUILD_EXAMPLE="YES" RUN_UI_TESTS="YES"
 
 before_install:
-    - pip3 install proselint
-    - gem update --system
-    - gem install bundler
+  - pip3 install proselint
+  - gem update --system
+  - gem install bundler
 
 script:
 - set -o pipefail
 - xcodebuild -version -sdk
 
-- if [ $POD_LINT == "YES" ]; then
-      pod lib lint --skip-tests;
-  fi
-
 - if [ $BUILD_EXAMPLE == "YES" ]; then
-      xcodebuild build analyze -project Example/ExampleApp.xcodeproj -scheme ExampleApp -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+      xcodebuild build -project Example/ExampleApp.xcodeproj -scheme ExampleApp -sdk "$SDK" -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty -c;
   fi
 
 - if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild analyze test -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+      xcodebuild test -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -enableCodeCoverage YES -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty -c;
   else
-      xcodebuild build analyze -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
+      xcodebuild build analyze -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty -c;
   fi
 
 - if [ $RUN_UI_TESTS == "YES" ]; then
-      xcodebuild test -project Example/ExampleApp.xcodeproj -scheme ExampleApp -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
-  fi
-
-# Build for reporting test coverage
-- if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild test -project PresenterKit.xcodeproj -scheme PresenterKit -destination "platform=iOS Simulator,name=iPhone 7" CODE_SIGNING_REQUIRED=NO;
+      xcodebuild test -project Example/ExampleApp.xcodeproj -scheme ExampleApp -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty -c;
   fi
 
 - bundle exec danger
 
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
+
+jobs:
+  include:
+    - stage: lint
+      name: "pod lint"
+      script: bundle exec pod lib lint
