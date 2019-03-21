@@ -50,7 +50,7 @@ jobs:
       name: iOS 12.1
       env: DESTINATION="OS=12.1,name=iPhone X" SDK="$IOS_SDK"
 
-      stage: UI tests
+    - stage: UI tests
       name: iOS 12.1
       env: DESTINATION="OS=12.1,name=iPhone X" SDK="$IOS_SDK"
       script:
