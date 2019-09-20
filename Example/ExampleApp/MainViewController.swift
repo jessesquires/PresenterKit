@@ -26,7 +26,7 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
     @IBAction func didTapPopoverButton(_ sender: UIBarButtonItem) {
         let vc = RedViewController()
         let config = PopoverConfig(source: .barButtonItem(sender), delegate: self)
-        present(vc, type: .popover(config)) {
+        presentController(vc, type: .popover(config)) {
             print("Completed")
         }
     }
@@ -41,7 +41,7 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
         switch indexPath.section {
         case 0:
             let vc = RedViewController()
-            present(vc, type: .push, animated: animated, completion: {
+            presentController(vc, type: .push, animated: animated, completion: {
                 print("Completed")
             })
 
@@ -49,30 +49,30 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
             let image = UIImage(named: "ic_dismiss")!
             let dismissConfig = DismissButtonConfig(location: .left, style: .plain, content: .image(image))
             let vc = RedViewController(dismissConfig: dismissConfig)
-            present(vc, type: .modal(.withNavigation, .formSheet, .coverVertical), animated: animated, completion: {
+            presentController(vc, type: .modal(.withNavigation, .formSheet, .coverVertical), animated: animated, completion: {
                 print("Completed")
             })
 
         case 2:
             let vc = RedViewController()
-            present(vc, type: .show, animated: animated)
+            presentController(vc, type: .show, animated: animated)
 
         case 3:
             let vc = RedViewController()
-            present(vc, type: .showDetail(.withNavigation), animated: animated)
+            presentController(vc, type: .showDetail(.withNavigation), animated: animated)
 
         case 4:
             let cell = tableView.cellForRow(at: indexPath)!.contentView
             let config = PopoverConfig(source: .view(container: cell, frame: nil), delegate: self)
             let vc = RedViewController()
-            present(vc, type: .popover(config), animated: animated, completion: {
+            presentController(vc, type: .popover(config), animated: animated, completion: {
                 print("Completed")
             })
 
         case 5:
             let vc = RedViewController()
             vc.modalTransitionStyle = .coverVertical
-            present(vc, type: .custom(self), animated: animated, completion: {
+            presentController(vc, type: .custom(self), animated: animated, completion: {
                 print("Completed")
             })
 
