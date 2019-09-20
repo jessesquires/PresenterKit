@@ -4,6 +4,11 @@ The changelog for `PresenterKit`. Also see the [releases](https://github.com/jes
 
 --------------------------------------
 
+5.2.0
+-----
+
+This release closes the [5.2.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/8?closed=1)
+
 5.1.0
 -----
 
