@@ -7,7 +7,7 @@ The changelog for `PresenterKit`. Also see the [releases](https://github.com/jes
 6.0.0
 -----
 
-This release closes the [6.0.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/8?closed=1)
+This release closes the [6.0.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/8?closed=1).
 
 ### Breaking
 
@@ -24,7 +24,7 @@ This release closes the [6.0.0 milestone](https://github.com/jessesquires/Presen
 5.1.0
 -----
 
-This release closes the [5.1.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/7?closed=1)
+This release closes the [5.1.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/7?closed=1).
 
 - Upgrade to Swift 4.2
 - Xcode 10.1
