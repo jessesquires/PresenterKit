@@ -32,8 +32,8 @@ jobs:
   include:
     - &test
       stage: unit tests
-      name: iOS 11.4
-      env: DESTINATION="OS=11.4,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 11.0
+      env: DESTINATION="OS=11.0,name=iPhone X" SDK="$IOS_SDK"
       script:
         - set -o pipefail
         - xcodebuild -version -sdk
@@ -43,8 +43,8 @@ jobs:
         - bash <(curl -s https://codecov.io/bash)
 
     - <<: *test
-      name: iOS 12.1
-      env: DESTINATION="OS=12.1,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 12.0
+      env: DESTINATION="OS=12.0,name=iPhone X" SDK="$IOS_SDK"
 
     - <<: *test
       name: iOS 13.0
@@ -60,16 +60,16 @@ jobs:
 
     - &build-examples
       stage: build examples
-      name: iOS 11.4
-      env: DESTINATION="OS=11.4,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 11.0
+      env: DESTINATION="OS=11.0,name=iPhone X" SDK="$IOS_SDK"
       script:
         - set -o pipefail
         - xcodebuild -version -sdk
         - xcodebuild clean build -project Example/ExampleApp.xcodeproj -scheme ExampleApp -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | bundle exec xcpretty -c;
 
     - <<: *build-examples
-      name: iOS 12.1
-      env: DESTINATION="OS=12.1,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 12.0
+      env: DESTINATION="OS=12.0,name=iPhone X" SDK="$IOS_SDK"
 
     - <<: *build-examples
       name: iOS 13.0
