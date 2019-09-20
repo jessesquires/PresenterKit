@@ -32,8 +32,8 @@ jobs:
   include:
     - &test
       stage: unit tests
-      name: iOS 11.0
-      env: DESTINATION="OS=11.0,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 11.1
+      env: DESTINATION="OS=11.1,name=iPhone X" SDK="$IOS_SDK"
       script:
         - set -o pipefail
         - xcodebuild -version -sdk
@@ -60,8 +60,8 @@ jobs:
 
     - &build-examples
       stage: build examples
-      name: iOS 11.0
-      env: DESTINATION="OS=11.0,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 11.1
+      env: DESTINATION="OS=11.1,name=iPhone X" SDK="$IOS_SDK"
       script:
         - set -o pipefail
         - xcodebuild -version -sdk
