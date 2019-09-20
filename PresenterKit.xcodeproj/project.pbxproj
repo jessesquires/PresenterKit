@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13C26AD71DFD2C99004CC79D /* NavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C26AD61DFD2C99004CC79D /* NavigationControllerExtensions.swift */; };
+		13C26AD71DFD2C99004CC79D /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C26AD61DFD2C99004CC79D /* UINavigationController+Extensions.swift */; };
 		8876470E1C56FB2D002048E2 /* DismissButtonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876470D1C56FB2D002048E2 /* DismissButtonConfig.swift */; };
-		887647181C59E423002048E2 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887647171C59E423002048E2 /* ViewControllerExtensions.swift */; };
+		887647181C59E423002048E2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887647171C59E423002048E2 /* UIViewController+Extensions.swift */; };
 		889CC4181C4345BD00CD2DBD /* PresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CC4171C4345BD00CD2DBD /* PresentationType.swift */; };
 		88B1CF621C3F762800D1348C /* PresenterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B1CF571C3F762700D1348C /* PresenterKit.framework */; };
 		88B1CF781C3F766C00D1348C /* PresenterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 88B1CF731C3F766C00D1348C /* PresenterKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,9 +27,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		13C26AD61DFD2C99004CC79D /* NavigationControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtensions.swift; sourceTree = "<group>"; };
+		13C26AD61DFD2C99004CC79D /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		8876470D1C56FB2D002048E2 /* DismissButtonConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissButtonConfig.swift; sourceTree = "<group>"; };
-		887647171C59E423002048E2 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
+		887647171C59E423002048E2 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		889CC4171C4345BD00CD2DBD /* PresentationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationType.swift; sourceTree = "<group>"; };
 		88B1CF571C3F762700D1348C /* PresenterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PresenterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88B1CF611C3F762800D1348C /* PresenterKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresenterKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,8 +83,8 @@
 				88B1CF731C3F766C00D1348C /* PresenterKit.h */,
 				8876470D1C56FB2D002048E2 /* DismissButtonConfig.swift */,
 				889CC4171C4345BD00CD2DBD /* PresentationType.swift */,
-				887647171C59E423002048E2 /* ViewControllerExtensions.swift */,
-				13C26AD61DFD2C99004CC79D /* NavigationControllerExtensions.swift */,
+				887647171C59E423002048E2 /* UIViewController+Extensions.swift */,
+				13C26AD61DFD2C99004CC79D /* UINavigationController+Extensions.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -232,9 +232,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8876470E1C56FB2D002048E2 /* DismissButtonConfig.swift in Sources */,
-				887647181C59E423002048E2 /* ViewControllerExtensions.swift in Sources */,
+				887647181C59E423002048E2 /* UIViewController+Extensions.swift in Sources */,
 				889CC4181C4345BD00CD2DBD /* PresentationType.swift in Sources */,
-				13C26AD71DFD2C99004CC79D /* NavigationControllerExtensions.swift in Sources */,
+				13C26AD71DFD2C99004CC79D /* UINavigationController+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
