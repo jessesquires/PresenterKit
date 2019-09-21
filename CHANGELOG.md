@@ -4,10 +4,27 @@ The changelog for `PresenterKit`. Also see the [releases](https://github.com/jes
 
 --------------------------------------
 
+6.0.0
+-----
+
+This release closes the [6.0.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/8?closed=1).
+
+### Breaking
+
+- iOS 11 minimum deployment target (Dropped iOS 10)
+- Renamed `present()` function to `presentController()` to avoid ambiguous naming with UIKit
+
+### Changed
+
+- Swift 5.1
+- Xcode 11
+- Upgrade Swiftlint to 0.35.0, add new rules
+- Update Travis CI
+
 5.1.0
 -----
 
-This release closes the [5.1.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/7?closed=1)
+This release closes the [5.1.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/7?closed=1).
 
 - Upgrade to Swift 4.2
 - Xcode 10.1

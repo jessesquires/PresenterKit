@@ -171,7 +171,7 @@ final class PresenterKitTests: XCTestCase {
 
         let expectPush = expectation(description: "completion block called")
 
-        firstController.present(secondController, type: .push, animated: false) {
+        firstController.presentController(secondController, type: .push, animated: false) {
             expectPush.fulfill()
         }
 
@@ -200,7 +200,7 @@ final class PresenterKitTests: XCTestCase {
         XCTAssertEqual(navController.topViewController, firstController)
 
         let secondController = UIViewController()
-        firstController.present(secondController, type: .push, animated: false)
+        firstController.presentController(secondController, type: .push, animated: false)
 
         XCTAssertNotNil(secondController.navigationController)
         XCTAssertNotNil(secondController.navigationItem)
@@ -217,7 +217,7 @@ final class PresenterKitTests: XCTestCase {
     func test_thatViewController_presentsViewController_withPresentationType_show() {
         let firstController = UINavigationController()
         let secondController = UIViewController()
-        firstController.present(secondController, type: .show, animated: false)
+        firstController.presentController(secondController, type: .show, animated: false)
 
         XCTAssertNotNil(secondController.navigationController)
         XCTAssertNotNil(secondController.navigationItem)

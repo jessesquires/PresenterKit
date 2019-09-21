@@ -111,10 +111,10 @@ extension UIViewController {
 
      - warning: The `completion` parameter is ignored for `show` and `showDetail` presentation types.
      */
-    public func present(_ controller: UIViewController,
-                        type: PresentationType,
-                        animated: Bool = true,
-                        completion: (() -> Void)? = nil) {
+    public func presentController(_ controller: UIViewController,
+                                  type: PresentationType,
+                                  animated: Bool = true,
+                                  completion: (() -> Void)? = nil) {
         switch type {
         case .modal(let n, let p, let t):
             let vc = controller.withStyles(navigation: n, presentation: p, transition: t)
