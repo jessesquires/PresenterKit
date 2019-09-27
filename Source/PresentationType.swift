@@ -50,17 +50,19 @@ public struct PopoverConfig {
     let source: Source
 
     /// The arrow direction of the popover.
+    /// The default is `.any`.
     let arrowDirection: UIPopoverArrowDirection
 
     /// The delegate object for the popover presentation controller, or `nil`.
+    /// The default is `nil`.
     let delegate: UIPopoverPresentationControllerDelegate?
 
     /**
      Initializes and returns a new `PopoverConfig` object.
 
      - parameter source:         The source for the popoever.
-     - parameter arrowDirection: The arrow direction for the popover.
-     - parameter delegate:       The delegate for the popover.
+     - parameter arrowDirection: The arrow direction for the popover. The default is `.any`.
+     - parameter delegate:       The delegate for the popover. The default is `nil`.
 
      - returns: A new `PopoverConfig` object.
      */
