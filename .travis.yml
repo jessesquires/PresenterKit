@@ -1,6 +1,6 @@
 os: osx
-osx_image: xcode11
-rvm: 2.6.0
+osx_image: xcode11.2
+rvm: 2.6.4
 
 addons:
   homebrew:
@@ -21,7 +21,7 @@ env:
   global:
     - PROJECT="PresenterKit.xcodeproj"
     - SCHEME="PresenterKit"
-    - IOS_SDK=iphonesimulator13.0
+    - IOS_SDK=iphonesimulator13.2
 
 before_install:
   - pip3 install proselint
@@ -32,8 +32,8 @@ jobs:
   include:
     - &test
       stage: unit tests
-      name: iOS 11.1
-      env: DESTINATION="OS=11.1,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 11.0
+      env: DESTINATION="OS=11.0,name=iPhone X" SDK="$IOS_SDK"
       script:
         - set -o pipefail
         - xcodebuild -version -sdk
@@ -60,8 +60,8 @@ jobs:
 
     - &build-examples
       stage: build examples
-      name: iOS 11.1
-      env: DESTINATION="OS=11.1,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 11.0
+      env: DESTINATION="OS=11.0,name=iPhone X" SDK="$IOS_SDK"
       script:
         - set -o pipefail
         - xcodebuild -version -sdk
