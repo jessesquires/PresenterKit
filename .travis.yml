@@ -32,8 +32,8 @@ jobs:
   include:
     - &test
       stage: unit tests
-      name: iOS 11.0
-      env: DESTINATION="OS=11.0,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 11.1
+      env: DESTINATION="OS=11.1,name=iPhone X" SDK="$IOS_SDK"
       script:
         - set -o pipefail
         - xcodebuild -version -sdk
@@ -47,12 +47,12 @@ jobs:
       env: DESTINATION="OS=12.0,name=iPhone X" SDK="$IOS_SDK"
 
     - <<: *test
-      name: iOS 13.0
-      env: DESTINATION="OS=13.0,name=iPhone 11" SDK="$IOS_SDK"
+      name: iOS 13.2
+      env: DESTINATION="OS=13.2,name=iPhone 11" SDK="$IOS_SDK"
 
     - stage: ui tests
-      name: iOS 13.0
-      env: DESTINATION="OS=13.0,name=iPhone 11" SDK="$IOS_SDK"
+      name: iOS 13.2
+      env: DESTINATION="OS=13.2,name=iPhone 11" SDK="$IOS_SDK"
       script:
         - set -o pipefail
         - xcodebuild -version -sdk
@@ -60,8 +60,8 @@ jobs:
 
     - &build-examples
       stage: build examples
-      name: iOS 11.0
-      env: DESTINATION="OS=11.0,name=iPhone X" SDK="$IOS_SDK"
+      name: iOS 11.1
+      env: DESTINATION="OS=11.1,name=iPhone X" SDK="$IOS_SDK"
       script:
         - set -o pipefail
         - xcodebuild -version -sdk
@@ -72,8 +72,8 @@ jobs:
       env: DESTINATION="OS=12.0,name=iPhone X" SDK="$IOS_SDK"
 
     - <<: *build-examples
-      name: iOS 13.0
-      env: DESTINATION="OS=13.0,name=iPhone 11" SDK="$IOS_SDK"
+      name: iOS 13.2
+      env: DESTINATION="OS=13.2,name=iPhone 11" SDK="$IOS_SDK"
 
     - stage: lint
       name: pod lint
