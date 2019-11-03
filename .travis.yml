@@ -25,8 +25,8 @@ env:
 
 before_install:
   - pip3 install proselint
-  - gem update --system
-  - gem install bundler
+  - bundle update --bundler
+  - bundle install --without=documentation
 
 jobs:
   include:
