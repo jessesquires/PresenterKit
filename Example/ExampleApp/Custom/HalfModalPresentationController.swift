@@ -67,16 +67,16 @@ final class HalfModalPresentationController: UIPresentationController {
     }
 
     override var adaptivePresentationStyle: UIModalPresentationStyle {
-        return .none
+        .none
     }
 
     override var shouldPresentInFullscreen: Bool {
-        return true
+        true
     }
 
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
-        return CGSize(width: parentSize.width,
-                      height: round(parentSize.height / 2.0))
+        CGSize(width: parentSize.width,
+               height: round(parentSize.height / 2.0))
     }
 
     override func containerViewWillLayoutSubviews() {
