@@ -86,12 +86,12 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
     func presentationController(forPresented presented: UIViewController,
                                 presenting: UIViewController?,
                                 source: UIViewController) -> UIPresentationController? {
-        return HalfModalPresentationController(presentedViewController: presented, presenting: presenting)
+        HalfModalPresentationController(presentedViewController: presented, presenting: presenting)
     }
 
     // MARK: UIPopoverPresentationControllerDelegate
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
+        .none
     }
 }

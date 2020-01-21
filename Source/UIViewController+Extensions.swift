@@ -29,7 +29,7 @@ extension UIViewController {
      */
     @discardableResult
     public func withNavigation() -> UINavigationController {
-        return UINavigationController(rootViewController: self)
+        UINavigationController(rootViewController: self)
     }
 
     /**
@@ -220,23 +220,23 @@ extension UIViewController {
     }
 
     private var needsDismissButton: Bool {
-        return isModallyPresented
+        isModallyPresented
     }
 
     private var isModallyPresented: Bool {
-        return (hasPresentingController && !hasNavigationController)
+        (hasPresentingController && !hasNavigationController)
             || (hasPresentingController && hasNavigationController && isNavigationRootViewController)
     }
 
     private var hasPresentingController: Bool {
-        return presentingViewController != nil
+        presentingViewController != nil
     }
 
     private var hasNavigationController: Bool {
-        return navigationController != nil
+        navigationController != nil
     }
 
     private var isNavigationRootViewController: Bool {
-        return navigationController?.viewControllers.first == self
+        navigationController?.viewControllers.first == self
     }
 }
