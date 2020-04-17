@@ -165,6 +165,27 @@ extension UIViewController {
 // MARK: - Dismissal
 extension UIViewController {
 
+    private var needsDismissButton: Bool {
+        isModallyPresented
+    }
+
+    private var isModallyPresented: Bool {
+        (hasPresentingController && !hasNavigationController)
+            || (hasPresentingController && hasNavigationController && isNavigationRootViewController)
+    }
+
+    private var hasPresentingController: Bool {
+        presentingViewController != nil
+    }
+
+    private var hasNavigationController: Bool {
+        navigationController != nil
+    }
+
+    private var isNavigationRootViewController: Bool {
+        navigationController?.viewControllers.first == self
+    }
+
     /**
      Dismisses the receiving view controller.
 
@@ -217,26 +238,5 @@ extension UIViewController {
     @objc
     private func _didTapDismissButton(_ sender: UIBarButtonItem) {
         dismissController()
-    }
-
-    private var needsDismissButton: Bool {
-        isModallyPresented
-    }
-
-    private var isModallyPresented: Bool {
-        (hasPresentingController && !hasNavigationController)
-            || (hasPresentingController && hasNavigationController && isNavigationRootViewController)
-    }
-
-    private var hasPresentingController: Bool {
-        presentingViewController != nil
-    }
-
-    private var hasNavigationController: Bool {
-        navigationController != nil
-    }
-
-    private var isNavigationRootViewController: Bool {
-        navigationController?.viewControllers.first == self
     }
 }

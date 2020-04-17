@@ -16,6 +16,8 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
+// swiftlint:disable type_contents_order
+
 import UIKit
 
 final class HalfModalPresentationController: UIPresentationController {
@@ -98,3 +100,5 @@ final class HalfModalPresentationController: UIPresentationController {
         presentingViewController.dismiss(animated: true, completion: nil)
     }
 }
+
+// swiftlint:enable type_contents_order

@@ -30,6 +30,7 @@ opt_in_rules:
   - contains_over_filter_count
   - contains_over_filter_is_empty
   - empty_collection_literal
+  - type_contents_order
 
   # idiomatic
   - fatal_error_message
@@ -45,6 +46,7 @@ opt_in_rules:
   - static_operator
   - toggle_bool
   - unavailable_function
+  - no_space_in_method_call
 
   # style
   - attributes
@@ -62,7 +64,6 @@ opt_in_rules:
   - trailing_closure
   - unneeded_parentheses_in_closure_argument
   - vertical_whitespace_between_cases
-  - no_space_in_method_call
 
   # lint
   - overridden_super_call
@@ -86,3 +87,21 @@ type_body_length: 500
 function_body_length: 250
 
 cyclomatic_complexity: 15
+
+type_contents_order:
+  order:
+    - associated_type
+    - type_alias
+    - case
+    - subtype
+    - type_property
+    - ib_outlet
+    - ib_inspectable
+    - instance_property
+    - initializer
+    - deinitializer
+    - subscript
+    - type_method
+    - view_life_cycle_method
+    - ib_action
+    - other_method

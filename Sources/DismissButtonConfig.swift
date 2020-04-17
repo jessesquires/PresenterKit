@@ -24,33 +24,6 @@ import UIKit
  */
 public struct DismissButtonConfig {
 
-    /// The location for the bar button.
-    /// The default is `.left`.
-    public let location: Location
-
-    /// The style for the bar button.
-    ///  The default is `.plain`.
-    public let style: Style
-
-    /// The content for the bar button.
-    ///  The default is `.plain`.
-    public let content: Content
-
-    /**
-     Initializes a new configuration instance.
-
-     - parameter location: The location for the bar button. The default is `.left`.
-     - parameter style:    The style for the bar button. The default is `.plain`.
-     - parameter content:  The content for the bar button. The default is `.systemItem(.cancel)`.
-
-     - returns: A new configuration instance.
-     */
-    public init(location: Location = .left, style: Style = .plain, content: Content = .systemItem(.cancel)) {
-        self.location = location
-        self.style = style
-        self.content = content
-    }
-
     /// Specifies a bar button's location in a navigation bar.
     public enum Location {
         /// The left side of the navigation bar.
@@ -79,6 +52,33 @@ public struct DismissButtonConfig {
 
         /// Specifies a custom image for the bar button.
         case image(UIImage)
+    }
+
+    /// The location for the bar button.
+    /// The default is `.left`.
+    public let location: Location
+
+    /// The style for the bar button.
+    ///  The default is `.plain`.
+    public let style: Style
+
+    /// The content for the bar button.
+    ///  The default is `.plain`.
+    public let content: Content
+
+    /**
+     Initializes a new configuration instance.
+
+     - parameter location: The location for the bar button. The default is `.left`.
+     - parameter style:    The style for the bar button. The default is `.plain`.
+     - parameter content:  The content for the bar button. The default is `.systemItem(.cancel)`.
+
+     - returns: A new configuration instance.
+     */
+    public init(location: Location = .left, style: Style = .plain, content: Content = .systemItem(.cancel)) {
+        self.location = location
+        self.style = style
+        self.content = content
     }
 }
 
