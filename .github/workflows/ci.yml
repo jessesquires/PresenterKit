@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - master
-      - dev
+      - develop
   pull_request:
     branches:
       - master
-      - dev
+      - develop
 env:
   DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
   IOS_SDK: iphonesimulator13.4
