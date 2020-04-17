@@ -12,7 +12,6 @@
 		887647181C59E423002048E2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887647171C59E423002048E2 /* UIViewController+Extensions.swift */; };
 		889CC4181C4345BD00CD2DBD /* PresentationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CC4171C4345BD00CD2DBD /* PresentationType.swift */; };
 		88B1CF621C3F762800D1348C /* PresenterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B1CF571C3F762700D1348C /* PresenterKit.framework */; };
-		88B1CF781C3F766C00D1348C /* PresenterKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 88B1CF731C3F766C00D1348C /* PresenterKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88B1CF7B1C3F767000D1348C /* PresenterKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B1CF761C3F766C00D1348C /* PresenterKitTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,6 @@
 		88B1CF571C3F762700D1348C /* PresenterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PresenterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88B1CF611C3F762800D1348C /* PresenterKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresenterKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88B1CF721C3F766C00D1348C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88B1CF731C3F766C00D1348C /* PresenterKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresenterKit.h; sourceTree = "<group>"; };
 		88B1CF751C3F766C00D1348C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88B1CF761C3F766C00D1348C /* PresenterKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresenterKitTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,7 +59,7 @@
 		88B1CF4D1C3F762700D1348C = {
 			isa = PBXGroup;
 			children = (
-				88B1CF711C3F766C00D1348C /* Source */,
+				88B1CF711C3F766C00D1348C /* Sources */,
 				88B1CF741C3F766C00D1348C /* Tests */,
 				88B1CF581C3F762700D1348C /* Products */,
 			);
@@ -76,17 +74,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		88B1CF711C3F766C00D1348C /* Source */ = {
+		88B1CF711C3F766C00D1348C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				88B1CF721C3F766C00D1348C /* Info.plist */,
-				88B1CF731C3F766C00D1348C /* PresenterKit.h */,
 				8876470D1C56FB2D002048E2 /* DismissButtonConfig.swift */,
 				889CC4171C4345BD00CD2DBD /* PresentationType.swift */,
-				887647171C59E423002048E2 /* UIViewController+Extensions.swift */,
 				13C26AD61DFD2C99004CC79D /* UINavigationController+Extensions.swift */,
+				887647171C59E423002048E2 /* UIViewController+Extensions.swift */,
+				88B1CF721C3F766C00D1348C /* Info.plist */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		88B1CF741C3F766C00D1348C /* Tests */ = {
@@ -105,7 +102,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88B1CF781C3F766C00D1348C /* PresenterKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,13 +375,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.PresenterKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -399,13 +396,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MARKETING_VERSION = 6.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexedbits.PresenterKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
