@@ -42,6 +42,11 @@ jobs:
           xcrun simctl delete unavailable
           xcrun simctl list
 
+      - name: install simulators
+        run: |
+          xcrun simctl create "iPhone X" "iPhone X" com.apple.CoreSimulator.SimRuntime.iOS-11-4
+          xcrun simctl create "iPhone X" "iPhone X" com.apple.CoreSimulator.SimRuntime.iOS-12-0
+
       - name: unit tests
         run: |
           set -o pipefail
