@@ -10,6 +10,7 @@ NEXT
 ### Changed
 
 - Swift 5.2
+- Switch to GH Actions
 
 6.0.0
 -----
