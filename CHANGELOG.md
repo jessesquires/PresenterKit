@@ -4,6 +4,13 @@ The changelog for `PresenterKit`. Also see the [releases](https://github.com/jes
 
 --------------------------------------
 
+NEXT
+----
+
+### Changed
+
+- Swift 5.2
+
 6.0.0
 -----
 
