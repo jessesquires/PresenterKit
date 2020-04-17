@@ -1,0 +1,39 @@
+name: SwiftPM Integration
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+  pull_request:
+    branches:
+      - master
+      - dev
+env:
+  SCHEME: PresenterKit
+  DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
+  IOS_SDK: iphonesimulator13.4
+
+jobs:
+  job-build:
+    name: SwiftPM Build
+    runs-on: macOS-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v1
+
+      - name: xcode version
+        run: xcodebuild -version -sdk
+
+      - name: list simulators
+        run: |
+          xcrun simctl delete unavailable
+          xcrun simctl list
+
+      - name: generate xcodeproj
+        run: swift package generate-xcodeproj
+
+      - name: Build
+        run: |
+          set -o pipefail
+          xcodebuild clean build -scheme "$SCHEME" -sdk "$IOS_SDK" -destination 'name=iPhone 11' | xcpretty -c
