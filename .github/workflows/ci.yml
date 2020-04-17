@@ -26,8 +26,6 @@ jobs:
     strategy:
       matrix:
         destination: [
-          "OS=11.1,name=iPhone X",
-          "OS=12.0,name=iPhone X",
           "OS=13.4,name=iPhone 11"
         ]
 
