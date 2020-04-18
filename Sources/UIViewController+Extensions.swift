@@ -195,7 +195,7 @@ extension UIViewController {
     public func dismissController(animated: Bool = true, completion: (() -> Void)? = nil) {
         if self.isModallyPresented {
             assert(presentingViewController != nil)
-            self.dismiss(animated: animated, completion: completion)
+            self.presentingViewController?.dismiss(animated: animated, completion: completion)
         } else {
             assert(navigationController != nil)
             _ = self.navigationController?.pop(animated: animated, completion: completion)
