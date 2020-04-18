@@ -41,7 +41,7 @@ extension UIViewController {
      */
     @discardableResult
     public func withPresentation(_ presentation: UIModalPresentationStyle) -> Self {
-        modalPresentationStyle = presentation
+        self.modalPresentationStyle = presentation
         return self
     }
 
@@ -54,7 +54,7 @@ extension UIViewController {
      */
     @discardableResult
     public func withTransition(_ transition: UIModalTransitionStyle) -> Self {
-        modalTransitionStyle = transition
+        self.modalTransitionStyle = transition
         return self
     }
 
@@ -75,7 +75,7 @@ extension UIViewController {
             return self
 
         case .withNavigation:
-            return withNavigation()
+            return self.withNavigation()
         }
     }
 
@@ -93,8 +93,8 @@ extension UIViewController {
                            presentation: UIModalPresentationStyle,
                            transition: UIModalTransitionStyle) -> UIViewController {
         // apple styles to self, then to navigation controller
-        withPresentation(presentation).withTransition(transition)
-        return withNavigationStyle(navigation).withPresentation(presentation).withTransition(transition)
+        self.withPresentation(presentation).withTransition(transition)
+        return self.withNavigationStyle(navigation).withPresentation(presentation).withTransition(transition)
     }
 }
 
@@ -118,7 +118,7 @@ extension UIViewController {
         switch type {
         case .modal(let n, let p, let t):
             let vc = controller.withStyles(navigation: n, presentation: p, transition: t)
-            present(vc, animated: animated, completion: completion)
+            self.present(vc, animated: animated, completion: completion)
 
         case .popover(let c):
             controller.withStyles(navigation: .none, presentation: .popover, transition: .crossDissolve)
@@ -134,30 +134,30 @@ extension UIViewController {
                 popoverController?.sourceView = container
                 popoverController?.sourceRect = frame ?? container.bounds
             }
-            present(controller, animated: animated, completion: completion)
+            self.present(controller, animated: animated, completion: completion)
 
         case .push:
             if let nav = self as? UINavigationController {
                 nav.push(controller, animated: animated, completion: completion)
             } else {
-                navigationController!.push(controller, animated: animated, completion: completion)
+                self.navigationController!.push(controller, animated: animated, completion: completion)
             }
 
         case .show:
             assert(completion == nil, "Completion closure parameter is ignored for `.show`")
-            show(controller, sender: self)
+            self.show(controller, sender: self)
 
         case .showDetail(let navigation):
             assert(completion == nil, "Completion closure parameter is ignored for `.showDetail`")
-            showDetailViewController(controller.withNavigationStyle(navigation), sender: self)
+            self.showDetailViewController(controller.withNavigationStyle(navigation), sender: self)
 
         case .custom(let delegate):
             controller.modalPresentationStyle = .custom
             controller.transitioningDelegate = delegate
-            present(controller, animated: animated, completion: completion)
+            self.present(controller, animated: animated, completion: completion)
 
         case .none:
-            present(controller, animated: animated, completion: completion)
+            self.present(controller, animated: animated, completion: completion)
         }
     }
 }
