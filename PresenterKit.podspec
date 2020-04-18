@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
    s.name = 'PresenterKit'
-   s.version = '6.0.0'
+   s.version = '6.1.0'
    s.license = 'MIT'
 
-   s.summary = 'Swifty view controller presentation for iOS'
+   s.summary = 'Custom presenters and better view controller presentation for iOS'
    s.homepage = 'https://github.com/jessesquires/PresenterKit'
    s.documentation_url = 'https://jessesquires.github.io/PresenterKit'
    s.social_media_url = 'https://twitter.com/jesse_squires'

@@ -4,12 +4,21 @@ The changelog for `PresenterKit`. Also see the [releases](https://github.com/jes
 
 --------------------------------------
 
-NEXT
-----
+6.1.0
+-----
+
+This release closes the [6.1.0 milestone](https://github.com/jessesquires/PresenterKit/milestone/9?closed=1).
+
+### New
+
+- Added a new custom presentation controller, `HalfModalPresentationController`
+- Support for Swift Package Manager
 
 ### Changed
 
-- Swift 5.2
+- Upgrade to Swift 5.2
+- Update to Xcode 11.4
+- Upgrade SwiftLint
 - Switch to GH Actions
 
 6.0.0
