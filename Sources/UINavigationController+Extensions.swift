@@ -32,7 +32,7 @@ extension UINavigationController {
                      animated: Bool = true,
                      completion: (() -> Void)? = nil) {
         self.pushViewController(viewController, animated: animated)
-        _handle(animated: animated, completion: completion)
+        self._handle(animated: animated, completion: completion)
     }
 
     /**
@@ -45,7 +45,7 @@ extension UINavigationController {
     public func pop(animated: Bool = true,
                     completion: (() -> Void)? = nil) {
         self.popViewController(animated: animated)
-        _handle(animated: animated, completion: completion)
+        self._handle(animated: animated, completion: completion)
     }
 
     private func _handle(animated: Bool, completion: (() -> Void)?) {

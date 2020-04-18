@@ -166,24 +166,24 @@ extension UIViewController {
 extension UIViewController {
 
     private var needsDismissButton: Bool {
-        isModallyPresented
+        self.isModallyPresented
     }
 
     private var isModallyPresented: Bool {
-        (hasPresentingController && !hasNavigationController)
-            || (hasPresentingController && hasNavigationController && isNavigationRootViewController)
+        (self.hasPresentingController && !self.hasNavigationController)
+            || (self.hasPresentingController && self.hasNavigationController && self.isNavigationRootViewController)
     }
 
     private var hasPresentingController: Bool {
-        presentingViewController != nil
+        self.presentingViewController != nil
     }
 
     private var hasNavigationController: Bool {
-        navigationController != nil
+        self.navigationController != nil
     }
 
     private var isNavigationRootViewController: Bool {
-        navigationController?.viewControllers.first == self
+        self.navigationController?.viewControllers.first == self
     }
 
     /**
@@ -193,12 +193,12 @@ extension UIViewController {
      - parameter completion: The closure to be called upon completion.
      */
     public func dismissController(animated: Bool = true, completion: (() -> Void)? = nil) {
-        if isModallyPresented {
+        if self.isModallyPresented {
             assert(presentingViewController != nil)
-            dismiss(animated: animated, completion: completion)
+            self.dismiss(animated: animated, completion: completion)
         } else {
             assert(navigationController != nil)
-            _ = navigationController?.pop(animated: animated, completion: completion)
+            _ = self.navigationController?.pop(animated: animated, completion: completion)
         }
     }
 
@@ -210,8 +210,8 @@ extension UIViewController {
      - note: This method does nothing if the view controller is not presented modally.
      */
     public func addDismissButtonIfNeeded(config: DismissButtonConfig = DismissButtonConfig()) {
-        guard needsDismissButton else { return }
-        addDismissButton(config: config)
+        guard self.needsDismissButton else { return }
+        self.addDismissButton(config: config)
     }
 
     /**
@@ -224,19 +224,19 @@ extension UIViewController {
     public func addDismissButton(config: DismissButtonConfig = DismissButtonConfig()) {
         let button = UIBarButtonItem(config: config,
                                      target: self,
-                                     action: #selector(_didTapDismissButton(_:)))
+                                     action: #selector(Self._didTapDismissButton(_:)))
 
         switch config.location {
         case .left:
-            navigationItem.leftBarButtonItem = button
+            self.navigationItem.leftBarButtonItem = button
 
         case .right:
-            navigationItem.rightBarButtonItem = button
+            self.navigationItem.rightBarButtonItem = button
         }
     }
 
     @objc
     private func _didTapDismissButton(_ sender: UIBarButtonItem) {
-        dismissController()
+        self.dismissController()
     }
 }

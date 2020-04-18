@@ -16,10 +16,9 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
+@testable import PresenterKit
 import UIKit
 import XCTest
-
-@testable import PresenterKit
 
 final class PresenterKitTests: XCTestCase {
 

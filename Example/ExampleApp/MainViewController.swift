@@ -16,9 +16,8 @@
 //  Released under an MIT license: https://opensource.org/licenses/MIT
 //
 
-import UIKit
-
 import PresenterKit
+import UIKit
 
 final class MainViewController: UITableViewController,
 UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {

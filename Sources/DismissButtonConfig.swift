@@ -93,7 +93,6 @@ extension UIBarButtonItem {
      - returns: A new bar button item instance.
      */
     public convenience init(config: DismissButtonConfig, target: AnyObject?, action: Selector) {
-
         switch config.content {
         case .text(let title):
             self.init(title: title, style: config.style.itemStyle, target: target, action: action)
@@ -104,7 +103,7 @@ extension UIBarButtonItem {
         case .systemItem(let systemItem):
             self.init(barButtonSystemItem: systemItem, target: target, action: action)
         }
-        style = config.style.itemStyle
+        self.style = config.style.itemStyle
     }
 }
 
