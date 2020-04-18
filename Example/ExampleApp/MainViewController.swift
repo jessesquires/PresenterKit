@@ -57,7 +57,7 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
             let image = UIImage(named: "ic_dismiss")!
             let dismissConfig = DismissButtonConfig(location: .left, style: .plain, content: .image(image))
             let vc = RedViewController(dismissConfig: dismissConfig)
-            presentController(vc, type: .modal(.withNavigation, .formSheet, .coverVertical), animated: animated) {
+            presentController(vc, type: .modal(.withNavigation, .fullScreen, .coverVertical), animated: animated) {
                 print("Completed")
             }
 
