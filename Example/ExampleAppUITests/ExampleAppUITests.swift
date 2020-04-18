@@ -19,8 +19,6 @@
 import UIKit
 import XCTest
 
-// swiftlint:disable line_length
-
 final class ExampleAppUITests: XCTestCase {
 
     override func setUp() {
@@ -29,14 +27,10 @@ final class ExampleAppUITests: XCTestCase {
         XCUIApplication().launch()
     }
 
-    override func tearDown() {
-        super.tearDown()
-    }
-
     func test_popover() {
         let app = XCUIApplication()
         app.navigationBars["PresenterKit"].buttons["Popover"].tap()
-        app/*@START_MENU_TOKEN@*/.otherElements["PopoverDismissRegion"]/*[[".otherElements[\"dismiss popup\"]",".otherElements[\"PopoverDismissRegion\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.otherElements["PopoverDismissRegion"].tap()
     }
 
     func test_push() {
@@ -66,14 +60,12 @@ final class ExampleAppUITests: XCTestCase {
     func test_popoverFromView() {
         let app = XCUIApplication()
         app.tables.staticTexts["PopoverFromView"].tap()
-        app/*@START_MENU_TOKEN@*/.otherElements["PopoverDismissRegion"]/*[[".otherElements[\"dismiss popup\"]",".otherElements[\"PopoverDismissRegion\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.otherElements["PopoverDismissRegion"].tap()
     }
 
-    func test_custom() {
+    func test_halfModal() {
         let app = XCUIApplication()
-        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Custom (\"Half Modal\")"]/*[[".cells.staticTexts[\"Custom (\\\"Half Modal\\\")\"]",".staticTexts[\"Custom (\\\"Half Modal\\\")\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.tables.staticTexts["Custom (\"Half Modal\")"].tap()
         app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).tap()
     }
 }
-
-// swiftlint:enable line_length

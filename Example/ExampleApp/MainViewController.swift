@@ -19,6 +19,15 @@
 import PresenterKit
 import UIKit
 
+enum Options: Int {
+    case push
+    case modal
+    case show
+    case showDetail
+    case popover
+    case halfModal
+}
+
 final class MainViewController: UITableViewController,
 UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
 
@@ -38,42 +47,42 @@ UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate {
         let animated = true
 
         switch indexPath.section {
-        case 0:
+        case Options.push.rawValue:
             let vc = RedViewController()
-            presentController(vc, type: .push, animated: animated, completion: {
+            presentController(vc, type: .push, animated: animated) {
                 print("Completed")
-            })
+            }
 
-        case 1:
+        case Options.modal.rawValue:
             let image = UIImage(named: "ic_dismiss")!
             let dismissConfig = DismissButtonConfig(location: .left, style: .plain, content: .image(image))
             let vc = RedViewController(dismissConfig: dismissConfig)
-            presentController(vc, type: .modal(.withNavigation, .formSheet, .coverVertical), animated: animated, completion: {
+            presentController(vc, type: .modal(.withNavigation, .formSheet, .coverVertical), animated: animated) {
                 print("Completed")
-            })
+            }
 
-        case 2:
+        case Options.show.rawValue:
             let vc = RedViewController()
             presentController(vc, type: .show, animated: animated)
 
-        case 3:
+        case Options.showDetail.rawValue:
             let vc = RedViewController()
             presentController(vc, type: .showDetail(.withNavigation), animated: animated)
 
-        case 4:
+        case Options.popover.rawValue:
             let cell = tableView.cellForRow(at: indexPath)!.contentView
             let config = PopoverConfig(source: .view(container: cell, frame: nil), delegate: self)
             let vc = RedViewController()
-            presentController(vc, type: .popover(config), animated: animated, completion: {
+            presentController(vc, type: .popover(config), animated: animated) {
                 print("Completed")
-            })
+            }
 
-        case 5:
+        case Options.halfModal.rawValue:
             let vc = RedViewController()
             vc.modalTransitionStyle = .coverVertical
-            presentController(vc, type: .custom(self), animated: animated, completion: {
+            presentController(vc, type: .custom(self), animated: animated) {
                 print("Completed")
-            })
+            }
 
         default:
             fatalError("invalid index path: \(indexPath)")
