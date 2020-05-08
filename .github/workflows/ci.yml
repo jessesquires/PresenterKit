@@ -29,7 +29,7 @@ jobs:
         destination: [
           "OS=11.1,name=iPhone X",
           "OS=12.0,name=iPhone XS",
-          "OS=13.4,name=iPhone 11"
+          "OS=13.4.1,name=iPhone 11"
         ]
 
     steps:
