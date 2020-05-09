@@ -20,17 +20,12 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
+  DEST: "OS=13.4.1,name=iPhone 11"
+
 jobs:
   job-build-test:
     name: Build and Test
     runs-on: macOS-latest
-    strategy:
-      matrix:
-        destination: [
-          "OS=11.1,name=iPhone X",
-          "OS=12.0,name=iPhone XS",
-          "OS=13.4.1,name=iPhone 11"
-        ]
 
     steps:
       - name: git checkout
@@ -44,12 +39,6 @@ jobs:
           xcrun simctl delete unavailable
           xcrun simctl list
 
-      - name: install simulators
-        run: |
-          gem install xcode-install
-          xcversion simulators --install='iOS 11.1'
-          xcversion simulators --install='iOS 12.0'
-
       - name: unit tests
         run: |
           set -o pipefail
@@ -57,7 +46,7 @@ jobs:
               -project "$PROJECT" \
               -scheme "$SCHEME" \
               -sdk "$IOS_SDK" \
-              -destination "${{ matrix.destination }}" \
+              -destination "$DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
       - name: ui tests
@@ -67,5 +56,5 @@ jobs:
               -project "$EXAMPLE_PROJECT" \
               -scheme "$EXAMPLE_SCHEME" \
               -sdk "$IOS_SDK" \
-              -destination "${{ matrix.destination }}" \
+              -destination "$DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
