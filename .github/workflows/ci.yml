@@ -11,8 +11,8 @@ on:
       - develop
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_11.4.1.app/Contents/Developer
-  IOS_SDK: iphonesimulator13.4
+  DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
+  IOS_SDK: iphonesimulator13.5
 
   PROJECT: PresenterKit.xcodeproj
   SCHEME: PresenterKit
@@ -20,7 +20,7 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  DEST: "OS=13.4.1,name=iPhone 11"
+  DEST: "OS=13.5,name=iPhone 11"
 
 jobs:
   job-build-test:
