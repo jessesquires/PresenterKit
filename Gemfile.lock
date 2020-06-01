@@ -108,7 +108,7 @@ GEM
     httpclient (2.8.3)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    jazzy (0.13.3)
+    jazzy (0.13.4)
       cocoapods (~> 1.5)
       mustache (~> 1.1)
       open4
