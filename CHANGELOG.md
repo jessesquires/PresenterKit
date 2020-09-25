@@ -4,6 +4,18 @@ The changelog for `PresenterKit`. Also see the [releases](https://github.com/jes
 
 --------------------------------------
 
+NEXT
+----
+
+- TBA
+
+6.1.1
+-----
+
+This release closes the [6.1.1 milestone](https://github.com/jessesquires/PresenterKit/milestone/10?closed=1).
+
+- Upgraded to Xcode 12 and Swift 5.3
+
 6.1.0
 -----
 
