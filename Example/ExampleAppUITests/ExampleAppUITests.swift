@@ -42,7 +42,7 @@ final class ExampleAppUITests: XCTestCase {
     func test_modal() {
         let app = XCUIApplication()
         app.tables.staticTexts["Modal"].tap()
-        app.navigationBars["Red View"].buttons["ic dismiss"].tap()
+        app.navigationBars["Red View"].children(matching: .button).element.tap()
     }
 
     func test_show() {
