@@ -9,12 +9,15 @@ on:
     branches:
       - master
       - develop
-env:
-  SCHEME: PresenterKit
 
+env:
   # https://github.com/actions/virtual-environments/tree/main/images/macos
   DEVELOPER_DIR: /Applications/Xcode_12.app/Contents/Developer
+
   IOS_SDK: iphonesimulator14.0
+  IOS_DEST: "OS=14.0,name=iPhone 11"
+
+  SCHEME: PresenterKit
 
 jobs:
   job-build:
@@ -38,4 +41,4 @@ jobs:
       - name: Build
         run: |
           set -o pipefail
-          xcodebuild clean build -scheme "$SCHEME" -sdk "$IOS_SDK" -destination 'name=iPhone 11' | xcpretty -c
+          xcodebuild clean build -scheme "$SCHEME" -sdk "$IOS_SDK" -destination "$IOS_DEST" | xcpretty -c
