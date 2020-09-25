@@ -87,7 +87,9 @@ public final class HalfModalPresentationController: UIPresentationController {
     }
 
     /// :nodoc:
-    override public func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
+    override public func size(
+        forChildContentContainer container: UIContentContainer,
+        withParentContainerSize parentSize: CGSize) -> CGSize {
         CGSize(width: parentSize.width,
                height: round(parentSize.height / 2.0))
     }
