@@ -12,8 +12,9 @@ on:
 
 env:
   # https://github.com/actions/virtual-environments/tree/main/images/macos
-  DEVELOPER_DIR: /Applications/Xcode_12.app/Contents/Developer
-  IOS_SDK: iphonesimulator14.0
+  DEVELOPER_DIR: /Applications/Xcode_12.2.app/Contents/Developer
+
+  IOS_SDK: iphonesimulator14.2
 
   PROJECT: PresenterKit.xcodeproj
   SCHEME: PresenterKit
@@ -21,13 +22,12 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  DEST: "OS=14.0,name=iPhone 11"
+  IOS_DEST: "OS=14.2,name=iPhone 12 Mini"
 
 jobs:
-  job-build-test:
+  job-main:
     name: Build and Test
     runs-on: macOS-latest
-
     steps:
       - name: git checkout
         uses: actions/checkout@v2
@@ -47,7 +47,7 @@ jobs:
               -project "$PROJECT" \
               -scheme "$SCHEME" \
               -sdk "$IOS_SDK" \
-              -destination "$DEST" \
+              -destination "$IOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
 
       - name: ui tests
@@ -57,5 +57,5 @@ jobs:
               -project "$EXAMPLE_PROJECT" \
               -scheme "$EXAMPLE_SCHEME" \
               -sdk "$IOS_SDK" \
-              -destination "$DEST" \
+              -destination "$IOS_DEST" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c
