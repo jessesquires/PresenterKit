@@ -12,9 +12,9 @@ on:
 
 env:
   # https://github.com/actions/virtual-environments/tree/main/images/macos
-  DEVELOPER_DIR: /Applications/Xcode_12.2.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
 
-  IOS_SDK: iphonesimulator14.2
+  IOS_SDK: iphonesimulator14.3
 
   PROJECT: PresenterKit.xcodeproj
   SCHEME: PresenterKit
@@ -22,7 +22,7 @@ env:
   EXAMPLE_PROJECT: Example/ExampleApp.xcodeproj
   EXAMPLE_SCHEME: ExampleApp
 
-  IOS_DEST: "OS=14.2,name=iPhone 12 Mini"
+  IOS_DEST: "OS=14.3,name=iPhone 12 Mini"
 
 jobs:
   job-main:
