@@ -65,16 +65,31 @@ def files_changed_as_set(files)
     return all_files_changed || no_files_changed
 end
 
-# Verify proper pod install
+# Verify proper pod install.
+# If Podfile has been modified, so must the lock files.
+did_update_podfile = git.modified_files.include?("Podfile")
 pod_files = ["Podfile", "Podfile.lock", "Pods/Manifest.lock"]
-if !files_changed_as_set(pod_files)
-    fail("CocoaPods error: #{pod_files} should all be changed at the same time. Run `pod install` and commit the changes to fix.")
+if did_update_podfile && !files_changed_as_set(pod_files)
+    fail("CocoaPods error: #{pod_files} should all be changed at the same time.
+        Run `pod install` and commit the changes to fix.")
 end
 
-# Verify proper bundle install
+# Prevent editing `Pods/` source directly.
+# If Pods has changed, then Podfile.lock must have changed too.
+has_modified_pods = !(git.added_files + git.modified_files + git.deleted_files).grep(/Pods/).empty?
+did_update_podlock = git.modified_files.include?("Podfile.lock")
+if has_modified_pods && !did_update_podlock
+  fail("It looks like you are modifying CocoaPods source in `Pods/`. 3rd-party dependencies should not be edited.
+        To update or change pods, please update the `Podfile` and run `pod install`.")
+end
+
+# Verify proper bundle install.
+# If Gemfile has been modified, so must the lock file.
+did_update_gemfile = git.modified_files.include?("Gemfile")
 gem_files = ["Gemfile", "Gemfile.lock"]
-if !files_changed_as_set(gem_files)
-    fail("Bundler error: #{gem_files} should all be changed at the same time. Run `bundle install` and commit the changes to fix.")
+if did_update_gemfile && !files_changed_as_set(gem_files)
+    fail("Bundler error: #{gem_files} should all be changed at the same time.
+        Run `bundle install` and commit the changes to fix.")
 end
 
 # -----------------------------------------------------------------------------
@@ -87,7 +102,7 @@ unless markdown_files.empty?
     prose.ignore_acronyms = true
     prose.ignore_numbers = true
     prose.ignored_words = ["jessesquires", "swiftpm", "iOS",
-        "macOS", "watchOS", "tvOS", "Xcode"
+        "macOS", "watchOS", "tvOS", "Xcode", "PresenterKit"
     ]
     prose.lint_files markdown_files
     prose.check_spelling markdown_files
@@ -99,12 +114,6 @@ end
 swiftlint.verbose = true
 swiftlint.config_file = './.swiftlint.yml'
 swiftlint.lint_files(inline_mode: true, fail_on_error: true)
-
-# -----------------------------------------------------------------------------
-# Check for duplicate and missed localizable strings
-# -----------------------------------------------------------------------------
-duplicate_localizable_strings.check_localizable_duplicates
-missed_localizable_strings
 
 # -----------------------------------------------------------------------------
 # Jazzy docs - check for new, undocumented symbols
