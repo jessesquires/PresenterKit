@@ -150,7 +150,7 @@ GEM
     rouge (3.26.0)
     ruby-macho (1.4.0)
     ruby2_keywords (0.0.4)
-    rubyzip (2.3.0)
+    rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
     sawyer (0.8.2)
