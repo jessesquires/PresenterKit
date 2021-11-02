@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
    s.name = 'PresenterKit'
-   s.version = '6.1.2'
+   s.version = '6.1.3'
    s.license = 'MIT'
 
    s.summary = 'Custom presenters and better view controller presentation for iOS'
@@ -16,4 +16,6 @@ Pod::Spec.new do |s|
    s.ios.deployment_target = '11.0'
 
    s.requires_arc = true
+
+   s.deprecated = true
 end
