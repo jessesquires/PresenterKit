@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
    s.name = 'PresenterKit'
-   s.version = '6.1.1'
+   s.version = '6.1.2'
    s.license = 'MIT'
 
    s.summary = 'Custom presenters and better view controller presentation for iOS'
