@@ -4,8 +4,8 @@
 
 ## Requirements
 
-* Xcode 12.0+
-* Swift 5.3+
+* Xcode 13.0+
+* Swift 5.5+
 * iOS 11.0+
 * [SwiftLint](https://github.com/realm/SwiftLint)
 
@@ -15,9 +15,6 @@
 
 ````ruby
 pod 'PresenterKit', '~> 6.1.0'
-
-# develop branch
-pod 'PresenterKit', :git => 'https://github.com/jessesquires/PresenterKit.git', :branch => 'develop'
 ````
 
 ### [Swift Package Manager](https://swift.org/package-manager/)

@@ -1,28 +1,33 @@
+# GitHub Actions Virtual Environments
+# https://github.com/actions/virtual-environments/
+
 name: SwiftPM Integration
 
 on:
   push:
     branches:
-      - master
-      - develop
+      - main
+    paths:
+      - '.github/workflows/spm-ios.yml'
+      - 'Package*'
+      - 'Sources/**/*.*'
+      - 'Tests/**/*.*'
   pull_request:
     branches:
-      - master
-      - develop
+      - main
 
 env:
-  # https://github.com/actions/virtual-environments/tree/main/images/macos
-  DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_13.1.app/Contents/Developer
 
-  IOS_SDK: iphonesimulator14.3
-  IOS_DEST: "OS=14.3,name=iPhone 12 Mini"
+  IOS_SDK: iphonesimulator15.0
+  IOS_DEST: "OS=15.0,name=iPhone 13 Mini"
 
   SCHEME: PresenterKit
 
 jobs:
-  job-build:
+  main:
     name: SwiftPM Build
-    runs-on: macOS-latest
+    runs-on: macOS-11
     steps:
       - name: git checkout
         uses: actions/checkout@v2
